@@ -1,0 +1,66 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "categories": [
+    {
+      "id": "123",
+      "name": "JavaScript",
+      "topics": [
+        {
+          "id": "",
+          "topic-name": "Closure"
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": "",
+      "name": "Jon Doe",
+      "role": "Admin"
+    }
+  ],
+  "questions": [
+    {
+      "text": "",
+      "date": "",
+      "categories": [
+        {
+          "name": "",
+          "id": ""
+        }
+      ],
+      "is_flagged": "",
+      "flag_count": "",
+      "id": "",
+      "email": "",
+      "answers": [
+        {
+          "text": "",
+          "date": "",
+          "is_flagged": "",
+          "email": "",
+          "up_vote": "",
+          "down_vote": "",
+          "is_correct": ""
+        }
+      ],
+      "answer_count": ""
+    }
+  ]
+}
