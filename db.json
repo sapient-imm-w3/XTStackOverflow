@@ -1,47 +1,125 @@
 {
+  "questions": [
+    {
+      "text": "",
+      "date": "",
+      "categories": [
+        {
+          "name": "",
+          "id": ""
+        }
+      ],
+      "is_flagged": "",
+      "flag_count": "",
+      "id": "",
+      "email": "",
+      "answers": [
+        {
+          "text": "",
+          "date": "",
+          "is_flagged": "",
+          "email": "",
+          "up_vote": "",
+          "down_vote": "",
+          "is_correct": ""
+        }
+      ],
+      "answer_count": ""
+    }
+  ],
+  "categories": [
+    {
+      "id": "2",
+      "name": "Java",
+      "topics": [
+        {
+          "id": "topic3",
+          "topic-name": "overloading"
+        },
+        {
+          "id": "topic4",
+          "topic-name": "overriding"
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "name": "Ashish",
+      "topics": [
+        {
+          "id": "topic3",
+          "topic-name": "overloading"
+        },
+        {
+          "id": "topic4",
+          "topic-name": "overriding"
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": "user1",
+      "name": "Xyz",
+      "role": "Normal"
+    },
+    {
+      "id": "user2",
+      "name": "Abc",
+      "role": "Regular"
+    },
+    {
+      "id": "user4",
+      "name": "abc",
+      "role": "Normal"
+    },
+    {
+      "id": "user6",
+      "name": "abc",
+      "role": "Normal"
+    },
+    {
+      "id": "user7",
+      "name": "abd",
+      "role": "Normal"
+    },
+    {
+      "id": "user9",
+      "name": "def",
+      "role": "Normal"
+    }
+  ],
+  "flagged": {
     "questions": [
       {
-        "text": "",
-        "date": "",
-        "categories": [
-          {
-            "name": "",
-            "id": ""
-          }
-        ],
-        "is_flagged": "",
-        "flag_count": "",
-        "id": "",
-        "email": "",
-        "answers": [
-          {
-            "text": "",
-            "date": "",
-            "is_flagged": "",
-            "email": "",
-            "up_vote": "",
-            "down_vote": "",
-            "is_correct": ""
-          }
-        ],
-        "answer_count": ""
-      }
-    ],
-    "categories": [
+        "id": "1",
+        "text": "what is your name?"
+      },
       {
-        "id": "",
-        "name": "",
-        "topics": [
-          {
-            "id": "",
-            "topic-name": ""
-          }
-        ]
+        "id": "2",
+        "text": "what is your favourite food?"
+      },
+      {
+        "id": "3",
+        "text": "what is your favourite hero?"
       }
     ],
-    "users": {
-      "id": "",
-      "name": "",
-      "role": ""
-    }
+    "answers": [
+      {
+        "id": "22",
+        "question_id": "1",
+        "text": "do not know"
+      },
+      {
+        "id": "23",
+        "question_id": "2",
+        "text": "do not know"
+      },
+      {
+        "id": "24",
+        "question_id": "3",
+        "text": "do not know"
+      }
+    ]
   }
+}
