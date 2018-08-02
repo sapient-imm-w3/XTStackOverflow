@@ -1,5 +1,5 @@
 import { createStore } from 'redux';
-import QuestionApp from './QuestionApp';
+import AdminApp from './AdminApp';
 import deepFreeze from 'deep-freeze';
 import {
   ANSWER_ACTION

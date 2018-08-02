@@ -1,72 +1,40 @@
-export function ANSWER_ACTION(postedBy, text) {
+export function REMOVE_FLAGGED_QUESTION_ACTION(isFlagged, id) {
   return {
-    type: 'ANSWER',
-    postedBy,
-    text
+    type: 'FLAGGED_QUESTION',
+    isFlagged,
+    id
   }
 }
 
-export function UP_VOTE_ACTION(votedBy, id) {
+export function REMOVE_FLAGGED_ANSWER_ACTION(isFlagged, id) {
   return {
-    type: 'UP_VOTE',
-    votedBy,
+    type: 'FLAGGED_ANSWER',
+    isFlagged,
     id
   };
 }
 
-export function DOWN_VOTE_ACTION(votedBy, id) {
+export function CHANGE_ROLE_ACTION(name, role) {
   return {
-    type: 'DOWN_VOTE',
-    votedBy,
+    type: 'ROLE',
+    name,
+    role
+  };
+}
+
+export function CREATE_CATEGORY_ACTION(category, id) {
+  return {
+    type: 'CREATE_CATEGORY',
+    category,
     id
   };
 }
 
-export function CLEAR_UP_VOTE_ACTION(votedBy, id) {
+export function DELETE_CATEGORY_ACTION(category, id) {
   return {
-    type: 'CLEAR_UP_VOTE',
-    votedBy,
+    type: 'DELETE_CATEGORY',
+    category,
     id
   };
 }
 
-export function CLEAR_DOWN_VOTE_ACTION(votedBy, id) {
-  return {
-    type: 'CLEAR_DOWN_VOTE',
-    votedBy,
-    id
-  };
-}
-
-export function SET_CORRECT_ANSWER_ACTION(id) {
-  return {
-    type: 'SET_CORRECT_ANSWER',
-    id
-  };
-}
-
-export function EDIT_ANSWER_ACTION(postedBy, id, text) {
-  return {
-    type: 'EDIT_ANSWER',
-    postedBy,
-    id,
-    text
-  };
-}
-
-export function FLAG_RESPONSE_ACTION(flaggedBy, id, reason) {
-  return {
-    type: 'FLAG_RESPONSE',
-    flaggedBy,
-    id,
-    reason
-  };
-}
-
-export function UNFLAG_RESPONSE_ACTION(flaggedBy, id) {
-  return {
-    type: 'UNFLAG_RESPONSE',
-    flaggedBy,
-    id
-  };
-}

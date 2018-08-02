@@ -1,34 +1,22 @@
-import answerReducer from './reducers/answerReducer';
-import upVoteReducer from './reducers/upVoteReducer';
-import downVoteReducer from './reducers/downVoteReducer';
-import clearUpVoteReducer from './reducers/clearUpVoteReducer';
-import clearDownVoteReducer from './reducers/clearDownVoteReducer';
-import setCorrectAnswerReducer from './reducers/setCorrectAnswerReducer';
-import editAnswerReducer from './reducers/editAnswerReducer';
-import flagResponseReducer from './reducers/flagResponseReducer';
-import unFlagResponseReducer from './reducers/unFlagResponseReducer';
+import changeRoleReducer from './reducers/changeRoleReducer';
+import createCategoryReducer from './reducers/createCategoryReducer';
+import deleteCategoryReducer from './reducers/deleteCategoryReducer';
+import removeFlaggedAnswerReducer from './reducers/removeFlaggedAnswerReducer';
+import removeFlaggedQuestionReducer from './reducers/removeFlaggedQuestionReducer';
 
 
-export default function QuestionApp(currentState = {}, action) {
+export default function AdminApp(currentState = {}, action) {
   switch(action.type) {
-    case 'ANSWER':
-      return answerReducer(currentState, action);
-    case 'UP_VOTE':
-      return upVoteReducer(currentState, action);
-    case 'DOWN_VOTE':
-      return downVoteReducer(currentState, action);
-    case 'CLEAR_UP_VOTE':
-      return clearUpVoteReducer(currentState, action);
-    case 'CLEAR_DOWN_VOTE':
-      return clearDownVoteReducer(currentState, action);
-    case 'SET_CORRECT_ANSWER':
-      return setCorrectAnswerReducer(currentState, action);
-    case 'EDIT_ANSWER':
-      return editAnswerReducer(currentState, action);
-    case 'FLAG_RESPONSE':
-      return flagResponseReducer(currentState, action);
-    case 'UNFLAG_RESPONSE':
-      return unFlagResponseReducer(currentState, action);
+    case 'FLAGGED_QUESTION':
+      return removeFlaggedQuestionReducer(currentState, action);
+    case 'FLAGGED_ANSWER':
+      return removeFlaggedAnswerReducer(currentState, action);
+    case 'ROLE':
+      return changeRoleReducer(currentState, action);
+    case 'CREATE_CATEGORY':
+      return createCategoryReducer(currentState, action);
+    case 'DELETE_CATEGORY':
+      return deleteCategoryReducer(currentState, action);
     default:
       return currentState;
   }

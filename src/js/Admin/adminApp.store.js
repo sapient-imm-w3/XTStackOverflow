@@ -1,26 +1,30 @@
 const sampleState = {
+  category:{
+    id:'',
+    text:''
+  },
   question: {
     id: '',
-    postedBy: '',
+    isFlagged: [{
+      flaggedBy: '',
+      flagCount: ''
+    }],
     text: '',
     when: '',
-    votes: [{
-      votedBy: ''
-    }]
   },
   answers: [{
     id: '',
     postedBy: '',
     text: '',
     when: '',
-    isCorrectAnswer: false,
     isFlagged: [{
       flaggedBy: '',
-      when: '',
-      reason: ''
-    }],
-    votes: [{
-      votedBy: ''
+      when: ''
     }]
+  }],
+  users:[{
+    id:'',
+    name:'',
+    role:''
   }]
 };
