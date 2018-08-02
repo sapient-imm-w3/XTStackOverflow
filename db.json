@@ -1,0 +1,47 @@
+{
+    "questions": [
+      {
+        "text": "",
+        "date": "",
+        "categories": [
+          {
+            "name": "",
+            "id": ""
+          }
+        ],
+        "is_flagged": "",
+        "flag_count": "",
+        "id": "",
+        "email": "",
+        "answers": [
+          {
+            "text": "",
+            "date": "",
+            "is_flagged": "",
+            "email": "",
+            "up_vote": "",
+            "down_vote": "",
+            "is_correct": ""
+          }
+        ],
+        "answer_count": ""
+      }
+    ],
+    "categories": [
+      {
+        "id": "",
+        "name": "",
+        "topics": [
+          {
+            "id": "",
+            "topic-name": ""
+          }
+        ]
+      }
+    ],
+    "users": {
+      "id": "",
+      "name": "",
+      "role": ""
+    }
+  }
