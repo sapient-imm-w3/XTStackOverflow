@@ -7,7 +7,8 @@
     "test": "mocha --compilers js:babel-core/register src/js/**/*.test.js",
     "build": "webpack --mode production",
     "clean": "rm -rf dist/",
-    "serve": "webpack-dev-server --mode development"
+    "serve": " webpack-dev-server --mode development",
+    "serve:Admin": "env MODULE=Admin webpack-dev-server --mode development --hot --host 0.0.0.0"
   },
   "keywords": [
     "HTML",
@@ -15,7 +16,7 @@
     "JavaScript",
     "Boilerplate"
   ],
-  "author": "Sagar Patke",
+  "author": "Asish kumar",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.3",
