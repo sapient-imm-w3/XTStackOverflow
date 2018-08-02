@@ -1,0 +1,73 @@
+{
+    "questions": [
+      {
+        "text": "",
+        "date": "",
+        "categories": [
+          {
+            "name": "",
+            "id": ""
+          }
+        ],
+        "is_flagged": "",
+        "flag_count": "",
+        "id": "",
+        "email": "",
+        "answers": [
+          {
+            "text": "",
+            "date": "",
+            "is_flagged": "",
+            "email": "",
+            "up_vote": "",
+            "down_vote": "",
+            "is_correct": ""
+          }
+        ],
+        "answer_count": ""
+      }
+    ],
+    "categories": [
+      {
+        "id": "1",
+        "name": "Javascript",
+        "topics": [
+          {
+            "id": "topic1",
+            "topic-name": "array"
+          },
+          {
+            "id": "topic2",
+            "topic-name": "closure"
+          }
+        ]
+      },
+      {
+        "id": "2",
+        "name": "Java",
+        "topics": [
+          {
+            "id": "topic3",
+            "topic-name": "overloading"
+          },
+          {
+            "id": "topic4",
+            "topic-name": "overriding"
+          }
+        ]
+      }
+
+    ],
+    "users": [
+        {
+      "id": "user1",
+      "name": "Xyz",
+      "role": "Admin"
+    },
+    {
+        "id": "user2",
+        "name": "Abc",
+        "role": "Regular"
+      }
+]
+  }
