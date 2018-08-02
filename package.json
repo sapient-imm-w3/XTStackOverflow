@@ -1,13 +1,13 @@
 {
-  "name": "static-web-boilerplate",
+  "name": "Landing",
   "version": "1.0.0",
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register src/js/**/*.test.js",
-    "build": "webpack --mode production",
+    "build": "webpack env MODULE=landing",
     "clean": "rm -rf dist/",
-    "serve": "webpack-dev-server --mode development"
+    "serve:landing": "env MODULE=landing webpack-dev-server --mode development --hot --host 0.0.0.0"
   },
   "keywords": [
     "HTML",
@@ -15,7 +15,7 @@
     "JavaScript",
     "Boilerplate"
   ],
-  "author": "Sagar Patke",
+  "author": "Chaitanya Reddy",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -36,6 +36,7 @@
   "dependencies": {
     "bootstrap": "^4.1.3",
     "jquery": "^3.3.1",
+    "json-server": "^0.14.0",
     "popper.js": "^1.14.3",
     "redux": "^4.0.0"
   }
