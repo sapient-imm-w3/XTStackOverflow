@@ -1,18 +1,44 @@
 {
   "questions": [
     {
-      "text": "",
-      "date": "",
+      "text": "What is JavaScript?",
+      "date": "24-July",
       "categories": [
         {
-          "name": "",
-          "id": ""
+          "name": "JavaScript",
+          "id": "01"
         }
       ],
-      "is_flagged": "",
-      "flag_count": "",
-      "id": "",
-      "email": "",
+      "is_flagged": "False",
+      "flag_count": "0",
+      "id": "01",
+      "email": "abc@xyz",
+      "answers": [
+        {
+          "text": "",
+          "date": "",
+          "is_flagged": "",
+          "email": "",
+          "up_vote": "",
+          "down_vote": "",
+          "is_correct": ""
+        }
+      ],
+      "answer_count": ""
+    },
+    {
+      "text": "What is JavaScript in India?",
+      "date": "21-July",
+      "categories": [
+        {
+          "name": "JavaSc",
+          "id": "02"
+        }
+      ],
+      "is_flagged": "True",
+      "flag_count": "01",
+      "id": "02",
+      "email": "abc@xywz",
       "answers": [
         {
           "text": "",
@@ -39,9 +65,20 @@
       ]
     }
   ],
-  "users": {
+  "users": [{
     "id": "",
     "name": "",
     "role": ""
-  }
+  }],
+  "flagged":[{
+    "questions":[{
+      "id":"",
+      "text":""
+    }],
+    "answers":[{
+      "id":"",
+      "question_id":"",
+      "text":""
+    }]
+  }]
 }

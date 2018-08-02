@@ -1,5 +1,4 @@
-.css {
-  font-weight: bolder;
-  font-style: italic;
-  color: green;
+html,
+body{
+  background: #D9F0FF;
 }
