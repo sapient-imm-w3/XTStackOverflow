@@ -61,7 +61,7 @@
     {
       "id": "user1",
       "name": "Xyz",
-      "role": "Normal"
+      "role": "admin"
     },
     {
       "id": "user2",
