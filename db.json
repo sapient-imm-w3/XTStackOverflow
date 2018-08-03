@@ -1,12 +1,12 @@
 {"questions" : [
     {
-        "text":"",
-        "date" :"",
+        "text":"What is javaScript",
+        "date" :"3 Aug 2018",
         "categories":[{
             "id": "",
             "name": ""
         }],
-        "is_flagged":"",
+        "is_flagged":"true",
          "flag_count": "",
         "id":"",
         "email":"",
@@ -22,8 +22,83 @@
           }
        
          ],
-        "answer_count":""
+        "answer_count":"5"
+    },
+    {
+      "text":"What is the next number after 61, 44, 19, 49, 12? ",
+      "date" :"3 Aug 2018",
+      "categories":[{
+          "id": "",
+          "name": ""
+      }],
+      "is_flagged":"false",
+       "flag_count": "",
+      "id":"",
+      "email":"",
+       "answers":[
+       {
+        "text":"",
+        "date" :"",
+        "is_flagged":"",
+        "email":"",
+        "up_vote":"",
+        "down_vote":"",
+        "is_correct":""
+        }
+     
+       ],
+      "answer_count":"3"
+  },
+  {
+    "text":"How to assign the values for dict(keys and values) into a new list? and also how to print the keys and values in the string dictionary? ",
+    "date" :"3 Aug 2018",
+    "categories":[{
+        "id": "",
+        "name": ""
+    }],
+    "is_flagged":"false",
+     "flag_count": "",
+    "id":"",
+    "email":"",
+     "answers":[
+     {
+      "text":"",
+      "date" :"",
+      "is_flagged":"",
+      "email":"",
+      "up_vote":"",
+      "down_vote":"",
+      "is_correct":""
+      }
+   
+     ],
+    "answer_count":"6"
+},
+{
+  "text":"What questions are asked during arranged marriage meetings in India? ",
+  "date" :"3 Aug 2018",
+  "categories":[{
+      "id": "",
+      "name": ""
+  }],
+  "is_flagged":"false",
+   "flag_count": "",
+  "id":"",
+  "email":"",
+   "answers":[
+   {
+    "text":"",
+    "date" :"",
+    "is_flagged":"",
+    "email":"",
+    "up_vote":"",
+    "down_vote":"",
+    "is_correct":""
     }
+ 
+   ],
+  "answer_count":"16"
+}
   ],
   "categories": [
     {
@@ -37,9 +112,9 @@
       ]
     }
   ],
-  "users": {
+  "users": [{
     "id": "",
     "name": "",
     "role": ""
-    }
+    }]
 }
