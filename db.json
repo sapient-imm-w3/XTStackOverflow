@@ -35,7 +35,7 @@
           "id": "02"
         }
       ],
-      "is_flagged": false,
+      "is_flagged": "false",
       "flag_count": "01",
       "id": "02",
       "email": "abc@xywz",

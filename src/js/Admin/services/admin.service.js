@@ -18,7 +18,7 @@ export function getFlaggedQuestionService() {
     fetch(revokeUrl)
     .then((resp)=>resp.json())
     .then((obj) => {
-      let obje  =Object.assign({},obj,{is_flagged:false});
+      let obje  =Object.assign({},obj,{is_flagged:'false'});
       // let obje = {
       //   is_flagged:false
       // }
