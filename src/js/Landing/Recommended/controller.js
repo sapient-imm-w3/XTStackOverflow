@@ -1,3 +1,5 @@
-import {getRecommended, getUserFavCategory} from './service';
+import {getRecommended} from './service';
+import {viewLayout} from './view';
 
+viewLayout();
 getRecommended();

@@ -18,3 +18,15 @@ export function getRecQuestion(question) {
      `);
    return display;
 }
+ export function viewLayout(){
+   document.body.innerHTML = "";
+   let main = createHTMLElement(`<aside style="float: right; margin: 0 1.5%; width: 30%; background-color: lightgrey; height: 100%;" >
+     <div class="container" >
+       <h2>Recommended For You</h2>
+       <div id="recommended">
+
+       </div>
+     </div>
+   </aside>`);
+   document.body.appendChild(main);
+ }
