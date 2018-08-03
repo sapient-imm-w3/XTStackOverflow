@@ -1,16 +1,18 @@
 {
   "questions": [
     {
-      "text": "",
+      "text": "How to assign the values for dict(keys and values) into a new list? and also how to print the keys and values in the string dictionary?",
       "date": "",
-      "categories": [{
-        "name": "",
-        "id": ""
-      }],
+      "categories": [
+        {
+          "name": "",
+          "id": ""
+        }
+      ],
       "is_flagged": "",
-      "flag_count": "",
-      "id": "",
-      "email": "",
+      "flag_count": "7",
+      "id": "1",
+      "email": "user1",
       "answers": [
         {
           "text": "",
@@ -22,7 +24,85 @@
           "is_correct": ""
         }
       ],
-      "answer_count": ""
+      "answer_count": "19"
+    },
+    {
+      "text": "What is the next number after 61, 44, 19, 49, 12?",
+      "date": "",
+      "categories": [
+        {
+          "name": "",
+          "id": ""
+        }
+      ],
+      "is_flagged": "",
+      "flag_count": "4",
+      "id": "2",
+      "email": "user1",
+      "answers": [
+        {
+          "text": "",
+          "date": "",
+          "is_flagged": "",
+          "email": "",
+          "up_vote": "",
+          "down_vote": "",
+          "is_correct": ""
+        }
+      ],
+      "answer_count": "197"
+    },
+    {
+      "text": "What questions are asked during arranged marriage meetings in India?",
+      "date": "",
+      "categories": [
+        {
+          "name": "",
+          "id": ""
+        }
+      ],
+      "is_flagged": "",
+      "flag_count": "1",
+      "id": "3",
+      "email": "user1",
+      "answers": [
+        {
+          "text": "",
+          "date": "",
+          "is_flagged": "",
+          "email": "",
+          "up_vote": "",
+          "down_vote": "",
+          "is_correct": ""
+        }
+      ],
+      "answer_count": "97"
+    },
+    {
+      "text": "What are the shortest air routes between India to the USA?",
+      "date": "",
+      "categories": [
+        {
+          "name": "",
+          "id": ""
+        }
+      ],
+      "is_flagged": "",
+      "flag_count": "8",
+      "id": "4",
+      "email": "user2",
+      "answers": [
+        {
+          "text": "",
+          "date": "",
+          "is_flagged": "",
+          "email": "",
+          "up_vote": "",
+          "down_vote": "",
+          "is_correct": ""
+        }
+      ],
+      "answer_count": "971"
     }
   ],
   "categories": [
@@ -37,9 +117,11 @@
       ]
     }
   ],
-  "users": {
-    "id": "",
-    "name": "",
-    "role": ""
+  "users": [
+    {
+      "id": "",
+      "name": "",
+      "role": ""
     }
+  ]
 }

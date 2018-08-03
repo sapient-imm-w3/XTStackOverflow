@@ -3,3 +3,6 @@
   font-style: italic;
   color: green;
 }
+
+@import 'layout.css';
+@import 'module.css';

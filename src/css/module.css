@@ -1,0 +1,16 @@
+.answerCount{
+    padding-left: 3rem;
+}
+#askQuestionDiv,.myQuestion{
+    border: 1px solid #efefef;
+    background-color: #fff;
+    border-radius: 4px;
+    border-bottom: 1px solid #e2e2e2;
+    margin-bottom: 14px;
+    padding: 16px;
+}
+#askQuestionButton{
+    font-size: 1.5rem;
+    font-weight: 100;
+    font-family: cursive;
+}   
