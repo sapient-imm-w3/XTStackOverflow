@@ -8,7 +8,7 @@ export function getTitle(category) {
     let display = createHTMLElement(`
       <!-- Card -->
       <div  style="border:5px; background: white">
-      <p style="margin: 0.5rem">${question}</p>
+      <a href="" ><p style="margin: 0.5rem">${question}</p></a>
       </div>
       `);
     return display;
