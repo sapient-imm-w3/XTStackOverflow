@@ -5,12 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="../../vendors/DataTables/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="../../vendors/DataTables/css/jquery.dataTables.min.css">
     <title>AdminBoys</title>
 </head>
 
 <body>
     <main id="wrapper">
-        <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
             <a class="navbar-brand" href="#">StackOverflow</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
                 aria-expanded="false" aria-label="Toggle navigation">
@@ -19,12 +22,12 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Flagged
+                        <a class="nav-link" id="flagged" href="#">Flagged
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id ="users"href="#">Users</a>
+                        <a class="nav-link" id="users" href="#">Users</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Categories</a>
@@ -36,7 +39,7 @@
             </div>
         </nav>
         <div id="flagged_questions"></div>
-        <div id="flagged_answers"></div>
+        <div id="usersDiv"></div>
     </main>
 </body>
 

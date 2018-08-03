@@ -11,6 +11,14 @@ module.exports = {
     rules: [
       { test: /\.css$/, loaders: ['style-loader', 'css-loader'], exclude: /node_modules/ },
       { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader'], include: /node_modules/ },
+      {
+        test: /\.(png|jpg|gif|svg|jpeg)$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          useRelativePath: true,
+        },
+      },
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
     ]
   },

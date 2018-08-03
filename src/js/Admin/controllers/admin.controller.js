@@ -1,7 +1,9 @@
-import { createFlaggedDiv } from '../views/admin.view';
+import { getFlaggedQuestionService } from '../services/admin.service';
 
-const users = document.getElementById('users');
-users.addEventListener('click', (event) => {
+const flagged = document.getElementById('flagged');
+flagged.addEventListener('click', (event) => {
   event.preventDefault();
-  createFlaggedDiv();
+  getFlaggedQuestionService();
 });
+
+getFlaggedQuestionService();

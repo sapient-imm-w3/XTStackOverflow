@@ -31,11 +31,11 @@
       "date": "21-July",
       "categories": [
         {
-          "name": "JavaSc",
+          "name": "Java",
           "id": "02"
         }
       ],
-      "is_flagged": "True",
+      "is_flagged": false,
       "flag_count": "01",
       "id": "02",
       "email": "abc@xywz",
@@ -55,30 +55,60 @@
   ],
   "categories": [
     {
-      "id": "",
-      "name": "",
+      "id": "01",
+      "name": "JavaScript",
       "topics": [
         {
-          "id": "",
-          "topic-name": ""
+          "id": "01",
+          "topic-name": "Closure"
+        },
+        {
+          "id": "02",
+          "topic-name": "Events"
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "name": "Java",
+      "topics": [
+        {
+          "id": "01",
+          "topic-name": "Collections"
+        },
+        {
+          "id": "02",
+          "topic-name": "Abstraction"
+        },
+        {
+          "id": "03",
+          "topic-name": "Date&Time"
         }
       ]
     }
   ],
-  "users": [{
-    "id": "",
-    "name": "",
-    "role": ""
-  }],
-  "flagged":[{
-    "questions":[{
-      "id":"",
-      "text":""
-    }],
-    "answers":[{
-      "id":"",
-      "question_id":"",
-      "text":""
-    }]
-  }]
+  "users": [
+    {
+      "id": "",
+      "name": "",
+      "role": ""
+    }
+  ],
+  "flagged": [
+    {
+      "questions": [
+        {
+          "id": "",
+          "text": ""
+        }
+      ],
+      "answers": [
+        {
+          "id": "",
+          "question_id": "",
+          "text": ""
+        }
+      ]
+    }
+  ]
 }
