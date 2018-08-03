@@ -4,8 +4,12 @@
       "id": 1,
       "title": "json-server",
       "author": "typicode"
+    },
+    {
+      "id": 2
     }
   ],
+
   "comments": [
     {
       "id": 1,
@@ -13,9 +17,11 @@
       "postId": 1
     }
   ],
+
   "profile": {
     "name": "typicode"
   },
+
   "categories": [
     {
       "id": "123",
@@ -26,26 +32,40 @@
           "topic-name": "Closure"
         }
       ]
+    },
+    {
+      "id": "o~ZadE0"
     }
   ],
+
   "users": [
     {
-      "id": "",
+      "id": "1",
       "name": "Jon Doe",
-      "role": "Admin"
+      "role": "Regular",
+      "fav_categories": ["xyz","abc"]
     }
   ],
+
   "questions": [
     {
-      "text": "",
+      "text": "ashdgakhsgf",
       "date": "",
       "categories": [
         {
-          "name": "",
+          "name": "script",
+          "id": ""
+        },
+        {
+          "name": "abc",
+          "id": ""
+        },
+        {
+          "name": "xyz",
           "id": ""
         }
       ],
-      "is_flagged": "",
+      "is_flagged": "false",
       "flag_count": "",
       "id": "",
       "email": "",
@@ -59,8 +79,216 @@
           "down_vote": "",
           "is_correct": ""
         }
+        ]
+      },
+        {
+          "text": "srtrdgfgdfdgafjgabil ydhfsdvsdhyf dtvyst dfsgd fysegufs dufsdf gisdgft sdgfigdiygcfsidtug",
+          "date": "",
+          "categories": [
+            {
+              "name": "java",
+              "id": ""
+            },
+            {
+              "name": "xyz",
+              "id": ""
+            },
+            {
+              "name": "js",
+              "id": ""
+            }
+          ],
+          "is_flagged": "false",
+          "flag_count": "",
+          "id": "",
+          "email": "",
+          "answers": [
+            {
+              "text": "",
+              "date": "",
+              "is_flagged": "",
+              "email": "",
+              "up_vote": "",
+              "down_vote": "",
+              "is_correct": ""
+            }
+            ]
+          },
+            {
+              "text": "dfhtbdycg stdgasvuydtk asytdbastdl atscdghsbc",
+              "date": "",
+              "categories": [
+                {
+                  "name": "java",
+                  "id": ""
+                }
+              ],
+              "is_flagged": "true",
+              "flag_count": "",
+              "id": "",
+              "email": "",
+              "answers": [
+                {
+                  "text": "",
+                  "date": "",
+                  "is_flagged": "",
+                  "email": "",
+                  "up_vote": "",
+                  "down_vote": "",
+                  "is_correct": ""
+                }
+                ]
+              },
+              {
+                "text": "srtrdgfgdfdgafjgabil ydhfsdvsdhyf dtvyst dfsgd fysegufs dufsdf gisdgft sdgfigdiygcfsidtug",
+                "date": "",
+                "categories": [
+                  {
+                    "name": "java",
+                    "id": ""
+                  },
+                  {
+                    "name": "xyz",
+                    "id": ""
+                  },
+                  {
+                    "name": "js",
+                    "id": ""
+                  }
+                ],
+                "is_flagged": "false",
+                "flag_count": "",
+                "id": "",
+                "email": "",
+                "answers": [
+                  {
+                    "text": "",
+                    "date": "",
+                    "is_flagged": "",
+                    "email": "",
+                    "up_vote": "",
+                    "down_vote": "",
+                    "is_correct": ""
+                  }
+                  ]
+                },
+                {
+                  "text": "srtrdgfgdfdgafjgabil ydhfsdvsdhyf dtvyst dfsgd fysegufs dufsdf gisdgft sdgfigdiygcfsidtug",
+                  "date": "",
+                  "categories": [
+                    {
+                      "name": "java",
+                      "id": ""
+                    },
+                    {
+                      "name": "xyz",
+                      "id": ""
+                    },
+                    {
+                      "name": "js",
+                      "id": ""
+                    }
+                  ],
+                  "is_flagged": "false",
+                  "flag_count": "",
+                  "id": "",
+                  "email": "",
+                  "answers": [
+                    {
+                      "text": "",
+                      "date": "",
+                      "is_flagged": "",
+                      "email": "",
+                      "up_vote": "",
+                      "down_vote": "",
+                      "is_correct": ""
+                    }
+                    ]
+                  },
+                  {
+                    "text": "srtrdgfgdfdgafjgabil ydhfsdvsdhyf dtvyst dfsgd fysegufs dufsdf gisdgft sdgfigdiygcfsidtug",
+                    "date": "",
+                    "categories": [
+                      {
+                        "name": "java",
+                        "id": ""
+                      },
+                      {
+                        "name": "xyz",
+                        "id": ""
+                      },
+                      {
+                        "name": "js",
+                        "id": ""
+                      }
+                    ],
+                    "is_flagged": "false",
+                    "flag_count": "",
+                    "id": "",
+                    "email": "",
+                    "answers": [
+                      {
+                        "text": "",
+                        "date": "",
+                        "is_flagged": "",
+                        "email": "",
+                        "up_vote": "",
+                        "down_vote": "",
+                        "is_correct": ""
+                      }
+                      ]
+                    },
+                    {
+                      "text": "srtrdgfgdfdgafjgabil ydhfsdvsdhyf dtvyst dfsgd fysegufs dufsdf gisdgft sdgfigdiygcfsidtug",
+                      "date": "",
+                      "categories": [
+                        {
+                          "name": "java",
+                          "id": ""
+                        },
+                        {
+                          "name": "xyz",
+                          "id": ""
+                        },
+                        {
+                          "name": "js",
+                          "id": ""
+                        }
+                      ],
+                      "is_flagged": "false",
+                      "flag_count": "",
+                      "id": "",
+                      "email": "",
+                      "answers": [
+                        {
+                          "text": "",
+                          "date": "",
+                          "is_flagged": "",
+                          "email": "",
+                          "up_vote": "",
+                          "down_vote": "",
+                          "is_correct": ""
+                        }
+                        ]
+                      }
+
+  ],
+  "flagged": [
+    {
+      "questions": [
+        {
+          "id": "",
+          "text": ""
+        }
       ],
-      "answer_count": ""
+      "answers": [
+        {
+          "id": "",
+          "question_id": "",
+          "text": ""
+        }
+      ]
     }
   ]
+
 }

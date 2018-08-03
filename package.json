@@ -5,9 +5,9 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register src/js/**/*.test.js",
-    "build": "webpack --mode production",
+    "build": "env MODULE=landing webpack --mode production",
     "clean": "rm -rf dist/",
-    "serve:landing":"env MODULE=landing webpack-dev-server --mode development --hot --host 0.0.0.0 --port 8081"
+    "serve:landing":"env MODULE=landing webpack-dev-server --mode development --hot --host 0.0.0.0 --port 8081 --inline --watch-poll"
   },
   "keywords": [
     "HTML",
