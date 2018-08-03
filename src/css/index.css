@@ -1,5 +1,44 @@
+html,body {
+  height: 100%;
+  width: 100%;
+}
+
 .css {
   font-weight: bolder;
   font-style: italic;
   color: green;
+}
+
+.container {
+  height: 100%;
+  position: relative;
+}
+
+ul {
+  position: absolute;
+  right: -120px;
+}
+
+li {
+  display: inline;
+}
+img {
+  height: 20px;
+}
+.container .input-group {
+  width: 100%;
+  position: absolute;
+  bottom: 20px;
+}
+span img {
+  display: inline;
+  position: absolute;
+  left: -70px;
+  height: 40px;
+}
+.answer {
+  min-height: 140px;
+}
+.badge.badge-pill.badge-secondary{
+  font-size: 20px;
 }

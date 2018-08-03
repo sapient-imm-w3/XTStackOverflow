@@ -6,7 +6,7 @@
     "test": "mocha --compilers js:babel-core/register src/js/**/*.test.js",
     "build": "webpack --mode production",
     "clean": "rm -rf dist/",
-    "serve:questions":"env MODULE=questions webpack-dev-server --mode development --hot --host 0.0.0.0"
+    "serve:questions": "npx env MODULE=questions webpack-dev-server --mode development --hot --host 0.0.0.0 --watch-poll"
   },
   "keywords": [
     "HTML",
