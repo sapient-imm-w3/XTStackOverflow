@@ -9,7 +9,7 @@
           "id": "01"
         }
       ],
-      "is_flagged": "False",
+      "is_flagged": "True",
       "flag_count": "0",
       "id": "01",
       "email": "abc@xyz",
@@ -35,7 +35,7 @@
           "id": "02"
         }
       ],
-      "is_flagged": "false",
+      "is_flagged": "True",
       "flag_count": "01",
       "id": "02",
       "email": "abc@xywz",
