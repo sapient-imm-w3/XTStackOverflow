@@ -16,7 +16,12 @@ export function getAnswerCountFromDB() {
                 questions = data.splice(-5,5);
             }
             questions.map(function(data){
-                displaytrending(data.answer_count,data.text,data.date);
+                let categories = [];
+                data.categories.map(function(category){
+                    console.log("hello from inside "+category.name);
+                    categories.push(category.name);
+                })
+                displaytrending(data.answer_count,data.text,data.date,categories);
             })
         
         })

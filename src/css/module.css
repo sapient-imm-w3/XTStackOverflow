@@ -1,7 +1,7 @@
 .answerCount{
     padding-left: 3rem;
 }
-#askQuestionDiv,.myQuestion, #question{
+#askQuestionDiv,.myQuestion{
     border: 1px solid #efefef;
     background-color: #fff;
     border-radius: 4px;
