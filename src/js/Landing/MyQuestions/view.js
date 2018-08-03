@@ -1,17 +1,17 @@
 import createHTMLElement from '../view';
 
 export function viewLayout(){
-    document.body.innerHTML = "";
-    let content = `<content class="row" id="content">
-    <section id="myQuestionSection" class="col-md-9">
+   // document.body.innerHTML = "";
+    let content = `
+    <section id="myQuestionSection">
         <h2>Questions posted by me..!!!</h2>
         <div id="askQuestionDiv">
             <a href="#" class="text-muted" id="askQuestionButton">What's your Question ?</a>
         </div>
         <div id="myQuestionDiv"></div> 
     </section>
-</content>`
-document.body.appendChild(createHTMLElement(content));
+`
+document.getElementById(`mainPart`).appendChild(createHTMLElement(content));
 }
 
 export function viewQuestion(question){

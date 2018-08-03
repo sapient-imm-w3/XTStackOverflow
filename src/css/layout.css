@@ -1,3 +1,9 @@
-#myQuestionSection{
+#myQuestionSection, #trendingSection{
     margin: 2rem;
+}
+#answer-count {
+    font-size: 20px;
+  }
+#question {
+    line-height: 1;
 }

@@ -2,14 +2,22 @@
   "questions": [
     {
       "text": "How to assign the values for dict(keys and values) into a new list? and also how to print the keys and values in the string dictionary?",
-      "date": "",
+      "date": "23 Aug 2019",
       "categories": [
         {
-          "name": "",
+          "name": "script",
+          "id": ""
+        },
+        {
+          "name": "abc",
+          "id": ""
+        },
+        {
+          "name": "xyz",
           "id": ""
         }
       ],
-      "is_flagged": "",
+      "is_flagged": false,
       "flag_count": "7",
       "id": "1",
       "email": "user1",
@@ -28,14 +36,22 @@
     },
     {
       "text": "What is the next number after 61, 44, 19, 49, 12?",
-      "date": "",
+      "date": "24 Aug 2019",
       "categories": [
         {
-          "name": "",
+          "name": "java",
+          "id": ""
+        },
+        {
+          "name": "xyz",
+          "id": ""
+        },
+        {
+          "name": "js",
           "id": ""
         }
       ],
-      "is_flagged": "",
+      "is_flagged": false,
       "flag_count": "4",
       "id": "2",
       "email": "user1",
@@ -54,14 +70,14 @@
     },
     {
       "text": "What questions are asked during arranged marriage meetings in India?",
-      "date": "",
+      "date": "23 Aug 2019",
       "categories": [
         {
-          "name": "",
+          "name": "java",
           "id": ""
         }
       ],
-      "is_flagged": "",
+      "is_flagged": false,
       "flag_count": "1",
       "id": "3",
       "email": "user1",
@@ -80,14 +96,22 @@
     },
     {
       "text": "What are the shortest air routes between India to the USA?",
-      "date": "",
+      "date": "23 Mar 2019",
       "categories": [
         {
-          "name": "",
+          "name": "java",
+          "id": ""
+        },
+        {
+          "name": "xyz",
+          "id": ""
+        },
+        {
+          "name": "js",
           "id": ""
         }
       ],
-      "is_flagged": "",
+      "is_flagged": false,
       "flag_count": "8",
       "id": "4",
       "email": "user2",
@@ -119,9 +143,59 @@
   ],
   "users": [
     {
-      "id": "",
+      "id": "1",
       "name": "",
-      "role": ""
+      "role": "",
+      "fav_categories": ["xyz","abc"]
+    },
+    {
+      "id": "1",
+      "name": "x",
+      "role": "y",
+      "categories": [
+        {
+          "id": "1",
+          "name": "script"
+        },
+        {
+          "id": "2",
+          "name": "Java"
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "y",
+      "role": "z",
+      "categories": [
+        {
+          "id": "1",
+          "name": "keep"
+        },
+        {
+          "id": "2",
+          "name": "trello"
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "z",
+      "role": "z",
+      "categories": [
+        {
+          "id": "1",
+          "name": "keep"
+        },
+        {
+          "id": "2",
+          "name": "trello"
+        },
+        {
+          "id": "3",
+          "name": "Java"
+        }
+      ]
     }
   ]
 }
