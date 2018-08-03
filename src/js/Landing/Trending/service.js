@@ -21,10 +21,16 @@ export function getAnswerCountFromDB() {
     return fetch(url, action)
         .then((resp) => resp.json()) // Transform the data into json
         .then(data => {
-            data.map(function(data){
+            let questions;
+            if(data.length<5){
+                questions = data;
+            }
+            else{
+                questions = data.splice(-5,5);
+            }
+            questions.map(function(data){
                 displaytrending(data.answer_count,data.text,data.date);
             })
-        // console.log(data[0].answer_count);
         
         })
         .catch(e => console.log(`ERROR:: ${e}`));
