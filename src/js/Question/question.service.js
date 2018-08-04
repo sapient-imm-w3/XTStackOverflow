@@ -43,7 +43,12 @@ export function postAnswer(){
         body: JSON.stringify(obj),
       };
       fetch(postUrl, fetchData);
+
+      getQuestionData();
+      window.location.reload(); //hahahahahahahah
     });
+
+    
 }
 
 export const getQuestionData = () =>{
