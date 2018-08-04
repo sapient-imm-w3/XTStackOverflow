@@ -10,6 +10,7 @@ html,body {
 }
 
 .container {
+  margin-top: 10px;
   height: 100%;
   position: relative;
 }
@@ -37,6 +38,7 @@ span img {
   height: 40px;
 }
 .answer {
+  position: relative;
   min-height: 140px;
 }
 .badge.badge-pill.badge-secondary{
@@ -45,4 +47,8 @@ span img {
 .list-group-item.hvr-hang {
   font-size: 20px;
   color: red;
+}
+.badge.badge-light {
+  position: absolute;
+  top: 10px;
 }

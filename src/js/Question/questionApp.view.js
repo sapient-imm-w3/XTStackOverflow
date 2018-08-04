@@ -44,6 +44,8 @@ export const getQuestionView = (data) =>{
         
         question+=`</ul>
         <br>
+        <span class="badge badge-light">Posted By: ${element.email}</span>
+        <br>
         <p>${element.text}</p>
         </div>
         <hr>`
