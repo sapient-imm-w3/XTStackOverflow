@@ -35,9 +35,14 @@ export const getQuestionView = (data) =>{
         
         question+=`<ul class="list-group">
         <li class="list-group-item"><img src="../../../src/img/up_vote.png" alt="Like" title="Like" class="hvr-bounce-in"> +${element.up_vote}</li>
-        <li class="list-group-item"><img src="../../../src/img/down_vote.png" alt="Dislike" title="Dislike" class="hvr-bounce-out"> -${element.down_vote}</li>
-        <li class="list-group-item"><img src="../../../src/img/flag.png" alt="Flag" title="Flag" class="hvr-hang"></li>
-        </ul>
+        <li class="list-group-item"><img src="../../../src/img/down_vote.png" alt="Dislike" title="Dislike" class="hvr-bounce-out"> -${element.down_vote}</li>`
+        
+        if(element.is_flagged === true)
+            question+=`<li class="list-group-item hvr-hang">&#9873</li>`
+        else    
+            question+=`<li class="list-group-item hvr-hang">&#9872</li>`
+        
+        question+=`</ul>
         <br>
         <p>${element.text}</p>
         </div>

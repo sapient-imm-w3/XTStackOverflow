@@ -25,7 +25,7 @@
           {
             "text":"Try running the entire script through jslint. This may help point you at the cause of the error.",
             "date" :"21/12/2010",
-            "is_flagged":false,
+            "is_flagged":true,
             "email":"day@gmail.com",
             "up_vote":3,
             "down_vote":4,
