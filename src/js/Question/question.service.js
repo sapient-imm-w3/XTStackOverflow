@@ -8,7 +8,8 @@ export function postAnswer(){
 
     const answerContent = document.querySelector('#post_answer').value;
     console.log(answerContent);
-	
+    
+    if(isNaN(answerContent)){
     var post_date = new Date();
     const datestring = post_date.toDateString();
 	
@@ -47,7 +48,9 @@ export function postAnswer(){
       getQuestionData();
       window.location.reload(); //hahahahahahahah
     });
-
+    }
+    else
+      alert("Write an answer!");
     
 }
 

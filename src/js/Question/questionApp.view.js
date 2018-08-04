@@ -43,13 +43,13 @@ export const getQuestionView = (data) =>{
                 question+=`<span><img src="../../../src/img/verified.png" alt="verified" title="Verified" class="hvr-buzz"></span>`   
         
         question+=`<ul class="list-group">
-        <li class="list-group-item"><img src="../../../src/img/up_vote.png" alt="Like" title="Like" class="hvr-bounce-in"> +${element.up_vote}</li>
-        <li class="list-group-item"><img src="../../../src/img/down_vote.png" alt="Dislike" title="Dislike" class="hvr-bounce-out"> -${element.down_vote}</li>`
+        <li class="list-group-item"><img src="../../../src/img/up_vote.png" alt="Like" title="Like" name="upvote" class="hvr-bounce-in" id="${element.id}"> +${element.up_vote}</li>
+        <li class="list-group-item"><img src="../../../src/img/down_vote.png" alt="Dislike" title="Dislike" name="downvote" class="hvr-bounce-out" id="${element.id}"> -${element.down_vote}</li>`
         
         if(element.is_flagged === true)
-            question+=`<li class="list-group-item hvr-hang" title="Flag">&#9873</li>`
+            question+=`<li class="list-group-item hvr-hang" title="Flag" name="flag" id="${element.id}">&#9873</li>`
         else    
-            question+=`<li class="list-group-item hvr-hang" title="Flag">&#9872</li>`
+            question+=`<li class="list-group-item hvr-hang" title="Flag" name="flag" id="${element.id}">&#9872</li>`
         
         question+=`</ul>
         <br>
@@ -61,7 +61,7 @@ export const getQuestionView = (data) =>{
         });
 
         append(main,createHTMLElement(question));
-
+        
         // question+=`<div class="input-group">
         // <textarea id="post_answer" class="form-control" aria-label="With textarea" placeholder="Post Answer"></textarea>
         // <div class="input-group-append">
@@ -70,6 +70,7 @@ export const getQuestionView = (data) =>{
         // </div>`
         getPostAnswer();
         document.getElementById("PB").addEventListener('click', postAnswer);
+        
         });
             
      }
