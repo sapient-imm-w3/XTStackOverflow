@@ -1,135 +1,35 @@
 {
   "questions": [
-    {
-      "text": "helllllooo",
-      "date": "2018-08-02T11:21:03.087Z",
-      "categories": [
-        {
-          "name": "java",
-          "id": "xyz"
-        }
-      ],
-      "is_flagged": false,
-      "flag_count": 0,
-      "email": "",
-      "answers": [],
-      "answer_count": 0,
-      "id": 1
-    },
-    {
-      "text": "what is css",
-      "date": "2018-08-02T12:04:21.147Z",
-      "categories": [
-        {
-          "name": "asdfg",
-          "id": "xyz"
-        }
-      ],
-      "is_flagged": false,
-      "flag_count": 0,
-      "email": "",
-      "answers": [],
-      "answer_count": 0,
-      "id": 2
-    },
-    {
-      "text": "what is the name",
-      "date": "2018-08-03T06:44:05.989Z",
-      "categories": [
-        {
-          "name": "name is name",
-          "id": "xyz"
-        }
-      ],
-      "is_flagged": false,
-      "flag_count": 0,
-      "email": "",
-      "answers": [],
-      "answer_count": 0,
-      "id": 3
-    },
-    {
-      "text": "qwweee",
-      "date": "2018-08-03T10:04:53.146Z",
-      "categories": [
-        {
-          "name": "qeeeqe",
-          "id": "xyz"
-        }
-      ],
-      "is_flagged": false,
-      "flag_count": 0,
-      "email": "",
-      "answers": [],
-      "answer_count": 0,
-      "id": 4
-    },
-    {
-      "text": "What isssssssssssssssss",
-      "date": "2018-08-03T10:17:18.289Z",
-      "categories": [
-        {
-          "name": "issswhat",
-          "id": "xyz"
-        }
-      ],
-      "is_flagged": false,
-      "flag_count": 0,
-      "email": "",
-      "answers": [],
-      "answer_count": 0,
-      "id": 5
-    },
-    {
-      "text": "whats the scene",
-      "date": "2018-08-03T10:18:03.676Z",
-      "categories": [
-        {
-          "name": "scene",
-          "id": "xyz"
-        }
-      ],
-      "is_flagged": false,
-      "flag_count": 0,
-      "email": "",
-      "answers": [],
-      "answer_count": 0,
-      "id": 6
-    },
-    {
-      "text": "azsx",
-      "date": "2018-08-03T10:53:46.628Z",
-      "categories": [
-        {
-          "name": "qwsc",
-          "id": "xyz"
-        }
-      ],
-      "is_flagged": false,
-      "flag_count": 0,
-      "email": "",
-      "answers": [],
-      "answer_count": 0,
-      "id": 7
-    },
+    
     {
       "text": "",
-      "date": "2018-08-03T12:00:23.032Z",
+      "date": "",
       "categories": [
         {
-          "name": "sdfsdsd asd ad",
-          "id": "xyz"
+          "name": "",
+          "id": ""
         }
       ],
-      "is_flagged": false,
-      "flag_count": 0,
+      "is_flagged": "",
+      "flag_count": "",
+      "id": "",
       "email": "",
-      "answers": [],
-      "answer_count": 0,
-      "id": 8
+      "answers": [
+        {
+          "text": "",
+          "date": "",
+          "is_flagged": "",
+          "email": "",
+          "up_vote": "",
+          "down_vote": "",
+          "is_correct": ""
+        }
+      ],
+      "answer_count": ""
     }
   ],
   "categories": [
+   
     {
       "id": "",
       "name": "",
@@ -137,13 +37,40 @@
         {
           "id": "",
           "topic-name": ""
+        },
+        {
+          "id": "",
+          "topic-name": ""
+        },
+        {
+          "id": "",
+          "topic-name": ""
         }
       ]
     }
   ],
-  "users": {
-    "id": "",
-    "name": "",
-    "role": ""
-  }
+  "users": [
+    {
+      "id": "",
+      "name": "",
+      "role": ""
+    }
+  ],
+  "flagged": [
+    {
+      "questions": [
+        {
+          "id": "",
+          "text": ""
+        }
+      ],
+      "answers": [
+        {
+          "id": "",
+          "question_id": "",
+          "text": ""
+        }
+      ]
+    }
+  ]
 }
