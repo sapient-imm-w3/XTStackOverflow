@@ -1,5 +1,12 @@
-.css {
-  font-weight: bolder;
-  font-style: italic;
-  color: green;
+#bod{
+  width: 70%;
+  text-align: center;
+  margin: auto;
+  margin-top: 50px;
+}
+.PostButton{
+  height: 125px;
+  border: solid 1px;
+  margin-bottom: 120px;
+  background-color: #A4A4A4;
 }
