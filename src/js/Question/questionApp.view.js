@@ -52,9 +52,9 @@ export const getQuestionView = (data) =>{
         });
 
         question+=`<div class="input-group">
-        <textarea class="form-control" aria-label="With textarea" placeholder="Post Answer"></textarea>
+        <textarea id="post_answer" class="form-control" aria-label="With textarea" placeholder="Post Answer"></textarea>
         <div class="input-group-append">
-        <button class="btn btn-outline-secondary" type="button">Post</button>
+        <button id="PB" class="btn btn-outline-secondary" type="button">Post</button>
         </div>
         </div>`
 

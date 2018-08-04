@@ -6,7 +6,7 @@ import 'bootstrap/scss/bootstrap.scss';
 // import 'http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js';
 // import 'http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css';
 // import 'http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js';
-import '../js/Question/question.controller';
+import '../js/Question/questionApp.controller';
 
 
 // $(document).ready(function() {
