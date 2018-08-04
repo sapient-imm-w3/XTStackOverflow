@@ -1,5 +1,6 @@
-import { getFlaggedQuestionService } from '../services/admin.service';
-import {layout} from '../views/admin.view';
+import { getFlaggedQuestionService,getAllUserService,Category,createCategory,getAllCategories,getAllCategoriesWithTopics } from '../services/admin.service';
+import {layout,layoutUserTable,renderCategoryView} from '../views/admin.view';
+import $ from 'jquery';
 const flagged = document.getElementById('flagged');
 flagged.addEventListener('click', (event) => {
   event.preventDefault();
@@ -8,3 +9,34 @@ flagged.addEventListener('click', (event) => {
 });
 layout();
 getFlaggedQuestionService();
+//Asish
+const retrieveUser = document.getElementById("retrieveUser");
+retrieveUser.addEventListener('click', (event) => {
+    event.preventDefault();
+    layoutUserTable();
+    getAllUserService();
+  });
+// Tejeswar
+  $('#listModal').on('click', '#listSave', function (event) {
+
+    let catName = $('#formGroupListTitleInput').val();
+    console.log("category : "+catName+" going to be added ");
+    let singleCatObj = new Category(catName);
+    createCategory(singleCatObj).then(data1 =>{ 
+        getAllCategories().then(data => {
+        console.log(data);
+        renderCategoryView(data);
+    })
+});
+   
+   $('#listClose').click();
+  })
+
+  document.getElementById('retrieveCategories').onclick = () =>{
+    getAllCategoriesWithTopics().then(data => {
+      console.log(data);
+      renderCategoryView(data);
+  });
+  
+  }
+

@@ -53,45 +53,17 @@
       "answer_count": ""
     }
   ],
-  "categories": [
-    {
-      "id": "01",
-      "name": "JavaScript",
-      "topics": [
-        {
-          "id": "01",
-          "topic-name": "Closure"
-        },
-        {
-          "id": "02",
-          "topic-name": "Events"
-        }
-      ]
-    },
-    {
-      "id": "02",
-      "name": "Java",
-      "topics": [
-        {
-          "id": "01",
-          "topic-name": "Collections"
-        },
-        {
-          "id": "02",
-          "topic-name": "Abstraction"
-        },
-        {
-          "id": "03",
-          "topic-name": "Date&Time"
-        }
-      ]
-    }
-  ],
+  "categories": [],
   "users": [
     {
-      "id": "",
-      "name": "",
-      "role": ""
+      "id": "20923023",
+      "name": "nqsdhbdh",
+      "role": "Admin"
+    },
+    {
+      "id": "2092303",
+      "name": "nqsdhbd",
+      "role": "Admin"
     }
   ],
   "flagged": [
