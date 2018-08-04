@@ -12,16 +12,12 @@ export function getFlaggedQuestionService() {
       });
   }
 
-  export function revokeFlaggedQuestion(id) {
-    
+  export function revokeFlaggedQuestion(id) {   
     const revokeUrl = `http://localhost:3000/questions/${id}`;
     fetch(revokeUrl)
     .then((resp)=>resp.json())
     .then((obj) => {
       let obje  =Object.assign({},obj,{is_flagged:'false'});
-      // let obje = {
-      //   is_flagged:false
-      // }
       const fetchData = {
         method: 'PUT',
         mode: "cors", // no-cors, cors, *same-origin
