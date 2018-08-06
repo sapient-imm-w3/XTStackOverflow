@@ -11,7 +11,7 @@
       ],
       "is_flagged": false,
       "flag_count": 0,
-      "id": "1",
+      "id": 1,
       "email": "tannerottinger@gmail.com",
       "answers": [
         {
@@ -25,57 +25,47 @@
           "id": 1
         },
         {
-          "text": "Try running the entire script through jslint. This may help point you at the cause of the error.",
-          "date": "21/12/2010",
-          "is_flagged": true,
-          "email": "day@gmail.com",
-          "up_vote": 3,
-          "down_vote": 4,
-          "is_correct": false,
-          "id": 2
-        },
-        {
-          "text": "refreshing problem.. fine when applying breakpoint  :(",
-          "date": "Sat Aug 04 2018",
+          "text": "working with BP",
+          "date": "Mon Aug 06 2018",
           "is_flagged": false,
           "email": "tornetti@gmail.com",
-          "up_vote": "0",
-          "down_vote": "0",
+          "up_vote": 0,
+          "down_vote": 0,
           "is_correct": false,
-          "id": 6316220125
+          "id": 2901957600
         },
         {
-          "text": ":)",
-          "date": "Sat Aug 04 2018",
+          "text": ":)\n:(",
+          "date": "Mon Aug 06 2018",
           "is_flagged": false,
           "email": "tornetti@gmail.com",
-          "up_vote": "0",
-          "down_vote": "0",
+          "up_vote": 0,
+          "down_vote": 0,
           "is_correct": false,
-          "id": 1294599180
-        },
-        {
-          "text": ":(",
-          "date": "Sat Aug 04 2018",
-          "is_flagged": false,
-          "email": "tornetti@gmail.com",
-          "up_vote": "0",
-          "down_vote": "0",
-          "is_correct": false,
-          "id": 3247444093
+          "id": 559488590
         },
         {
           "text": "lets see",
-          "date": "Sat Aug 04 2018",
+          "date": "Mon Aug 06 2018",
           "is_flagged": false,
           "email": "tornetti@gmail.com",
-          "up_vote": "0",
-          "down_vote": "0",
-          "is_correct": true,
-          "id": 7489374773
+          "up_vote": 0,
+          "down_vote": 0,
+          "is_correct": false,
+          "id": 1676926552
+        },
+        {
+          "text": "hahahahah",
+          "date": "Mon Aug 06 2018",
+          "is_flagged": false,
+          "email": "tornetti@gmail.com",
+          "up_vote": 0,
+          "down_vote": 0,
+          "is_correct": false,
+          "id": 5041907917
         }
       ],
-      "answer_count": 13
+      "answer_count": 6
     }
   ],
   "categories": [

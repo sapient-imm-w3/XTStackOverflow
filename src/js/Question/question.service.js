@@ -19,16 +19,18 @@ export function postAnswer(){
     fetch(getUrl)
     .then((resp)=>resp.json()).then(function(obj){
       const postUrl = 'http://localhost:3000/questions/1';
-      const data = {
+      let data = {
         text:answerContent,
         date:datestring,
         is_flagged:false,
         email:"tornetti@gmail.com",
-        up_vote:"0",
-        down_vote:"0",
+        up_vote:0,
+        down_vote:0,
         is_correct:false,
         id:AnsId
       }
+      // data = Object.assign({up_vote:data.up_vote+1},data);
+      // const object2 = Object.assign({c: 4, d: 5}, object1);
       obj.answers.push(data);
       obj.answer_count=parseInt(obj.answer_count)+1;
       const fetchData = {
@@ -45,8 +47,8 @@ export function postAnswer(){
       };
       fetch(postUrl, fetchData);
 
+      window.location.reload();
       getQuestionData();
-      window.location.reload(); //hahahahahahahah
     });
     }
     else

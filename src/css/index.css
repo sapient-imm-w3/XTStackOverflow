@@ -45,7 +45,7 @@ span img {
   position: relative;
   min-height: 140px;
 }
-.badge.badge-pill.badge-secondary{
+.badge.badge-secondary{
   font-size: 20px;
 }
 .list-group-item.hvr-hang {
