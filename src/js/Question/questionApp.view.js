@@ -20,22 +20,23 @@ const main = document.getElementById("container");
 export const getQuestionView = (data) =>{
 
     let qna = data;
-    return qna.map((qnadata) =>{
+    return qna.forEach(qnadata =>{
        main.innerHTML="";
         
-        let question = `<span><img src="../../../src/img/question.png" alt="question" title="question" class="hvr-forward"></span>
-        <span class="question badge badge-light"> <span class="badge badge-pill badge-info">Posted By:</span> ${qnadata.email} <span class="badge badge-pill badge-info">On</span> ${qnadata.date}</span>
-        <h6>${qnadata.text}</h6>
+       let question = `<span><img src="../../../src/img/question.png" alt="question" title="question" class="hvr-forward"></span>
+        <span class="question badge badge-light"> <span class="badge badge-pill badge-info">Posted By:</span> ${qnadata.child('email').val()} <span class="badge badge-pill badge-info">On</span> ${qnadata.child('date').val()}</span>
+        <h6>${qnadata.child('text').val()}</h6>
         <ul class="list-group question" id="question">`
 
-        if(qnadata.is_flagged === true)
-            question+=`<li class="list-group-item hvr-hang" title="Flag" id="F${qnadata.id}">&#9873</li>`
+        // ${qnadata.child(`text`).val()}
+        if(qnadata.child('is_flagged').val() === true)
+            question+=`<li class="list-group-item hvr-hang" title="Flag" id="F${qnadata.child('id').val()}">&#9873</li>`
         else    
-            question+=`<li class="list-group-item hvr-hang" title="Flag" id="F${qnadata.id}">&#9872</li>`
+            question+=`<li class="list-group-item hvr-hang" title="Flag" id="F${qnadata.child('id').val()}">&#9872</li>`
         
             question+=`</ul>
             <hr>
-        <span class="badge badge-secondary">${qnadata.answer_count} Answers</span>`
+        <span class="badge badge-secondary">${qnadata.child('answer_count').val()} Answers</span>`
 
         append(main,createHTMLElement(question));
 
@@ -43,34 +44,35 @@ export const getQuestionView = (data) =>{
                 console.log("qflag");
         });
         
-        let up_vote=false
-        qnadata.answers.forEach(element => {
+        //let up_vote=false
+
+        qnadata.child('answers').forEach(element => {
             
             let answer=`<div class="answer">`
 
-            if(element.is_correct === true)   
+            if(element.child('is_correct').val() === true)   
                 answer+=`<span><img src="../../../src/img/verified.png" alt="verified" title="Verified" class="hvr-buzz"></span>`   
         
-        answer+=`<ul class="list-group" id="${element.id}">
-        <li class="list-group-item"><img src="../../../src/img/up_vote.png" alt="Like" title="Like" name="upvote" class="hvr-bounce-in" id="U${element.id}"> +${element.up_vote}</li>
-        <li class="list-group-item"><img src="../../../src/img/down_vote.png" alt="Dislike" title="Dislike" name="downvote" class="hvr-bounce-out" id="D${element.id}"> -${element.down_vote}</li>`
+        answer+=`<ul class="list-group" id="${element.child('id').val()}">
+        <li class="list-group-item"><img src="../../../src/img/up_vote.png" alt="Like" title="Like" name="upvote" class="hvr-bounce-in" id="U${element.child('id').val()}"> +${element.child('up_vote').val()}</li>
+        <li class="list-group-item"><img src="../../../src/img/down_vote.png" alt="Dislike" title="Dislike" name="downvote" class="hvr-bounce-out" id="D${element.child('id').val()}"> -${element.child('down_vote').val()}</li>`
         
-        if(element.is_flagged === true)
-            answer+=`<li class="list-group-item hvr-hang" title="Flag" name="flag" id="F${element.id}">&#9873</li>`
+        if(element.child('is_flagged').val() === true)
+            answer+=`<li class="list-group-item hvr-hang" title="Flag" name="flag" id="F${element.child('id').val()}">&#9873</li>`
         else    
-            answer+=`<li class="list-group-item hvr-hang" title="Flag" name="flag" id="F${element.id}">&#9872</li>`
+            answer+=`<li class="list-group-item hvr-hang" title="Flag" name="flag" id="F${element.child('id').val()}">&#9872</li>`
         
         answer+=`</ul>
         <br>
-        <span class="badge badge-light"> <span class="badge badge-pill badge-info">Posted By:</span> ${element.email} <span class="badge badge-pill badge-info">On</span> ${element.date}</span>
+        <span class="badge badge-light"> <span class="badge badge-pill badge-info">Posted By:</span> ${element.child('email').val()} <span class="badge badge-pill badge-info">On</span> ${element.child('date').val()}</span>
         <br>
-        <p>${element.text}</p>
+        <p>${element.child('text').val()}</p>
         </div>
         <hr>`
 
         append(main,createHTMLElement(answer));
 
-        document.getElementById(element.id).addEventListener("click",function(e) {
+        document.getElementById(element.child('id').val()).addEventListener("click",function(e) {
             if (e.target && e.target.matches("li img")) {
                 if(e.target.name === 'upvote') // checking for individual button
                     console.log("upvote");

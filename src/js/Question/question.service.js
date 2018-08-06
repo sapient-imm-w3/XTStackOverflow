@@ -1,4 +1,21 @@
+import firebase from 'firebase/app';
+import 'firebase/database';
+import 'firebase/functions';
 import { getQuestionView } from "./questionApp.view";
+
+var config = {                                                            //configuring firebase
+  apiKey: "AIzaSyAHQ-G50CPi-y2l7L5r41cvKRcs0hzSFiY",
+  authDomain: "stackoverflow-529e4.firebaseapp.com",
+  databaseURL: "https://stackoverflow-529e4.firebaseio.com",
+  projectId: "stackoverflow-529e4",
+  storageBucket: "stackoverflow-529e4.appspot.com",
+  messagingSenderId: "861994235915"
+};
+
+firebase.initializeApp(config);
+
+var database = firebase.database();
+
 
 function generateRandomId() {
     return Math.floor((Math.random() * 10000000000) + 1);
@@ -57,14 +74,18 @@ export function postAnswer(){
 }
 
 export const getQuestionData = () =>{
-    var getUrl = "http://localhost:3000/questions";
+    // var getUrl = "http://localhost:3000/questions";
 
-    fetch(getUrl)
-        .then((resp)=>resp.json())
-        .then((data) =>{
-            getQuestionView(data);
-        })
-        .catch((error)=> {
-            console.log(error);
-        });
+    // fetch(getUrl)
+    //     .then((resp)=>resp.json())
+    //     .then((data) =>{
+    //         getQuestionView(data);
+    //     })
+    //     .catch((error)=> {
+    //         console.log(error);
+    //     });
+  let db = database.ref('questions');
+  db.on('value',function(data){
+    getQuestionView(data);
+  });
 }

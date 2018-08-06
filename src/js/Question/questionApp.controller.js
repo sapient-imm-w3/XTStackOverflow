@@ -1,3 +1,3 @@
-import { getQuestionData,postAnswer } from "./question.service";
+import { getQuestionData } from "./question.service";
 
 getQuestionData();
