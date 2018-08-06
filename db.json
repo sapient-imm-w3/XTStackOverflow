@@ -71,31 +71,11 @@
           "email": "tornetti@gmail.com",
           "up_vote": "0",
           "down_vote": "0",
-          "is_correct": false,
+          "is_correct": true,
           "id": 7489374773
-        },
-        {
-          "text": "hahahaha :D",
-          "date": "Sat Aug 04 2018",
-          "is_flagged": false,
-          "email": "tornetti@gmail.com",
-          "up_vote": "0",
-          "down_vote": "0",
-          "is_correct": false,
-          "id": 2603535951
-        },
-        {
-          "text": "wrote",
-          "date": "Sat Aug 04 2018",
-          "is_flagged": false,
-          "email": "tornetti@gmail.com",
-          "up_vote": "0",
-          "down_vote": "0",
-          "is_correct": false,
-          "id": 7083063755
         }
       ],
-      "answer_count": 9
+      "answer_count": 13
     }
   ],
   "categories": [

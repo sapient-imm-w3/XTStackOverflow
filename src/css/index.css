@@ -56,3 +56,6 @@ span img {
   position: absolute;
   top: 10px;
 }
+.question.badge.badge-light{
+  position: initial;
+}

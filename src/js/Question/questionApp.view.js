@@ -24,6 +24,7 @@ export const getQuestionView = (data) =>{
        main.innerHTML="";
         
         let question = `<span><img src="../../../src/img/question.png" alt="question" title="question" class="hvr-forward"></span>
+        <span class="question badge badge-light"> <span class="badge badge-pill badge-info">Posted By:</span> ${qnadata.email} <span class="badge badge-pill badge-info">On</span> ${qnadata.date}</span>
         <h6>${qnadata.text}</h6>
         <ul class="list-group question">`
 
@@ -53,7 +54,7 @@ export const getQuestionView = (data) =>{
         
         question+=`</ul>
         <br>
-        <span class="badge badge-light">Posted By: ${element.email}</span>
+        <span class="badge badge-light"> <span class="badge badge-pill badge-info">Posted By:</span> ${element.email} <span class="badge badge-pill badge-info">On</span> ${element.date}</span>
         <br>
         <p>${element.text}</p>
         </div>
