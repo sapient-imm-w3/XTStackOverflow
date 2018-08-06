@@ -19,15 +19,15 @@ export function viewQuestion(question){
     let html = `<div id="" class="myQuestion">
     <div class="row">
         <div class="col-md-3 row text-muted text-center answerCount">
-            <div class="col-md-6"> ${question.answer_count}
+            <div class="col-md-6"> ${question.child(`answer_count`).val()}
                 <br> answers
             </div>
-            <div class="col-md-6"> ${question.flag_count}
+            <div class="col-md-6"> ${question.child(`flag_count`).val()}
                 <br> flags
             </div>
         </div>
         <div class="col-md-9">
-            <a href="#">${question.text}</a>
+            <a href="#">${question.child(`text`).val()}</a>
         </div>
     </div>
 </div>`;

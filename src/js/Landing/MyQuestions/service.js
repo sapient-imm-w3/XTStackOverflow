@@ -1,12 +1,11 @@
 import { viewQuestion } from "./view";
+import {database} from "../index.landing";
 
-export function getQuestions(){
-    const url = "http://localhost:3000/questions?email=user1"; // user1 needs to be changed after auth
-    fetch(url)
-    .then((resp) => resp.json())
-    .then((questions)=>{
-        questions.forEach(question => {
-            viewQuestion(question);
+export function getQuestions(user){
+    const db = database.ref(`questions`).orderByChild(`email`).equalTo(user.email);
+        db.on('value', (questions) => {
+            questions.forEach((question) => {
+                viewQuestion(question);
+            });
         });
-    })
 }

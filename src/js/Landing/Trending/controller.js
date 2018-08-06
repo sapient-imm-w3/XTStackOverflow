@@ -1,5 +1,7 @@
 import {viewLayout} from './views';
 import { getAnswerCountFromDB } from './service';
 
-viewLayout();
-getAnswerCountFromDB();
+export default () => {
+    viewLayout();
+    getAnswerCountFromDB();
+};

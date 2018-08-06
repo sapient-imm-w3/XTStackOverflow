@@ -11,7 +11,7 @@ export function displaytrending(answerCount,text,date,categories) {
                 <a href="#">${text}</a> <br>`;
 
             categories.forEach(element => {
-               html+= `<span style="font-size: 15px;" class="badge badge-secondary">${element}</span> &nbsp;`
+               html+= `<span style="font-size: 15px;" class="badge badge-secondary">${element.name}</span> &nbsp;`
             });
     
               html += `<br> <small id="date" class = "text-muted" style="float: right">${date}</small>

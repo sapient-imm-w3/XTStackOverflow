@@ -1,6 +1,7 @@
 import {viewLayout} from './view';
 import { getQuestions } from './service';
 
-viewLayout();
-
-getQuestions();
+export default (user) => {
+    viewLayout();
+    getQuestions(user);
+}
