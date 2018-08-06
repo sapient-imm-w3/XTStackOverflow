@@ -1,7 +1,7 @@
 import {getRecommended} from './service';
 import {viewLayout} from './view';
 
-export default () => {
+export default (user) => {
 viewLayout();
-getRecommended();
+getRecommended(user);
 }

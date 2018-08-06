@@ -25,6 +25,7 @@ document.getElementById("trendingDiv").appendChild(createHTMLElement(html));
 
 export function viewLayout(){
     document.body.innerHTML = "";
+    document.body.className = "";
     let main = createHTMLElement(`<content class="row"  id="content">
     <div  class="col-md-9" id="mainPart">
     <section id="trendingSection">

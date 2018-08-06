@@ -1,5 +1,5 @@
 import { displaytrending } from './views';
-import {database} from "../index.landing";
+import {database} from "../controller";
 
 export function getAnswerCountFromDB() {
         const db = database.ref(`questions`).limitToLast(5);

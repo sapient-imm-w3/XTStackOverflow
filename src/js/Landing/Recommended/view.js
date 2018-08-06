@@ -14,7 +14,6 @@ export function getTitle(category) {
     return display;
  }
   export function viewLayout(){
-    //document.body.innerHTML = "";
     let main = createHTMLElement(`<div class="col-md-3">
     <aside style=" background-color: lightgrey; height: 100%;" >
       <div class="container" >

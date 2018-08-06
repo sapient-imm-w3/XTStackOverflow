@@ -1,11 +1,13 @@
 import {getTitle, getRecQuestion} from './view';
-import {database} from "../index.landing";
+import {database} from "../controller";
 
-export function getRecommended(){
-  const db = database.ref(`users/0/fav_categories`);
+export function getRecommended(user){
+  
   const dbq = database.ref(`questions`);
+  const db = database.ref(`users/`+user.uid+`/fav_categories`);
   let rec;
   dbq.on('value',(data) => {
+    console.log(data);
     rec = data;
   });
 
@@ -14,6 +16,7 @@ export function getRecommended(){
         let title = getTitle(category.val());
       document.getElementById('recommended').appendChild(title);
       let count = 0;
+      console.log(rec);
       return rec.forEach((rec) => {
         if(count<5){
           rec.child(`categories`).val().forEach((cat) => {

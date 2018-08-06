@@ -1,5 +1,5 @@
 import { viewQuestion } from "./view";
-import {database} from "../index.landing";
+import {database} from "../controller";
 
 export function getQuestions(user){
     const db = database.ref(`questions`).orderByChild(`email`).equalTo(user.email);
