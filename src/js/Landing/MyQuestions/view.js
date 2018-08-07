@@ -12,6 +12,10 @@ export function viewLayout(){
     </section>
 `
 document.getElementById(`mainPart`).appendChild(createHTMLElement(content));
+document.getElementById(`askQuestionButton`).onclick = (event) => {
+    event.preventDefault();
+    console.log("Pratik's Module");
+}
 }
 
 export function viewQuestion(question){

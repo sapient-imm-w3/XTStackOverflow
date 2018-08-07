@@ -2,7 +2,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
 import $ from 'jquery';
-import {getFavCategories} from './service';
+import {getFavCategories, getUser} from './service';
 
 let config = {
     apiKey: "AIzaSyB27dZKtJ8xCD38hyNjtwfp5DCn14axl8s",
@@ -18,9 +18,9 @@ firebase.initializeApp(config);
 let provider = new firebase.auth.GoogleAuthProvider();
            
 firebase.auth().signInWithPopup(provider).then(function(result) {
- let user = result.user;
- getFavCategories();
- 
+    let user = auth.currentUser;
+    getUser(user);
+    // getFavCategories();
 }).catch(function(error) {
     console.log(error.code + error.message + error.email + error.credential );
 });
