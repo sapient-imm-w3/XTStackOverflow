@@ -1,66 +1,14 @@
 import {userDiv} from "./views/admin.view";
+import firebase from "firebase/app";
+import 'firebase/database'
 
-// // export function createUser() {
-// //     return new Promise(function (resolve, reject) {
-// //         const url = "http://localhost:3001/users";
-// //         let createNewUser = {
-// //             "id": "user9",
-// //             "name": "def",
-// //             "role": "Normal"
-// //         }
-// //         let methodData = {
-// //             method: 'POST',
-// //             headers: {
-// //                 "Content-Type": "application/json; charset=utf-8",
-// //             },
-// //             body: JSON.stringify(createNewUser)
-// //         }
-// //         fetch(url, methodData)
-// //             .then((res) => res.json())
-// //             .then(function (data) {
-// //                 // console.log(data);
-// //                 resolve(data);
-// //             });
-// //     })
-// //  }
+export function getAllUserService() {
+    let db = firebase.database().ref(`/users`);
+    db.on('value',(data) => {
+        userDiv(data);   
+    });
+}
 
- export function getAllUserService() {
-        const url = "http://localhost:3001/users";
-        let methodData = {
-            method: 'GET'
-        }
-        fetch(url, methodData)
-            .then((res) => res.json())
-            .then(function (data) {
-                 data.map(function(user){
-                    userDiv(user);
-                })  
-            });
- }
-
-//  export function changeOfRole(id) {
-//     return new Promise(function (resolve, reject) {
-//         const url = "http://localhost:3001/users/" + id;
-//         let userRole = {
-//             "id": "user1",
-//             "name": "Xyz",
-//             "role": "Normal"
-//         }
-//         let methodData = {
-//             method: 'PUT',
-//             headers: {
-//                 "Content-Type": "application/json; charset=utf-8",
-//             },
-//             body: JSON.stringify(userRole)
-//         }
-//         fetch(url, methodData)
-//             .then((res) => res.json())
-//             .then(function (data) {
-//                 // console.log(data);
-//                 resolve(data);
-//             });
-//     })
-//  }
 
 export function changeOfRole(id) {
     const url = `http://localhost:3001/users/${id}`;
@@ -86,17 +34,4 @@ export function changeOfRole(id) {
     } 
     
 
- export function getFlaggedAnswers() {
-    return new Promise(function (resolve, reject) {
-        const url = "http://localhost:3001/flagged";
-        let methodData = {
-            method: 'GET'
-        }
-        fetch(url, methodData)
-            .then((res) => res.json())
-            .then(function (data) {
-                // console.log(data);
-                resolve(data);
-            });
-    })
- }
+
