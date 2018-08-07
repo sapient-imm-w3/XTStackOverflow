@@ -15,8 +15,12 @@ export function getRecommended(user) {
           if (count < 5) {
             question.child(`categories`).val().forEach((cat) => {
               if (cat.name === category.val()) {
-                let display = getRecQuestion(question.child(`text`).val());
+                let display = getRecQuestion(question.child(`text`).val(),question.key+"Trending");
                 document.getElementById('recommended').appendChild(display);
+                document.getElementById(`${question.key}`+"Trending").onclick = (event) => {
+                  event.preventDefault();
+                  console.log(`${question.key}`);
+              }
                 count++;
               }
             })

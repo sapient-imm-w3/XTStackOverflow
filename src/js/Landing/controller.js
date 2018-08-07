@@ -18,6 +18,7 @@ firebase.initializeApp(config);
 let provider = new firebase.auth.GoogleAuthProvider();
            
 firebase.auth().signInWithPopup(provider).then(function(result) {
+    console.log("inside auth");
     let user = auth.currentUser;
     getUser(user);
     // getFavCategories();
