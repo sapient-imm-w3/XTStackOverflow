@@ -1,4 +1,4 @@
-import { revokeFlaggedQuestion,changeOfRole,getAllCategories,deleteCategoryById } from '../services/admin.service';
+import { getAllCatFromFirebase, delteCategoryFromFirebaseById, revokeFlaggedQuestion, changeOfRole, getAllCategories, deleteCategoryById } from '../services/admin.service';
 import $ from 'jquery';
 export function createHTMLElement(html) {
     const template = document.createElement('template');
@@ -6,9 +6,9 @@ export function createHTMLElement(html) {
     return template.content.firstElementChild;
 }
 
-export function layout(){
-    document.getElementById('usersDiv').innerHTML="";
-    document.getElementById('BoardsContainer').innerHTML="";
+export function layout() {
+    document.getElementById('usersDiv').innerHTML = "";
+    document.getElementById('BoardsContainer').innerHTML = "";
     const table = createHTMLElement(`
     <table id="example" class="display" style="width:100%">
     <thead>
@@ -21,12 +21,12 @@ export function layout(){
     <tbody id="tableBody">
     </tbody>
 </table>`);
-document.getElementById("flagged_questions").appendChild(table);
+    document.getElementById("flagged_questions").appendChild(table);
 }
 
 export function createFlaggedDiv(question) {
     const flaggedDiv = createHTMLElement(
-            `<tr>
+        `<tr>
                 <td>${question.text}</td>
                 <td>${question.flag_count}</td>
                 <td>
@@ -41,9 +41,9 @@ export function createFlaggedDiv(question) {
 
 }
 // Asish
-export function layoutUserTable(){
-    document.getElementById('flagged_questions').innerHTML="";
-    document.getElementById('BoardsContainer').innerHTML="";
+export function layoutUserTable() {
+    document.getElementById('flagged_questions').innerHTML = "";
+    document.getElementById('BoardsContainer').innerHTML = "";
     const table = createHTMLElement(`<table id="example" class="display" style="width:100%">
     <thead>
         <tr>
@@ -55,7 +55,7 @@ export function layoutUserTable(){
     <tbody id="tableBodyUser">
     </tbody>
 </table>`);
-document.getElementById("usersDiv").appendChild(table);
+    document.getElementById("usersDiv").appendChild(table);
 }
 export function userDiv(user) {
 
@@ -82,19 +82,20 @@ export function userDiv(user) {
 
 //Tejeswar
 
-export function renderCategoryView(allCategoryObj){
-    document.getElementById('usersDiv').innerHTML="";
-    document.getElementById('flagged_questions').innerHTML="";
+export function renderCategoryView(allCategoryObj) {
+    document.getElementById('usersDiv').innerHTML = "";
+    document.getElementById('flagged_questions').innerHTML = "";
     document.getElementById("BoardsContainer").innerHTML = "";
-    if(allCategoryObj.length == 0){
+    //if(allCategoryObj.length == 0){
+    if (allCategoryObj == null || allCategoryObj.length == 0) {
         let addCatSectionDiv = document.createElement('div');
         addCatSectionDiv.setAttribute('class', 'addListButton');
         let addCatButton = document.createElement('button');
-        addCatButton.setAttribute('id','saveList');
-        addCatButton.setAttribute('class','btn btn-primary');
-        addCatButton.setAttribute('data-toggle','modal');
-        addCatButton.setAttribute('data-target','#listModal');
-        addCatButton.setAttribute('data-placement','top');
+        addCatButton.setAttribute('id', 'saveList');
+        addCatButton.setAttribute('class', 'btn btn-primary');
+        addCatButton.setAttribute('data-toggle', 'modal');
+        addCatButton.setAttribute('data-target', '#listModal');
+        addCatButton.setAttribute('data-placement', 'top');
         addCatButton.innerText = '+Add Category';
         addCatSectionDiv.appendChild(addCatButton);
         document.getElementById("BoardsContainer").appendChild(document.createElement('br'));
@@ -103,65 +104,75 @@ export function renderCategoryView(allCategoryObj){
         console.log("As Category is empty just returning");
         return;
     }
+    /*
     let singleCatObj = allCategoryObj[0];
     console.log(singleCatObj.name);
     console.log(allCategoryObj.length);
-  
-let addCatSectionDiv = document.createElement('div');
-addCatSectionDiv.setAttribute('class', 'addListButton');
-let addCatButton = document.createElement('button');
-addCatButton.setAttribute('id','saveList');
-addCatButton.setAttribute('class','btn btn-primary');
-addCatButton.setAttribute('data-toggle','modal');
-addCatButton.setAttribute('data-target','#listModal');
-addCatButton.setAttribute('data-placement','top');
-addCatButton.innerText = '+Add Category';
-addCatSectionDiv.appendChild(addCatButton);
-document.getElementById("BoardsContainer").appendChild(document.createElement('br'));
-document.getElementById("BoardsContainer").appendChild(addCatSectionDiv);
-document.getElementById("BoardsContainer").appendChild(document.createElement('br'));
+  */
+    let addCatSectionDiv = document.createElement('div');
+    addCatSectionDiv.setAttribute('class', 'addListButton');
+    let addCatButton = document.createElement('button');
+    addCatButton.setAttribute('id', 'saveList');
+    addCatButton.setAttribute('class', 'btn btn-primary');
+    addCatButton.setAttribute('data-toggle', 'modal');
+    addCatButton.setAttribute('data-target', '#listModal');
+    addCatButton.setAttribute('data-placement', 'top');
+    addCatButton.innerText = '+Add Category';
+    addCatSectionDiv.appendChild(addCatButton);
+    document.getElementById("BoardsContainer").appendChild(document.createElement('br'));
+    document.getElementById("BoardsContainer").appendChild(addCatSectionDiv);
+    document.getElementById("BoardsContainer").appendChild(document.createElement('br'));
 
-let catContainerSection = document.createElement('div');
-catContainerSection.setAttribute('id','catContainer');
-document.getElementById("BoardsContainer").appendChild(catContainerSection);
-for(let categoryCount = 0;categoryCount<allCategoryObj.length;categoryCount++){
-    let singleCatObj = allCategoryObj[categoryCount];
-    let singleCatDiv = document.createElement('div');
-    singleCatDiv.setAttribute('id',singleCatObj.id);
-    singleCatDiv.setAttribute('class','task-list');
-    catContainerSection.appendChild(singleCatDiv);
-    let taskHeaderDiv = document.createElement('div');
-    taskHeaderDiv.setAttribute('class','task-header');
-    let singleSpan = document.createElement('span');
-    singleSpan.innerText=singleCatObj.name;
-    taskHeaderDiv.appendChild(singleSpan);
-    singleCatDiv.appendChild(taskHeaderDiv);
+    let catContainerSection = document.createElement('div');
+    catContainerSection.setAttribute('id', 'catContainer');
+    document.getElementById("BoardsContainer").appendChild(catContainerSection);
+    //For firebase db had to write the below code.
+    let arrOfKeys = Object.keys(allCategoryObj);
+    for (let categoryCount = 0; categoryCount < arrOfKeys.length; categoryCount++) {
+        let catKey = parseInt(arrOfKeys[categoryCount]);
+        let singleCatObj = allCategoryObj[catKey];
+        let singleCatDiv = document.createElement('div');
+        singleCatDiv.setAttribute('id', catKey);
+        singleCatDiv.setAttribute('class', 'task-list');
+        catContainerSection.appendChild(singleCatDiv);
+        let taskHeaderDiv = document.createElement('div');
+        taskHeaderDiv.setAttribute('class', 'task-header');
+        let singleSpan = document.createElement('span');
+        singleSpan.innerText = singleCatObj.name;
+        taskHeaderDiv.appendChild(singleSpan);
+        singleCatDiv.appendChild(taskHeaderDiv);
 
-let addTopicButton = document.createElement('div');
-    addTopicButton.setAttribute('class','addCardButton');
-    let addTopic = document.createElement('button');
-    addTopic.setAttribute('id','save');
-    addTopic.setAttribute('class','btn btn-primary');
-    
-    addTopic.innerText = 'Delete';
-    addTopic.addEventListener('click', function(event) {
-    
-     let parentCatId = $(this).parent().parent().attr('id');
-     console.log("Delete categoty :"+parentCatId);
-     deleteCategoryById(parentCatId).then(data1 =>{ 
-        getAllCategories().then(data => {
-        console.log(data);
-        renderCategoryView(data);
-    })
-});;
+        let addTopicButton = document.createElement('div');
+        addTopicButton.setAttribute('class', 'addCardButton');
+        let addTopic = document.createElement('button');
+        addTopic.setAttribute('id', 'save');
+        addTopic.setAttribute('class', 'btn btn-primary');
 
-    }, true);
-    addTopicButton.appendChild(addTopic);
-    singleCatDiv.appendChild(addTopicButton);
+        addTopic.innerText = 'Delete';
+        addTopic.addEventListener('click', function (event) {
 
-    catContainerSection.appendChild(singleCatDiv);
+            let parentCatId = $(this).parent().parent().attr('id');
+            let refToCategories = firebase.database().ref("categories/" + parentCatId);
+            console.dir(refToCategories);
+            let isDeleteConfirmed = confirm("Are you sure to delete the category." + Object.keys(refToCategories)[0]);
+            console.log("isDeleteConfirmed:" + isDeleteConfirmed);
+            if (isDeleteConfirmed) {
+                console.log("Delete categoty :" + parentCatId);
+                delteCategoryFromFirebaseById(parentCatId).then(data1 => {
+                    getAllCatFromFirebase().then((data => {
+                        console.log(data);
+                        renderCategoryView(data);
+                    }));
+                });
+            }
 
-}
-document.getElementById("BoardsContainer").appendChild(catContainerSection);
+        }, true);
+        addTopicButton.appendChild(addTopic);
+        singleCatDiv.appendChild(addTopicButton);
+
+        catContainerSection.appendChild(singleCatDiv);
+
+    }
+    document.getElementById("BoardsContainer").appendChild(catContainerSection);
 
 }

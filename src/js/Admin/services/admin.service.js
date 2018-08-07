@@ -1,4 +1,6 @@
 import {createFlaggedDiv,userDiv,renderCategoryView} from '../views/admin.view';
+import firebase from "firebase/app";
+import 'firebase/database';
 import { resolve } from "path";
 
 export function getFlaggedQuestionService() {
@@ -192,6 +194,41 @@ export function Category(name){
   this.id = new IDGenerator().generate();
   this.name = name;
 
+}
+export function getAllCatFromFirebase(){
+    return new Promise(function (resolve, reject) {
+    let refToCategories = firebase.database().ref().child("categories");
+    refToCategories.on("value",function(snap) {
+        console.log("Inside listener");
+        let arrOfCategories = snap.val();
+        //renderCategoryView(arrOfCategories);
+        resolve(arrOfCategories);
+  console.log("length of categories:"+arrOfCategories);
+    });
+})
+}
+export function insertCategoryToFirebase(_categoryObj){
+    return new Promise(function(resolve,reject) {
+       let ret =  firebase.database().ref('categories/'+_categoryObj.id).set({
+            name:_categoryObj.name
+    },function(error){
+      if(error){
+console.log(error);
+      }
+      else{
+         
+          console.log("data inserted successfully");
+          resolve("success");
+      }
+    });
+    //resolve(ret);
+})
+}
+export function delteCategoryFromFirebaseById(id){
+    return new Promise(function (resolve, reject) {
+        firebase.database().ref().child("categories").child(id).remove();
+        resolve("success");
+    });
 }
 
     
