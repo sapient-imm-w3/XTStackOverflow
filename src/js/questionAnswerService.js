@@ -59,4 +59,5 @@ function getAnswerDataFromFireBaseAndUpdate(event) {
       } // Else Closed
     }); // Closed questionData.forEach loop
   }); //Closed answersRef.once()
-}//Function Closed
+}//Function Closed 
+
