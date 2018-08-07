@@ -27,16 +27,51 @@ export function layout() {
 export function createFlaggedDiv(question) {
     const flaggedDiv = createHTMLElement(
         `<tr>
-                <td>${question.text}</td>
-                <td>${question.flag_count}</td>
+                <td>${question.child(`text`).val()}</td>
+                <td>${question.child(`flag_count`).val()}</td>
                 <td>
-                <button type="button" class="btn btn-warning" id ="${question.id}">Revoke Flag</button>
+                <button type="button" class="btn btn-warning" id ="${question.child(`id`).val()}">Revoke Flag</button>
                 </td>
             </tr>
             `)
     document.getElementById("tableBody").appendChild(flaggedDiv);
-    document.getElementById(`${question.id}`).onclick = () => {
-        revokeFlaggedQuestion(`${question.id}`);
+    document.getElementById(`${question.child(`id`).val()}`).onclick = () => {
+        revokeFlaggedQuestion(`${question.child(`id`).val()}`);
+    }
+
+}
+
+export function layoutAnswer() {
+    document.getElementById('usersDiv').innerHTML = "";
+    document.getElementById('BoardsContainer').innerHTML = "";
+    const table = createHTMLElement(`
+    <table id="example" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Question</th>
+            <th>FlagCount</th>
+            <th>Revoke</th>
+        </tr>
+    </thead>
+    <tbody id="tableBodyAnswers">
+    </tbody>
+</table>`);
+    document.getElementById("flagged_answers").appendChild(table);
+}
+
+export function createFlaggedAnswerDiv(answer) {
+    const flaggedDiv = createHTMLElement(
+        `<tr>
+                <td>${answer.child(`text`).val()}</td>
+                <td>${answer.child(`flag_count`).val()}</td>
+                <td>
+                <button type="button" class="btn btn-warning" id ="${answer.child(`id`).val()}">Revoke AFlag</button>
+                </td>
+            </tr>
+            `)
+    document.getElementById("tableBodyAnswers").appendChild(flaggedDiv);
+    document.getElementById(`${answer.child(`id`).val()}`).onclick = () => {
+        revokeFlaggedQuestion(`${answer.child(`id`).val()}`);
     }
 
 }
