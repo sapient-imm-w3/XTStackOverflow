@@ -26,58 +26,56 @@ export function postAnswer() {
   const answerContent = document.querySelector('#post_answer').value;
 
   if (isNaN(answerContent)) {
+
     var post_date = new Date();
     const datestring = post_date.toDateString();
+    let ans_Id = generateRandomId();
 
-    let AnsId = generateRandomId();
+    // A post entry.
+    database.ref('questions/0/answers/'+ ans_Id).set({
+      
+        text: answerContent,
+        date: datestring,
+        is_flagged: false,
+        email: "tornetti@gmail.com",
+        up_vote: 0,
+        down_vote: 0,
+        is_correct: false,
+        id: ans_Id
+      
+    });
+    var update_answer_count;
 
-    let dbwrite = database.ref('questions/0');
-    dbwrite.on('value', function (data) {
-
-
-      console.log(data.child('email').val());
-
+    let dbwrite = database.ref('questions/0'); 
+    dbwrite.once('value',function (data){
+      update_answer_count = data.child('answer_count').val()+1;
     });
 
-    const getUrl = 'http://localhost:3000/questions/1';
-    fetch(getUrl)
-      .then((resp) => resp.json()).then(function (obj) {
-        const postUrl = 'http://localhost:3000/questions/1';
-        let data = {
-          text: answerContent,
-          date: datestring,
-          is_flagged: false,
-          email: "tornetti@gmail.com",
-          up_vote: 0,
-          down_vote: 0,
-          is_correct: false,
-          id: AnsId
-        }
-        // data = Object.assign({up_vote:data.up_vote+1},data);
-        // const object2 = Object.assign({c: 4, d: 5}, object1);
-        obj.answers.push(data);
-        obj.answer_count = parseInt(obj.answer_count) + 1;
-        const fetchData = {
-          method: 'PUT',
-          mode: 'cors',
-          cache: 'no-cache',
-          credentials: 'same-origin',
-          headers: {
-            'Content-Type': 'application/json; charset=utf-8',
-          },
-          redirect: 'follow',
-          referrer: 'no-referrer',
-          body: JSON.stringify(obj),
-        };
-        fetch(postUrl, fetchData);
+    database.ref('questions/0/answer_count').set(update_answer_count);
+    // var updates = {};
+    // updates['/questions/0/answer_count'] = dbwrite.once('value');
+    
+    // database.ref().update(updates);
+  // window.location.reload();
+  getQuestionData();
 
-        window.location.reload();
-        getQuestionData();
-      });
-  }
+}
   else
-    alert("Write an answer!");
+alert("Write an answer!");
 
+}
+
+export function update_upvote(){
+
+}
+
+export function update_downvote(){
+}
+
+export function update_ansFlag(){
+}
+
+export function update_questionFlag(){
 }
 
 export const getQuestionData = () => {
