@@ -15,10 +15,14 @@ let append = (parent, el) =>{
     return parent.appendChild(el); // Append the second parameter(element) to the first one
 };
 
-const main = document.getElementById("container");
+const body = document.getElementsByTagName("body")[0];
 
-export const getQuestionView = (data) =>{
+const main = document.createElement("div");
+      main.className = "container";
+      append(body,main);
 
+export const getQuestionView = (data) =>{  //fetching data from firebase
+    
     let qna = data;
     return qna.forEach(qnadata =>{
        main.innerHTML="";
@@ -75,14 +79,14 @@ export const getQuestionView = (data) =>{
         document.getElementById(element.child('id').val()).addEventListener("click",function(e) {
             if (e.target && e.target.matches("li img")) {
                 if(e.target.name === 'upvote') // checking for individual button
-                    console.log("upvote");
+                    console.log("upvote"+element.child('id').val());
                 if(e.target.name === 'downvote') // checking for individual button
-                    console.log("downvote");
+                    console.log("downvote"+element.child('id').val());
                 }
             
             if (e.target && e.target.matches("li.list-group-item")) {
                 if(e.target.className === 'list-group-item hvr-hang') // checking for individual button
-                        console.log("flag");
+                        console.log("flag"+element.child('id').val());
                 }
           });        
         });
@@ -99,9 +103,7 @@ export const getQuestionView = (data) =>{
         });
             
      }
-
-     const body =  document.getElementsByTagName("body");
-
+     
 export function getPostAnswer() {
     
     let Div = document.createElement("div"),
