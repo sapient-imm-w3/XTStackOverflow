@@ -1,10 +1,14 @@
+// import firebase from 'firebase/app';
+// import 'firebase/auth';
 import { postAnswer } from "./question.service";
-import { update_questoinFlag } from "./question.service";
-import { update_ansFlag } from "./question.service";
-import { update_upvote } from "./question.service";
-import { update_downvote } from "./question.service";
+import { updateQFlag } from "./question.service";
+import { updateAFlag } from "./question.service";
+import { updateUVote } from "./question.service";
+import { updateDVote } from "./question.service";
+import { getVerified } from "./question.service";
 
 
+// firebase.auth().currentUser.email;
 function createHTMLElement(html) {
     const template = document.createElement('template');
     template.innerHTML = html;
@@ -49,15 +53,19 @@ export const getQuestionView = (data) => {  //fetching data from firebase
         append(main, createHTMLElement(question));
 
         document.getElementById("question").addEventListener("click", function (e) {
-            console.log("qflag");
+            updateQFlag(qnadata.child('id').val());
         });
-
-        //let up_vote=false
+        
+        let verify = "";
+        if(qnadata.child('email').val() === 'tannerottinger@gmail.com')
+                verify=`<span class="tick-icon" id="tick-icon">&#9745</span>`
 
         qnadata.child('answers').forEach(element => {
-
             let answer = `<div class="answer">`
 
+            if(isNaN(verify))
+                answer+=verify
+            
             if (element.child('is_correct').val() === true)
                 answer += `<span><img src="../../../src/img/verified.png" alt="verified" title="Verified" class="hvr-buzz"></span>`
 
@@ -80,17 +88,22 @@ export const getQuestionView = (data) => {  //fetching data from firebase
 
             append(main, createHTMLElement(answer));
 
+            // document.getElementById('tick-icon').addEventListener("click",function(e) {
+            //     if(e.target)
+            //         getVerified(element.child('id').val());
+            // });
+
             document.getElementById(element.child('id').val()).addEventListener("click", function (e) {
                 if (e.target && e.target.matches("li img")) {
                     if (e.target.name === 'upvote') // checking for individual button
-                        console.log("upvote" + element.child('id').val());
+                        updateUVote(element.child('id').val());
                     if (e.target.name === 'downvote') // checking for individual button
-                        console.log("downvote" + element.child('id').val());
+                        updateDVote(element.child('id').val());
                 }
 
                 if (e.target && e.target.matches("li.list-group-item")) {
                     if (e.target.className === 'list-group-item hvr-hang') // checking for individual button
-                        console.log("flag" + element.child('id').val());
+                        updateAFlag(element.child('id').val());
                 }
             });
         });

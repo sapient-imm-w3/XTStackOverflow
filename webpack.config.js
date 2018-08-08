@@ -9,7 +9,7 @@ module.exports = {
   },
   module: {
     rules: [
-      { test: /\.css$/, loaders: ['style-loader', 'css-loader'], exclude: /node_modules/ },
+      { test: /\.css$/, loaders: ['style-loader', 'css-loader']},
       { test: /\.scss$/, loaders: ['style-loader', 'css-loader', 'sass-loader'], include: /node_modules\/bootstrap/ },
       { test: /\.js$/, loader: 'babel-loader', exclude: /node_modules/ }
     ]

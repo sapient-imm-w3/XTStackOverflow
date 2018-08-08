@@ -44,6 +44,9 @@ span img {
 .answer {
   position: relative;
   min-height: 140px;
+  background: #f4f3f0;
+  padding-left: 10px;
+  margin-top: 15px;
 }
 .badge.badge-secondary{
   font-size: 20px;
@@ -58,4 +61,8 @@ span img {
 }
 .question.badge.badge-light{
   position: initial;
+}
+.tick-icon{
+  position: absolute;
+    right: 1px;
 }

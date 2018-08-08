@@ -64,18 +64,66 @@ export function postAnswer() {
 alert("Write an answer!");
 
 }
+export function getVerified(id){
+  let flag=false;
 
-export function update_upvote(){
-
+  let tick = database.ref('questions/0/answers/'+id);
+  tick.once('value',function(data){
+    if(data.child('is_correct').val() === false)
+      flag=true;
+    else
+      flag=false;    
+  });
+  
+  database.ref('questions/0/answers/'+id+'/is_correct').set(flag);
 }
 
-export function update_downvote(){
+export function updateUVote(id){
+  let upvote;
+  let vote = database.ref('questions/0/answers/'+id);
+  vote.once('value',function(data){
+      upvote = data.child('up_vote').val();
+  })
+  database.ref('questions/0/answers/'+id+'/up_vote').set(upvote+1);
 }
 
-export function update_ansFlag(){
+export function updateDVote(id){
+  let downvote;
+  let vote = database.ref('questions/0/answers/'+id);
+  vote.once('value',function(data){
+      downvote = data.child('down_vote').val();
+  })
+  database.ref('questions/0/answers/'+id+'/down_vote').set(downvote+1);
 }
 
-export function update_questionFlag(){
+export function updateAFlag(id){
+  let flag=false;
+
+  let dbwrite = database.ref('questions/0/answers/'+id); 
+  dbwrite.once('value',function (data){
+    
+    if(data.child('is_flagged').val() === false)
+        flag=true;
+    else
+        flag=false;    
+  });
+
+  database.ref('questions/0/answers/'+id+'/is_flagged').set(flag);
+}
+
+export function updateQFlag(id){
+  let flag=false;
+
+  let dbwrite = database.ref('questions/0'); 
+  dbwrite.once('value',function (data){
+    
+    if(data.child('is_flagged').val() === false)
+        flag=true;
+    else
+        flag=false;    
+  });
+
+  database.ref('questions/0/is_flagged').set(flag);
 }
 
 export const getQuestionData = () => {
