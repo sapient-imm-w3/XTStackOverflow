@@ -1,125 +1,205 @@
 {
-  "questions": [
-    {
-      "text": "",
-      "date": "",
-      "categories": [
-        {
-          "name": "",
-          "id": ""
-        }
-      ],
-      "is_flagged": "",
-      "flag_count": "",
-      "id": "",
-      "email": "",
-      "answers": [
-        {
-          "text": "",
-          "date": "",
-          "is_flagged": "",
-          "email": "",
-          "up_vote": "",
-          "down_vote": "",
-          "is_correct": ""
-        }
-      ],
-      "answer_count": ""
+  "categories" : [ null, {
+    "name" : "Script"
+  }, {
+    "name" : "Java"
+  }, {
+    "name" : "HTML"
+  }, {
+    "name" : "CSS"
+  } ],
+  "questions" : [ {
+    "answer_count" : "19",
+    "answers" : [ {
+      "date" : "",
+      "down_vote" : "",
+      "email" : "",
+      "is_correct" : "",
+      "is_flagged" : "",
+      "text" : "",
+      "up_vote" : ""
+    } ],
+    "categories" : [ {
+      "id" : "",
+      "name" : "Script"
+    }, {
+      "id" : "",
+      "name" : "abc"
+    }, {
+      "id" : "",
+      "name" : "xyz"
+    } ],
+    "date" : "23 Aug 2019",
+    "flag_count" : "7",
+    "id" : "1",
+    "is_flagged" : false,
+    "text" : "How to assign the values for dict(keys and values) into a new list? and also how to print the keys and values in the string dictionary?"
+  }, {
+    "answer_count" : "197",
+    "answers" : [ {
+      "date" : "",
+      "down_vote" : "",
+      "email" : "",
+      "is_correct" : "",
+      "is_flagged" : "",
+      "text" : "",
+      "up_vote" : ""
+    } ],
+    "categories" : [ {
+      "id" : "",
+      "name" : "Java"
+    }, {
+      "id" : "",
+      "name" : "Xyz"
+    }, {
+      "id" : "",
+      "name" : "Js"
+    } ],
+    "date" : "24 Aug 2019",
+    "email" : "user1",
+    "flag_count" : "4",
+    "id" : "2",
+    "is_flagged" : false,
+    "text" : "What is the next number after 61, 44, 19, 49, 12?"
+  }, {
+    "answer_count" : "97",
+    "answers" : [ {
+      "date" : "",
+      "down_vote" : "",
+      "email" : "",
+      "is_correct" : "",
+      "is_flagged" : "",
+      "text" : "",
+      "up_vote" : ""
+    } ],
+    "categories" : [ {
+      "id" : "",
+      "name" : "Java"
+    } ],
+    "date" : "23 Aug 2019",
+    "email" : "user1",
+    "flag_count" : "1",
+    "id" : "3",
+    "is_flagged" : false,
+    "text" : "What questions are asked during arranged marriage meetings in India?"
+  }, {
+    "answer_count" : "971",
+    "answers" : [ {
+      "date" : "",
+      "down_vote" : "",
+      "email" : "",
+      "is_correct" : "",
+      "is_flagged" : "",
+      "text" : "",
+      "up_vote" : ""
+    } ],
+    "categories" : [ {
+      "id" : "",
+      "name" : "Java"
+    }, {
+      "id" : "",
+      "name" : "Xyz"
+    }, {
+      "id" : "",
+      "name" : "Js"
+    } ],
+    "date" : "23 Mar 2019",
+    "email" : "user2",
+    "flag_count" : "8",
+    "id" : "4",
+    "is_flagged" : false,
+    "text" : "What are the shortest air routes between India to the USA?"
+  }, {
+    "answer_count" : "197",
+    "answers" : [ {
+      "date" : "",
+      "down_vote" : "",
+      "email" : "",
+      "is_correct" : "",
+      "is_flagged" : "",
+      "text" : "",
+      "up_vote" : ""
+    } ],
+    "categories" : [ {
+      "id" : "",
+      "name" : "Java"
+    }, {
+      "id" : "",
+      "name" : "Xyz"
+    }, {
+      "id" : "",
+      "name" : "Js"
+    } ],
+    "date" : "24 Aug 2019",
+    "email" : "chaitanyareddy843@gmail.com",
+    "flag_count" : "4",
+    "id" : "ur3yo~P",
+    "is_flagged" : false,
+    "text" : "What is the next number after 61, 44, 19, 49, 12?"
+  }, {
+    "answer_count" : "197",
+    "answers" : [ {
+      "date" : "",
+      "down_vote" : "",
+      "email" : "",
+      "is_correct" : "",
+      "is_flagged" : "",
+      "text" : "",
+      "up_vote" : ""
+    } ],
+    "categories" : [ {
+      "id" : "",
+      "name" : "Java"
+    }, {
+      "id" : "",
+      "name" : "Xyz"
+    }, {
+      "id" : "",
+      "name" : "Js"
+    } ],
+    "date" : "24 Aug 2019",
+    "email" : "pattanfakhruddin@gmail.com",
+    "flag_count" : "4",
+    "id" : "GpXbC2n",
+    "is_flagged" : false,
+    "text" : "What is the next number after 61, 44, 19, 49, 12?"
+  } ],
+  "users" : {
+    "2V09tWfQd4XKu9I5E5a1gOKcwtg2" : {
+      "email" : "devamchaturvedi0112@gmail.com",
+      "fav_categories" : [ "Java", "HTML" ],
+      "name" : "Devam Chaturvedi",
+      "role" : "normal"
+    },
+    "BxvzYDPeTCUD2I0icX110hFDYvD2" : {
+      "email" : "chaitanyareddy843@gmail.com",
+      "fav_categories" : [ "Script", "Java", "HTML" ],
+      "name" : "Chaitanya Reddy",
+      "role" : "normal"
+    },
+    "I47L8yc1qPP6z3xjXbZUxsjn1JJ2" : {
+      "email" : "pranitashetty172@gmail.com",
+      "fav_categories" : [ "Script" ],
+      "name" : "Pranita Shetty",
+      "role" : "normal"
+    },
+    "glZdvqEqY4VoilrjON0Xo9GMIvr2" : {
+      "email" : "srikarsharma.madipally@gmail.com",
+      "fav_categories" : [ "Java", "HTML" ],
+      "name" : "SRIKAR SHARMA",
+      "role" : "normal"
+    },
+    "hKZfsArIqObc0ugx1EnD45nO8ne2" : {
+      "email" : "govindraj680@gmail.com",
+      "fav_categories" : [ "Java", "Script" ],
+      "name" : "Govind Jazz",
+      "role" : "normal"
+    },
+    "xgC4cRhXFBbnouR0pVtD9gyFI3r2" : {
+      "email" : "chaitu.sirius@gmail.com",
+      "fav_categories" : [ "Java", "Script" ],
+      "name" : "Chaitu Reddy",
+      "role" : "admin"
     }
-  ],
-  "categories": [
-    {
-      "id": "2",
-      "name": "Java",
-      "topics": [
-        {
-          "id": "topic3",
-          "topic-name": "overloading"
-        },
-        {
-          "id": "topic4",
-          "topic-name": "overriding"
-        }
-      ]
-    },
-    {
-      "id": "1",
-      "name": "Ashish",
-      "topics": [
-        {
-          "id": "topic3",
-          "topic-name": "overloading"
-        },
-        {
-          "id": "topic4",
-          "topic-name": "overriding"
-        }
-      ]
-    }
-  ],
-  "users": [
-    {
-      "id": "user1",
-      "name": "Xyz",
-      "role": "admin"
-    },
-    {
-      "id": "user2",
-      "name": "Abc",
-      "role": "Regular"
-    },
-    {
-      "id": "user4",
-      "name": "abc",
-      "role": "Normal"
-    },
-    {
-      "id": "user6",
-      "name": "abc",
-      "role": "Admin"
-    },
-    {
-      "id": "user7",
-      "name": "abd",
-      "role": "Normal"
-    },
-    {
-      "id": "user9",
-      "name": "def",
-      "role": "Normal"
-    }
-  ],
-  "flagged": {
-    "questions": [
-      {
-        "id": "1",
-        "text": "what is your name?"
-      },
-      {
-        "id": "2",
-        "text": "what is your favourite food?"
-      },
-      {
-        "id": "3",
-        "text": "what is your favourite hero?"
-      }
-    ],
-    "answers": [
-      {
-        "id": "22",
-        "question_id": "1",
-        "text": "do not know"
-      },
-      {
-        "id": "23",
-        "question_id": "2",
-        "text": "do not know"
-      },
-      {
-        "id": "24",
-        "question_id": "3",
-        "text": "do not know"
-      }
-    ]
   }
 }

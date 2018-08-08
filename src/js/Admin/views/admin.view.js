@@ -21,22 +21,23 @@ document.getElementById("userList").appendChild(table);
 
 export function userDiv(user) {
     let data =user;
-    data.forEach(data => {
+    console.log(data.val());
+    console.log(Object.keys(data.val()))
+    data.forEach((data) => {
     const userTable = createHTMLElement(
         `<tr>
             <td>${data.child('name').val()}</td>
             <td>${data.child('role').val()}</td>
             <td>
                 <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="${data.child(`id`).val()}">
+                <input type="checkbox" class="custom-control-input" id="${data.key}">
                 </div>
             </td>
         </tr>
         `)
         document.getElementById("tableBody").appendChild(userTable);
-        console.log()
-    document.getElementById(`${data.child(`id`).val()}`).onclick = () => {
-        changeOfRole(`${data.child(`id`).val()}`);
+        document.getElementById(`${data.key}`).onclick = () => {
+        changeOfRole(`${data.key}`);   
     }
 });
 }
