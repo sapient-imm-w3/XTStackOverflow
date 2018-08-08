@@ -1,6 +1,4 @@
 import createHTMLElement from '../view';
-import firebase from 'firebase/app';
-import 'firebase/auth';
 import { auth } from '../controller';
 
 export function getTitle(category) {
@@ -26,7 +24,7 @@ export function getTitle(category) {
    document.getElementById('recommended').appendChild(createHTMLElement(html));
  }
   export function viewLayout(){
-    let main = createHTMLElement(`<div class="col-md-3">
+    let main = `<div class="col-md-3">
     <aside style=" background-color: lightgrey; height: 100%;" >
       <div class="container" >
         <h2>Recommended For You</h2>
@@ -35,15 +33,22 @@ export function getTitle(category) {
       </div>
       <button type="button" id="signout" class="btn btn-danger">Sign Out</button>
     </aside>
-    </div>`);
-    document.getElementById(`content`).appendChild(main);
-    document.getElementById(`signout`).onclick = function() {
-        auth.signOut()
-        .then(()=>{
-          close();
-          close_window();
-        });
+    </div>`;
+
+    let mainElement = createHTMLElement(main);
+    console.log(mainElement);
+    mainElement.firstElementChild.firstElementChild.nextElementSibling.addEventListener('click', () => {
+      auth.signOut()
+      .then(()=>{
+        close();
+        close_window();
+      });
+    })
+
+    return mainElement;
+        
     }
+
     function close_window() {
       if (confirm("Close Window?")) {
         document.getElementById(`content`).innerHTML = "";
@@ -52,5 +57,4 @@ export function getTitle(category) {
 
       }
     }
-  }
   

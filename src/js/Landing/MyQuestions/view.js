@@ -1,26 +1,27 @@
 import createHTMLElement from '../view';
 
-export function viewLayout(){
-   // document.body.innerHTML = "";
-    let content = `
+export function viewLayout() {
+    let contentHTML = `
     <section id="myQuestionSection">
         <h2>Questions posted by me..!!!</h2>
         <div id="askQuestionDiv">
             <a href="#" class="text-muted" id="askQuestionButton">What's your Question ?</a>
         </div>
-        <div id="myQuestionDiv"></div> 
+        <div id="myQuestionDiv"></div>
     </section>
-`
-document.getElementById(`mainPart`).appendChild(createHTMLElement(content));
-document.getElementById(`askQuestionButton`).onclick = (event) => {
-    event.preventDefault();
-    console.log("Pratik's Module");
-}
+`;
+
+    let contentElement = createHTMLElement(contentHTML);
+    contentElement.firstElementChild.nextElementSibling.firstElementChild.addEventListener('click', (event) => {
+        event.preventDefault();
+        console.log("Pratik's Module");
+    })
+    return contentElement;
+
 }
 
-export function viewQuestion(question){
-    const myQuestionDiv = document.getElementById(`myQuestionDiv`);
-    let html = `<div id="" class="myQuestion">
+export function viewQuestion(question) {
+    let html = `<div class="myQuestion">
     <div class="row">
         <div class="col-md-3 row text-muted text-center answerCount">
             <div class="col-md-6"> ${question.child(`answer_count`).val()}
@@ -35,10 +36,14 @@ export function viewQuestion(question){
         </div>
     </div>
 </div>`;
-myQuestionDiv.appendChild(createHTMLElement(html));
+    let htmlElement = createHTMLElement(html);
+    htmlElement.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.addEventListener('click', (event) => {
+        console.log(`govind's code`);
+    });
+    return htmlElement;
 }
 
-export function noQuestions(){
+export function noQuestions() {
     let html = `<div class="myQuestion">
                 
                 <div>
@@ -46,5 +51,5 @@ export function noQuestions(){
                     font-style: italic">No Questions Posted Yet !!!</h5>
                 </div>
             </div>`;
-                document.getElementById(`myQuestionDiv`).appendChild(createHTMLElement(html));
+    return createHTMLElement(html);
 }

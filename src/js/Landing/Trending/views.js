@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import createHTMLElement from '../view';
-import { getCatQuestions } from './service';
+import {displayCatQuestions} from './controller';
 
 export function displaytrending(answerCount,text,date,categories,key) {
     let html = `<div class="myQuestion">
@@ -17,31 +17,25 @@ export function displaytrending(answerCount,text,date,categories,key) {
                     </div>
                     `;
     let div = createHTMLElement(html);
-            categories.forEach(element => {
-               let button = `<button type="button" class="badge badge-secondary badges">${element.name}</button> &nbsp;`;
-               let buttonElement = createHTMLElement(button);
-               div.firstElementChild.firstElementChild.nextElementSibling.appendChild(buttonElement);
-               buttonElement.onclick = () => {
-                   getCatQuestions(`${element.name}`);
-                   document.getElementById(`trendingHeading`).innerHTML = `${element.name}`;
-               }
-            });
-    
-    let dates = `<small id="date" class = "text-muted" style="float: right">${date}</small>`;
+    categories.forEach(element => {
+        let button = `<button type="button" class="badge badge-secondary badges">${element.name}</button> &nbsp;`;
+        let buttonElement = createHTMLElement(button);
+        div.firstElementChild.firstElementChild.nextElementSibling.appendChild(buttonElement);
+        buttonElement.addEventListener('click',() => {
+            console.log(`${element.name}`);
+            displayCatQuestions(`${element.name}`);
+        });
+});
+let dates = `<small id="date" class = "text-muted" style="float: right">${date}</small>`;
     div.firstElementChild.firstElementChild.nextElementSibling.appendChild(createHTMLElement(dates));
-            
-              
-
-document.getElementById("trendingDiv").appendChild(div);
-document.getElementById(`${key}`).onclick = () => {
-    event.preventDefault();
-}
-    
+    div.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.addEventListener('click', (event) => {
+        event.preventDefault();
+        console.log("Pratik's Module");
+    });
+return div;
 }
 
 export function viewLayout(){
-    document.body.innerHTML = "";
-    document.body.className = "";
     let main = createHTMLElement(`
     <content class="row"  id="content">
     <div  class="col-md-9" id="mainPart">
@@ -53,7 +47,7 @@ export function viewLayout(){
     </section>
     </div>
     </content>`);
-    document.body.appendChild(main);
+    return main;
   }
 
   
