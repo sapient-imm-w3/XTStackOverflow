@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpack = require('webpack');
 const m = process.env.MODULE;
 console.log(m,"This is the value of Exported Module");
 module.exports = {
@@ -26,6 +27,11 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: `./src/js/Admin/index.${m}.html`,
       inject: 'body'
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
+      firebase: 'firebase'
     })
   ]
 };

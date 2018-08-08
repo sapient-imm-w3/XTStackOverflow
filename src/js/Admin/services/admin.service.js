@@ -47,47 +47,27 @@ export function getFlaggedAnswerService() {
 };
 
 export function revokeFlaggedAnswer() {
-    database.ref(`questions/0/answers/0`).update({
+    console.log('Pink');
+    firebase.database().ref(`questions/0/answers/0`).update({
+        
         is_flagged: "False"
     })
 }
 
 // Asish
-export function getAllUserService() {
-    const url = "http://localhost:3000/users";
-    let methodData = {
-        method: 'GET'
-    }
-    fetch(url, methodData)
-        .then((res) => res.json())
-        .then(function (data) {
-            data.map(function (user) {
-                userDiv(user);
-            })
-        });
+
+export  function  getAllUserService() {
+    let  db  =  firebase.database().ref(`/users`);
+    db.on('value', (data)  =>  {
+        userDiv(data);
+    });
 }
 
-export function changeOfRole(id) {
-    const url = `http://localhost:3000/users/${id}`;
-    fetch(url)
-        .then((resp) => resp.json())
-        .then((obj) => {
-            let objeuser = Object.assign({}, obj, { role: 'Admin' });
-            const fetchData = {
-                method: 'PUT',
-                mode: "cors", // no-cors, cors, *same-origin
-                cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-                credentials: "same-origin", // include, same-origin, *omit
-                headers: {
-                    "Content-Type": "application/json; charset=utf-8",
-                    // "Content-Type": "application/x-www-form-urlencoded",
-                },
-                redirect: "follow", // manual, *follow, error
-                referrer: "no-referrer", // no-referrer, *client
-                body: JSON.stringify(objeuser)
-            };
-            fetch(url, fetchData);
-        })
+export  function  changeOfRole(id) {
+    console.log(id);
+    firebase.database().ref(`/users/${id}`).update({
+        role:  "Admin"
+    });
 }
 
 //Tejeswar

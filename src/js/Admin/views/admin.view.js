@@ -1,4 +1,4 @@
-import { getAllCatFromFirebase, delteCategoryFromFirebaseById, revokeFlaggedQuestion, changeOfRole, getAllCategories, deleteCategoryById } from '../services/admin.service';
+import { getAllCatFromFirebase, delteCategoryFromFirebaseById, revokeFlaggedQuestion,revokeFlaggedAnswer, changeOfRole} from '../services/admin.service';
 import $ from 'jquery';
 import firebase from "firebase/app";
 
@@ -12,7 +12,7 @@ export function layout() {
     document.getElementById('usersDiv').innerHTML = "";
     document.getElementById('BoardsContainer').innerHTML = "";
     const table = createHTMLElement(`
-    <table id="example" class="display" style="width:100%">
+    <table id="examplelayout" class="table table-striped table-hover table-bordered" style="width:100%">
     <thead>
         <tr>
             <th>Question</th>
@@ -32,7 +32,7 @@ export function createFlaggedDiv(question) {
                 <td>${question.child(`text`).val()}</td>
                 <td>${question.child(`flag_count`).val()}</td>
                 <td>
-                <button type="button" class="btn btn-warning" id ="${question.child(`id`).val()}">Revoke Flag</button>
+                <button type="button" class="btn purple-background" id ="${question.child(`id`).val()}">Revoke Flag</button>
                 </td>
             </tr>
             `)
@@ -47,10 +47,11 @@ export function layoutAnswer() {
     document.getElementById('usersDiv').innerHTML = "";
     document.getElementById('BoardsContainer').innerHTML = "";
     const table = createHTMLElement(`
-    <table id="example" class="display" style="width:100%">
+    
+    <table id="examplelayoutAnswer" class="table table-striped table-hover table-bordered" style="width:100%">
     <thead>
         <tr>
-            <th>Question</th>
+            <th>Answers</th>
             <th>FlagCount</th>
             <th>Revoke</th>
         </tr>
@@ -67,13 +68,13 @@ export function createFlaggedAnswerDiv(answer) {
                 <td>${answer.child(`text`).val()}</td>
                 <td>${answer.child(`flag_count`).val()}</td>
                 <td>
-                <button type="button" class="btn btn-warning" id ="${answer.child(`id`).val()}">Revoke AFlag</button>
+                <button type="button" class="btn purple-background" id ="${answer.child(`id`).val()}">Revoke AFlag</button>
                 </td>
             </tr>
             `)
     document.getElementById("tableBodyAnswers").appendChild(flaggedDiv);
     document.getElementById(`${answer.child(`id`).val()}`).onclick = () => {
-        revokeFlaggedQuestion(`${answer.child(`id`).val()}`);
+        revokeFlaggedAnswer(`${answer.child(`id`).val()}`);
     }
 
 }
@@ -81,7 +82,8 @@ export function createFlaggedAnswerDiv(answer) {
 export function layoutUserTable() {
     document.getElementById('flagged_questions').innerHTML = "";
     document.getElementById('BoardsContainer').innerHTML = "";
-    const table = createHTMLElement(`<table id="example" class="display" style="width:100%">
+    const table = createHTMLElement(`
+    <table id="examplelayoutAnswer" class="table table-striped table-hover table-bordered" style="width:100%">
     <thead>
         <tr>
             <th>Name</th>
@@ -95,26 +97,25 @@ export function layoutUserTable() {
     document.getElementById("usersDiv").appendChild(table);
 }
 export function userDiv(user) {
-
-    const userTable = createHTMLElement(
-        `<tr>
-            <td>${user.name}</td>
-            <td>${user.role}</td>
-            <td>
-            <form>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="${user.id}">
-                    <label class="form-check-label" for="exampleCheck1">Check me Out!!!</label>
-                </div>
-            </form>
-            </td>
-        </tr>
-        `
-    )
-    document.getElementById("tableBodyUser").appendChild(userTable);
-    document.getElementById(`${user.id}`).onclick = () => {
-        changeOfRole(`${user.id}`);
-    }
+    document.getElementById("tableBody").innerHTML = "";
+    let data = user;
+    console.log(data.val());
+    console.log(Object.keys(data.val()))
+    data.forEach((data) => {
+        const userTable = createHTMLElement(
+            `<tr>
+    <td>${data.child('name').val()}</td>
+    <td>${data.child('role').val()}</td>
+    <td>
+    <input type="checkbox" class="custom-control-input" id="${data.key}">
+    </td>
+    </tr>
+    `)
+        document.getElementById("tableBody").appendChild(userTable);
+        document.getElementById(`${data.key}`).onclick = () => {
+            changeOfRole(`${data.key}`);
+        }
+    });
 }
 
 //Tejeswar

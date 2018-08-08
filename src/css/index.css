@@ -8,8 +8,14 @@ body{
     border-bottom: 1px solid #e2e2e2;
     background-color: #fff;
     border: 1px solid #efefef;
-    border-radius: 4px;
-    
+    border-radius: 4px;   
+}
+.purple-background {background-color:#918EF4}
+#flagged_answers{
+  background: #F7B1AB;
+}
+#flagged_questions{
+  background: #F5E9E2;
 }
   .flagCount{
   padding-left: 3rem;
