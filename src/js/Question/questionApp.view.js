@@ -15,7 +15,6 @@ function createHTMLElement(html) {
     return template.content;
 }
 
-
 let createNode = (element) => {
     return document.createElement(element); // Create the type of element you pass in the parameters
 };
@@ -94,8 +93,9 @@ export const getQuestionView = (data) => {  //fetching data from firebase
 
             if(listenVerify){
             document.getElementById('V' + element.child('id').val()).addEventListener("click", function (e) {
-                if (e.target)
-                    getVerified(element.child('id').val());
+                if (e.target){
+                    getVerified(element.child('id').val());                    
+                }
             });
         }
 
