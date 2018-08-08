@@ -1,0 +1,79 @@
+{
+  "questions": [
+    {
+      "text": "What is clone in Java.",
+      "description": "I have a script to open a model window.. ",
+      "date": "20/12/2010",
+      "categories": [
+        {
+          "name": "javascript",
+          "id": "1"
+        }
+      ],
+      "is_flagged": true,
+      "flag_count": 0,
+      "id": 1,
+      "email": "question@gmail.com",
+      "answers": [
+        {
+          "text": "Try running the entire script through jslint. This may help point you at the cause of the error.",
+          "date": "21/12/2010",
+          "is_flagged": false,
+          "email": "ans@gmail.com",
+          "up_vote": 21,
+          "down_vote": 0,
+          "is_correct": true,
+          "id": 1
+        },
+        {
+          "text": "Shesh Answers test.",
+          "date": "21/12/2012",
+          "is_flagged": true,
+          "email": "ans_shesh@gmail.com",
+          "up_vote": 2,
+          "down_vote": 3,
+          "is_correct": true,
+          "id": 2
+        }
+      ],
+      "answer_count": 2
+    }
+  ],
+  "flagged": [
+    {
+      "questions": [
+        {
+          "id": 1,
+          "text": "What is clone in Java."
+        }
+      ],
+      "answers": [
+        {
+          "id": 1,
+          "question_id": 1,
+          "text": "What is clone in Java."
+        }
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "",
+      "name": "",
+      "topics": [
+        {
+          "id": "",
+          "topic-name": ""
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": "",
+      "name": "",
+      "role": ""
+    }
+  ]
+}
+

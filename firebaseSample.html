@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script src="https://www.gstatic.com/firebasejs/5.3.0/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBgm8LglLkXjrhh_gSFv04jCigrSeo-QPg",
+            authDomain: "fir-d6d86.firebaseapp.com",
+            databaseURL: "https://fir-d6d86.firebaseio.com",
+            projectId: "fir-d6d86",
+            storageBucket: "fir-d6d86.appspot.com",
+            messagingSenderId: "1028975975400"
+        };
+        firebase.initializeApp(config);
+    </script>
+    <script>
+
+
+        // Get a reference to the database service
+        var database = firebase.database();
+
+        function writeUserData(userId, name, email, imageUrl) {
+            // to Write the data
+            firebase.database().ref('users/' + userId).set({
+                username: name,
+                email: email,
+                profile_picture: imageUrl
+            });
+        }
+
+        //read the data
+        database.ref('/users/' + 2).once('value', (snapshot) => {
+            const { username, email, profile_picture } = snapshot.val();
+            //console.log("User", snapshot.val());
+            console.log(username);
+
+            console.log(`user object ${username}, ${email}, ${profile_picture}`);
+        })
+        writeUserData("2", "Prathap", "prathap@gmail.com", "https://myimage1.png");
+    </script>
+</body>
+
+</html>

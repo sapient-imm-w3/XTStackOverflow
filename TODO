@@ -1,0 +1,232 @@
+shechakr@WKWIN4809749 MINGW64 /d/Core_XT_Training/vagrant-ubuntu-xenial-node-8-master/XTStackOverflow (Dev_shesh)
+$ npm run serve:questions
+
+// The Button id Pattern UAnsId, DAnsId, AAnsId,QQId
+const URL = "http://localhost:3000/questions/";
+function getAnswerFromJsonAndUpdate(event) {
+  var btnAnsId = (event.target || event.srcElement).id;
+  btnAnsId = btnAnsId.trim();
+  var index = btnAnsId.indexOf(btnAnsId.match(/\d/));
+  var countType = btnAnsId.substring(0, index).toUpperCase();
+  var ansId = btnAnsId.substring(index);
+  console.log("Type: " + countType + ", Answer Id:" + ansId);
+  // const url = "http://localhost:3000/questions/${id}";
+  let methodType = { method: 'GET' }
+  fetch(URL, methodType).then((response) => response.json()).then(function (jsondata) {
+    // Checking Question Flag
+    console.log(jsondata);
+    var ansData = jsondata[0].data;
+    console.log(ansData);
+    if (countType === 'Q') {
+      if (data.is_flagged)
+        data.is_flagged = false;
+      else
+        data.is_flagged = true;
+      /// FlageObject Update..... Id Text Questtions...
+      //create a json object and store it...
+    } else {
+      for (let index = 0; index < ansData.answer_count; index++) {
+        //Update upCount/downCount/is_flagged
+        if (ansData.answers[index].id == ansId) {
+          if (countType === 'U')
+            ansData.answers[index].up_vote += 1;
+          else if (countType === 'D')
+            ansData.answers[index].down_vote += 1
+          else if (countType === 'A') {
+            if (ansData.answers[index].is_flagged)
+              ansData.answers[index].is_flagged = false;
+            else
+              ansData.answers[index].is_flagged = true;
+          }
+        }
+      }
+    }
+    console.log("==== After Updated ===== ");
+    console.log(ansData);
+    saveUpdatedJSONData(ansData);
+  });
+
+}
+
+function saveUpdatedJSONData(updatedData) {
+  console.log("==== saveUpdatedJSONData updatedData ===== ")
+  console.log(updatedData);
+  //Writing New Data
+  var URL1 = "http://localhost:3000/questions/1";
+  console.log(JSON.stringify(updatedData, 1, 1))
+  $.ajax({
+    type: "PUT",
+    url: URL1,
+    //async: false,
+    //contentType: "application/json",
+    dataType: 'json',
+    data: { data: JSON.stringify(updatedData) }
+
+  });
+}
+============= Firebase Set ==================
+/////////
+firebase.database().ref('/questions/'+ uuidv1()).set({
+  text: "What is clone in Java.",
+  date: "20/02/2012",
+  categories: [
+    {
+      name: "javascript",
+    }
+  ],
+  is_flagged: false,
+  flag_count: 0,
+  email: "question@gmail.com",
+  answers: [
+    {
+      text: "Try running the entire script through jslint. This may help point you at the cause of the error.",
+      date: "21/12/2010",
+      is_flagged: false,
+      email: "ans@gmail.com",
+      up_vote: 21,
+      down_vote: 0,
+      is_correct: true,
+      id: 1
+    },
+    {
+      text: "Shesh Answers test.",
+      date: "21/12/2012",
+      is_flagged: true,
+      email: "ans_shesh@gmail.com",
+      up_vote: 2,
+      down_vote: 3,
+      is_correct: true,
+      id: 2
+    }
+  ],
+  answer_count: 2,
+  flagged: [
+    {
+      questions: [
+        {
+          id: 1,
+          text: "What is JavaScript."
+        }
+      ],
+      answers: [
+        {
+          id: 1,
+          question_id: 1,
+          text: "What is clone in Java."
+        }
+      ]
+    }
+  ],
+  categories: [
+    {
+      id: "",
+      name: "",
+      topics: [
+        {
+          id: "",
+          "topic-name": ""
+        }
+      ]
+    }
+  ],
+  users: [
+    {
+      id: "",
+      name: "",
+      role: ""
+    }
+  ]
+
+});
+
+=========================
+// QuestionId 74, 89,,
+  var questionId = 74; // change it 
+  console.log(firebase.database().ref('/questions/' + questionId).child('answers'));
+  var URL = 'https://test-poc-115c1.firebaseio.com/questions/';
+  URL += questionId + "/answers/" + ansId;
+  //Updateing URL's
+  if (countType === 'Q') {
+    URL = 'https://test-poc-115c1.firebaseio.com/questions/' + questionId + '/is_flagged';
+    // if (is_flagged) //True 
+    //URL = 'https://test-poc-115c1.firebaseio.com/questions/'+ questionId+'/flagged/'+questionId+'/questions';
+    //upadete the content text
+    //   is_flagged = false;
+    // else //False
+    //   is_flagged = true;
+    /// FlageObject Update..... Id Text Questtions...
+    //create a json object and store it...
+  }
+
+  if (countType === 'U')
+    URL += '/up_vote';
+  else if (countType === 'D')
+    URL += '/down_vote';
+  else if (countType === 'A') {
+    URL += '/is_flagged';
+    // if (is_flagged)
+    //   is_flagged = false;
+    // else
+    //   is_flagged = true;
+  }
+  console.log(URL);
+  // firebaseDb.ref('/users/' + '1234').once('value', (snapshot) => {
+  //   const { username, email, profile_picture } = snapshot.val();
+  //   console.log(snapshot.val());
+  //   console.log(username);
+  //   console.log(`user object ${username}, ${email}, ${profile_picture}`);
+  // })
+  //writeUserData(1234, "SHESH", "shesh4you@gmail.com", "https://myimage1.png");
+  ====================================================
+
+  function getAnswerFromFileBaseAndUpdate(event) {
+  var buttonId = (event.target || event.srcElement).id;
+  buttonId = buttonId.trim();
+  var index = buttonId.indexOf(buttonId.match(/\d/));
+  var countType = buttonId.substring(0, index).toUpperCase();
+  var ansId = buttonId.substring(index);
+  console.log("Type: " + countType + ", Answer Id:" + ansId);
+  questionId = 89;
+  // Getting data from Firebase
+  var URL = 'https://test-poc-115c1.firebaseio.com/questions/'+questionId;
+  index = 0;
+  var ansData;
+  var answersRef = firebaseDb.ref('questions');
+  answersRef.once('value', (questions) => {
+    questions.forEach((question) => {
+      ansData = question.val();
+      if (ansData.answers[index].id == ansId) {
+        URL = 'https://test-poc-115c1.firebaseio.com/questions/'+questionId; + "/answers/" + ansId;
+       
+        if (countType === 'U') {
+          console.log("AnsId" + ansData.answers[index].id + ", up_vote: " + ansData.answers[index].up_vote);
+          ansData.answers[index].up_vote += 1;
+          return;
+        } else if (countType === 'D') {
+          console.log("down_vote" + ansData.answers[index].id);
+           ansData.answers[index].down_vote += 1
+          return;
+        } else if (countType === 'A') {
+          console.log("Answer is_flagged:" + ansData.answers[index].id);
+          if (ansData.answers[index].is_flagged) {
+            console.log("Answer is_flagged "+ansData.answers[index].is_flagged+"--> false");
+            ansData.answers[index].is_flagged = false;
+            return;
+          }
+          else {
+            console.log("Answer is_flagged "+ansData.answers[index].is_flagged+"--> true");
+            ansData.answers[index].is_flagged = true;
+            return;
+          }
+        }
+      }
+      index++;
+      //console.log(ansData);
+    });
+    console.log(ansData);
+  });
+  
+  answersRef.set().set({
+
+  });
+}

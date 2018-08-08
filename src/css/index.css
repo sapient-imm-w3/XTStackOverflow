@@ -3,3 +3,15 @@
   font-style: italic;
   color: green;
 }
+
+div{
+  margin-left: 25%;
+  width: 15rem;
+  display: block;
+}
+
+.btn{
+  padding-left: 5rem;
+  width: 10rem;
+  display: block;
+}
