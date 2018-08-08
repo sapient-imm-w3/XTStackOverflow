@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
 import createHTMLElement from '../view';
+import { getCatQuestions } from './service';
 
 export function displaytrending(answerCount,text,date,categories,key) {
     let html = `<div class="myQuestion">
@@ -9,22 +10,31 @@ export function displaytrending(answerCount,text,date,categories,key) {
                     ${answerCount}<br>
                     answers
                 </div>
-                <div id="" class="col-md-9">
-                <a href="#" id="${key}">${text}</a> <br>`;
-
+                <div class="col-md-9">
+                <a href="#" id="${key}">${text}</a><br>
+                </div>  
+                </div>  
+                    </div>
+                    `;
+    let div = createHTMLElement(html);
             categories.forEach(element => {
-               html+= `<span style="font-size: 15px;" class="badge badge-secondary">${element.name}</span> &nbsp;`
+               let button = `<button type="button" class="badge badge-secondary badges">${element.name}</button> &nbsp;`;
+               let buttonElement = createHTMLElement(button);
+               div.firstElementChild.firstElementChild.nextElementSibling.appendChild(buttonElement);
+               buttonElement.onclick = () => {
+                   getCatQuestions(`${element.name}`);
+                   document.getElementById(`trendingHeading`).innerHTML = `${element.name}`;
+               }
             });
     
-              html += `<br> <small id="date" class = "text-muted" style="float: right">${date}</small>
-</div>  
-</div>  
-    </div>
-    `;
-document.getElementById("trendingDiv").appendChild(createHTMLElement(html));
+    let dates = `<small id="date" class = "text-muted" style="float: right">${date}</small>`;
+    div.firstElementChild.firstElementChild.nextElementSibling.appendChild(createHTMLElement(dates));
+            
+              
+
+document.getElementById("trendingDiv").appendChild(div);
 document.getElementById(`${key}`).onclick = () => {
     event.preventDefault();
-    console.log(`${key}`);
 }
     
 }
@@ -37,7 +47,7 @@ export function viewLayout(){
     <div  class="col-md-9" id="mainPart">
     <h3>Hello, ${firebase.auth().currentUser.displayName}</h3>
     <section id="trendingSection">
-    <h2>Recent Posts</h2>
+    <h2 id="trendingHeading" >Recent Posts</h2>
     <div id="trendingDiv">
     </div>
     </section>

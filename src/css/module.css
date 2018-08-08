@@ -18,3 +18,9 @@
 .labelCategories{
     margin: 1rem;
 }
+
+.badges{
+    border: 0px;
+    font-size: 15px;
+    margin: 0.3rem;
+}

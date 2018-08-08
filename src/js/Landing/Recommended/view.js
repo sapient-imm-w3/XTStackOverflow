@@ -16,6 +16,15 @@ export function getTitle(category) {
       `);
     return display;
  }
+ export function noRecQuestions(category){
+   let html = ` <div  style="border:5px; background: white; text-align: center">
+   <p style="margin: 0.5rem;
+   padding: 0.5rem;
+   color: red;
+   font-style: italic;">No Questions under ${category}</p>
+   </div>`;
+   document.getElementById('recommended').appendChild(createHTMLElement(html));
+ }
   export function viewLayout(){
     let main = createHTMLElement(`<div class="col-md-3">
     <aside style=" background-color: lightgrey; height: 100%;" >
@@ -29,11 +38,9 @@ export function getTitle(category) {
     </div>`);
     document.getElementById(`content`).appendChild(main);
     document.getElementById(`signout`).onclick = function() {
-      console.log(auth.currentUser);
         auth.signOut()
         .then(()=>{
           close();
-          console.log("Successfully Logged OUt..!!!");
           close_window();
         });
     }

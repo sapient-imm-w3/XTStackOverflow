@@ -38,7 +38,6 @@ export function displayFavCategories(categories) {
     document.getElementById(`modalBody`).appendChild(htmlElement);
     htmlElement.onclick = function () {
       let check = document.getElementById(`${element.child(`name`).val()}`).checked;
-      console.log(check);
       if (check == true) {
         this.className = "btn btn-success labelCategories";
       } else {

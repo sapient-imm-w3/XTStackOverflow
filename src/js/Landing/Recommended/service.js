@@ -1,4 +1,4 @@
-import { getTitle, getRecQuestion } from './view';
+import { getTitle, getRecQuestion, noRecQuestions } from './view';
 import { database } from "../controller";
 
 export function getRecommended(user) {
@@ -11,7 +11,7 @@ export function getRecommended(user) {
         let title = getTitle(category.val());
         document.getElementById('recommended').appendChild(title);
         let count = 0;
-        return questions.forEach((question) => {
+        questions.forEach((question) => {
           if (count < 5) {
             question.child(`categories`).val().forEach((cat) => {
               if (cat.name === category.val()) {
@@ -19,13 +19,16 @@ export function getRecommended(user) {
                 document.getElementById('recommended').appendChild(display);
                 document.getElementById(`${question.key}`+"Trending").onclick = (event) => {
                   event.preventDefault();
-                  console.log(`${question.key}`);
+                 
               }
                 count++;
               }
             })
           }
         })
+        if(count===0){
+          noRecQuestions(category.val());
+        }
       })
     })
   });

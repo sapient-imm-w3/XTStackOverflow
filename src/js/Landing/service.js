@@ -47,7 +47,6 @@ export function getUser(user) {
 
 function flagger(flag) {
     if (flag === 0) {
-        console.log("flag " + flag);
         getFavCategories();
     }
 }
