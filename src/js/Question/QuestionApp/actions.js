@@ -1,14 +1,3 @@
-export function ADD_QUESTION(postedBy, text, when, categories) {
-  return {
-    type: 'ADD_QUESTION',
-    postedBy,
-    text,
-    when,
-    answerCount : 0,
-    categories
-  }
-}
-
 export function ANSWER_ACTION(postedBy, text) {
   return {
     type: 'ANSWER',

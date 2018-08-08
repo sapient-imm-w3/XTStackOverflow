@@ -7,12 +7,10 @@ import setCorrectAnswerReducer from './reducers/setCorrectAnswerReducer';
 import editAnswerReducer from './reducers/editAnswerReducer';
 import flagResponseReducer from './reducers/flagResponseReducer';
 import unFlagResponseReducer from './reducers/unFlagResponseReducer';
-import {addQuestionReducer} from './reducers/addQuestionReducer';
 
-export default function LandingApp(currentState = {}, action) {
+
+export default function QuestionApp(currentState = {}, action) {
   switch(action.type) {
-    case 'ADD_QUESTION':
-      return addQuestionReducer(currentState, action);
     case 'ANSWER':
       return answerReducer(currentState, action);
     case 'UP_VOTE':

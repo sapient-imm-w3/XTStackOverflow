@@ -1,8 +1,120 @@
+@import 'layout.css';
+@import 'module.css';
+
 .css {
   font-weight: bolder;
   font-style: italic;
   color: green;
 }
 
-@import 'layout.css';
-@import 'module.css';
+
+html,
+body{
+  background: #D9F0FF;
+}
+.flaggedquestion{
+  padding: 16px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #e2e2e2;
+    background-color: #fff;
+    border: 1px solid #efefef;
+    border-radius: 4px;
+    
+}
+  .flagCount{
+  padding-left: 3rem;
+  } 
+  #events {
+    margin-bottom: 1em;
+    padding: 1em;
+    background-color: #f6f6f6;
+    border: 1px solid #999;
+    border-radius: 3px;
+    height: 100px;
+    overflow: auto;
+}
+/* Tejeswar */
+#specificBoardName{
+  text-align: center;
+  font-size: 30px;
+}
+.task-header{
+  text-align: center;
+}
+#boardIdSpan{
+display: none;
+}
+
+.board-list {
+  width: 250px;
+  float: left;
+  margin: 0 5px;
+  background-color: #e3e3e3;
+  min-height: 100px;
+  border-radius: 10px;
+  
+}
+#saveList{
+  margin-left: 2%;
+}
+.task-list {
+  width: 250px;
+  float: left;
+  margin: 0 5px;
+  background-color: #e3e3e3;
+  min-height: 90px;
+  border-radius: 10px;
+  padding-bottom: 15px;
+  margin: 2px;
+}
+
+.task-list input, .task-list textarea {
+  width: 240px;
+  margin: 1px 5px;
+}
+
+.task-list input {
+  height: 30px;
+}
+
+.todo-task {
+  border-radius: 5px;
+  background-color: #fff;
+  width: 230px;
+  margin: 5px;
+  padding: 5px;
+}
+
+.task-list input[type="button"] {
+  width: 100px;
+  margin: 5px;
+
+}
+
+.todo-task > .task-header {
+  font-weight: bold;
+  
+}
+
+.todo-task > .task-date {
+  font-size: small;
+  font-style: italic;
+}
+
+.todo-task > .task-description {
+  font-size: smaller;
+}
+
+h3 {
+  text-align: center;
+}
+
+#delete-div {
+  background-color: #fff;
+  border: 3px dotted #000;
+  margin: 10px;
+  height: 75px;
+  line-height: 75px;
+  text-align: center;
+}
+/* Asish */

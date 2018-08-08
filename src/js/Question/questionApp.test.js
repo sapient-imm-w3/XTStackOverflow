@@ -1,14 +1,14 @@
 import { createStore } from 'redux';
-import LandingApp from './LandingApp';
-import deepFreeze from 'C:/Users/satreddy/AppData/Local/Microsoft/TypeScript/2.9/node_modules/@types/deep-freeze';
+import QuestionApp from './QuestionApp';
+import deepFreeze from 'deep-freeze';
 import {
   ANSWER_ACTION
-} from './LandingApp/actions';
+} from './QuestionApp/actions';
 
 import chai from 'chai';
 const should = chai.should();
 
-describe('LandingApp', function() {
+describe('QuestionApp', function() {
   describe('answerAction', function() {
     let store = null;
     let initialState = deepFreeze({
@@ -17,7 +17,7 @@ describe('LandingApp', function() {
     });
 
     before(function() {
-      store = createStore(LandingApp, initialState);
+      store = createStore(QuestionApp, initialState);
     });
 
     it('should containResponse', function() {
