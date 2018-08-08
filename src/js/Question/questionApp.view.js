@@ -31,7 +31,7 @@ main.className = "container";
 append(body, main);
 
 export const getQuestionView = (data) => {  //fetching data from firebase
-
+    // console.log(data.val());
     let qna = data;
     return qna.forEach(qnadata => {
         main.innerHTML = "";
@@ -55,17 +55,21 @@ export const getQuestionView = (data) => {  //fetching data from firebase
         document.getElementById("question").addEventListener("click", function (e) {
             updateQFlag(qnadata.child('id').val());
         });
-        
-        let verify = "";
-        if(qnadata.child('email').val() === 'tannerottinger@gmail.com')
-                verify=`<span class="tick-icon" id="tick-icon">&#9745</span>`
 
-        qnadata.child('answers').forEach(element => {
+
+        let Qemail = qnadata.child('email').val();
+        let listenVerify = false;
+
+        qnadata.child('answers').forEach(element => { //accessing each answer
             let answer = `<div class="answer">`
 
-            if(isNaN(verify))
-                answer+=verify
-            
+            // console.log(element.Key);
+
+            if (Qemail === "tannerottinger@gmail.com"){
+                answer += `<span class="tick-icon" id="V${element.child('id').val()}">&#9745</span>`
+                listenVerify = true;
+            }
+
             if (element.child('is_correct').val() === true)
                 answer += `<span><img src="../../../src/img/verified.png" alt="verified" title="Verified" class="hvr-buzz"></span>`
 
@@ -88,12 +92,13 @@ export const getQuestionView = (data) => {  //fetching data from firebase
 
             append(main, createHTMLElement(answer));
 
-            if(isNaN(verify)){
-            document.getElementById('tick-icon').addEventListener("click",function(e) {
-                if(e.target)
+            if(listenVerify){
+            document.getElementById('V' + element.child('id').val()).addEventListener("click", function (e) {
+                if (e.target)
                     getVerified(element.child('id').val());
             });
         }
+
 
             document.getElementById(element.child('id').val()).addEventListener("click", function (e) {
                 if (e.target && e.target.matches("li img")) {
