@@ -88,10 +88,12 @@ export const getQuestionView = (data) => {  //fetching data from firebase
 
             append(main, createHTMLElement(answer));
 
-            // document.getElementById('tick-icon').addEventListener("click",function(e) {
-            //     if(e.target)
-            //         getVerified(element.child('id').val());
-            // });
+            if(isNaN(verify)){
+            document.getElementById('tick-icon').addEventListener("click",function(e) {
+                if(e.target)
+                    getVerified(element.child('id').val());
+            });
+        }
 
             document.getElementById(element.child('id').val()).addEventListener("click", function (e) {
                 if (e.target && e.target.matches("li img")) {
