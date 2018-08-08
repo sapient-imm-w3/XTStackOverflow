@@ -1,4 +1,6 @@
 import { resolve } from "path";
+import firebase from "firebase/app";
+import 'firebase/database';
 import {renderCategoryView} from '../views/adminapp.view'
 //https://codepen.io/gabrieleromanato/pen/Jgoab
 function IDGenerator() {
@@ -41,6 +43,36 @@ export function getAllCategories() {
             });
     })
 }
+export function isCategoryAlreadyExist(catName){
+    return new Promise(function(resolve,reject){
+        let isCategoryPresent = false;
+        getAllCatFromFirebase().then((data => {
+            console.log(data);
+            if(data!=null){
+            let arrOfKeys = Object.keys(data);
+            console.log(arrOfKeys);
+            console.log("Category name to be validated with:"+catName);
+           
+        for(let categoryCount = 0;categoryCount<arrOfKeys.length;categoryCount++){
+            let catKey = arrOfKeys[categoryCount];
+            let singleCatObj = data[catKey];
+            console.log("==========:"+singleCatObj);
+            //if(singleCatObj.name != null){
+            if(singleCatObj.name == catName){
+                isCategoryPresent = true;
+                break;
+            }
+        //}
+         }
+        
+        
+       }
+       console.log("Is category present:"+isCategoryPresent);
+       resolve(isCategoryPresent);
+    }));
+    })
+    
+    }
 export function renderWholeCategoryView(){
     getAllCategoriesWithTopics().then(data => {
         console.log(data);
@@ -110,6 +142,13 @@ export function deleteCategoryById(id) {
             });
     })
 }
+
+export function delteCategoryFromFirebaseById(id){
+    return new Promise(function (resolve, reject) {
+        firebase.database().ref().child("categories").child(id).remove();
+        resolve("success");
+    });
+}
 export function createCategory(_categoryObj) {
     return new Promise(function (resolve, reject) {
         const url = "http://localhost:3004/categories";
@@ -136,6 +175,25 @@ export function createCategory(_categoryObj) {
             });
     })
 }
+
+export function insertCategoryToFirebase(_categoryObj){
+    return new Promise(function(resolve,reject) {
+       let ret =  firebase.database().ref('categories/'+_categoryObj.id).set({
+            name:_categoryObj.name
+    },function(error){
+      if(error){
+console.log(error);
+      }
+      else{
+         
+          console.log("data inserted successfully");
+          resolve("success");
+      }
+    });
+    //resolve(ret);
+})
+}
+
 
 export function updateCategory(id) {
     return new Promise(function (resolve, reject) {
@@ -169,7 +227,18 @@ export function updateCategory(id) {
             });
     })
 }
-let categoryId = 500;
+export function getAllCatFromFirebase(){
+    return new Promise(function (resolve, reject) {
+    let refToCategories = firebase.database().ref().child("categories");
+    refToCategories.on("value",function(snap) {
+        console.log("Inside listener");
+        let arrOfCategories = snap.val();
+        //renderCategoryView(arrOfCategories);
+        resolve(arrOfCategories);
+  console.log("length of categories:"+arrOfCategories);
+    });
+})
+}
 
 export function Category(name){
     this.id = new IDGenerator().generate();
@@ -209,6 +278,7 @@ export function createTopic(_topicObj) {
             });
     })
 }
+/*
 export function deleteTopicById(id) {
     return new Promise(function (resolve, reject) {
         const url = "http://localhost:3004/topics/" + id;
@@ -223,3 +293,4 @@ export function deleteTopicById(id) {
             });
     })
 }
+*/

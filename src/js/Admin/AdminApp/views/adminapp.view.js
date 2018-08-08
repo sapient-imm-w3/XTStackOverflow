@@ -1,11 +1,13 @@
 import $ from '../../../../../node_modules/jquery/dist/jquery'
+import { resolve } from "path";
+import firebase from "firebase/app";
 import {addTopic} from "../controller/adminapp.controller"
-import {getAllCategories,deleteCategoryById,Topic,renderWholeCategoryView,deleteTopicById } from "../services/adminapp.service"
+import {getAllCatFromFirebase,delteCategoryFromFirebaseById,getCategoryById,getAllCategories,deleteCategoryById,Topic,renderWholeCategoryView,deleteTopicById } from "../services/adminapp.service"
 
 
 export function renderCategoryView(allCategoryObj){
     document.getElementById("BoardsContainer").innerHTML = "";
-    if(allCategoryObj.length == 0){
+    if(allCategoryObj == null || allCategoryObj.length == 0){
         let addCatSectionDiv = document.createElement('div');
         addCatSectionDiv.setAttribute('class', 'addListButton');
         let addCatButton = document.createElement('button');
@@ -22,10 +24,11 @@ export function renderCategoryView(allCategoryObj){
         console.log("As Category is empty just returning");
         return;
     }
+    /*
     let singleCatObj = allCategoryObj[0];
     console.log(singleCatObj.name);
     console.log(allCategoryObj.length);
-  
+  */
 let addCatSectionDiv = document.createElement('div');
 addCatSectionDiv.setAttribute('class', 'addListButton');
 let addCatButton = document.createElement('button');
@@ -49,10 +52,16 @@ getAllCategoriesWithTopics.then(data => {
 let catContainerSection = document.createElement('div');
 catContainerSection.setAttribute('id','catContainer');
 document.getElementById("BoardsContainer").appendChild(catContainerSection);
-for(let categoryCount = 0;categoryCount<allCategoryObj.length;categoryCount++){
-    let singleCatObj = allCategoryObj[categoryCount];
+//For firebase db had to write the below code.
+let arrOfKeys = Object.keys(allCategoryObj);
+
+
+
+for(let categoryCount = 0;categoryCount<arrOfKeys.length;categoryCount++){
+    let catKey = arrOfKeys[categoryCount];
+     let singleCatObj = allCategoryObj[catKey];
     let singleCatDiv = document.createElement('div');
-    singleCatDiv.setAttribute('id',singleCatObj.id);
+    singleCatDiv.setAttribute('id',catKey);
     singleCatDiv.setAttribute('class','task-list');
     catContainerSection.appendChild(singleCatDiv);
     let taskHeaderDiv = document.createElement('div');
@@ -98,15 +107,48 @@ let addTopicButton = document.createElement('div');
     
     addTopic.innerText = 'Delete';
     addTopic.addEventListener('click', function(event) {
-    
-     let parentCatId = $(this).parent().parent().attr('id');
-     console.log("Delete categoty :"+parentCatId);
-     deleteCategoryById(parentCatId).then(data1 =>{ 
-        getAllCategories().then(data => {
-        console.log(data);
-        renderCategoryView(data);
-    })
-});;
+         /*
+        let parentCatId = $(this).parent().parent().attr('id');
+        console.log("Category Id is:"+parentCatId);
+       
+        let getCategoryByIdPromise = getCategoryById(id);
+        getCategoryByIdPromise.then(data => {
+            console.log(data);
+            renderCategoryView(data);
+        });
+*/
+let parentCatId = $(this).parent().parent().attr('id');
+//let refToCategories = firebase.database().ref("categories/"+parentCatId);//.child("categories").child(parentCatId);
+//console.dir(refToCategories);
+//let name = null;
+firebase.database().ref('/categories/' + parentCatId).once('value').then(function(snapshot) {
+    console.dir(snapshot.val());
+    return new Promise((resolve, reject) => {
+        let name = snapshot.val().name;
+        console.log("to be deleted category:"+name);
+        resolve(name);
+    });
+  }).then(name => {
+    let isDeleteConfirmed = confirm("Are you sure to delete the category :"+name);
+    console.log("isDeleteConfirmed:"+isDeleteConfirmed);
+    if(isDeleteConfirmed){
+       
+       
+       
+        console.log("Delete categoty :"+parentCatId);
+        delteCategoryFromFirebaseById(parentCatId).then(data1 =>{ 
+            getAllCatFromFirebase().then((data => {
+                console.log(data);
+                renderCategoryView(data);
+            }));
+   });
+    }
+  })
+
+   // let isDeleteConfirmed = confirm("Are you sure to delete the category."+name);
+    //console.log("isDeleteConfirmed:"+isDeleteConfirmed);
+   
+     
      //$('#parentCategoryId').val(singleCatObj.id);
     }, true);
     addTopicButton.appendChild(addTopic);
