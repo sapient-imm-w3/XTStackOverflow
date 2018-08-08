@@ -1,6 +1,4 @@
-import firebase from "firebase/app";
 import "firebase/auth";
-// import "firebase/database";
 import '../../vendors/DataTables/css/jquery.dataTables.min.css';
 import 'bootstrap/scss/bootstrap.scss';
 import '../../../node_modules/bootstrap/dist/js/bootstrap.min.js';
@@ -11,15 +9,8 @@ import '../../vendors/DataTables/js/jquery.dataTables.min.js';
 import '../Admin/views/admin.view';
 import '../Admin/controllers/admin.controller';
 
-// var config = {
-//     apiKey: "AIzaSyDP2RBixhdkck-4UQqcJkqF8i689SWUauE",
-//     authDomain: "xtstackoverflow.firebaseapp.com",
-//     databaseURL: "https://xtstackoverflow.firebaseio.com",
-//     projectId: "xtstackoverflow",
-//     storageBucket: "",
-//     messagingSenderId: "873564884745"
-//   };
-//   firebase.initializeApp(config);
+
+
 //   var provider = new firebase.auth.GoogleAuthProvider();     
 
 // firebase.auth().signInWithPopup(provider).then(function(result) {

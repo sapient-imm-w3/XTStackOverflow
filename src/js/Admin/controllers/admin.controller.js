@@ -1,14 +1,22 @@
-import { getAllCatFromFirebase,insertCategoryToFirebase,getFlaggedQuestionService,getAllUserService,Category,createCategory,getAllCategories,getAllCategoriesWithTopics } from '../services/admin.service';
-import {layout,layoutUserTable,renderCategoryView} from '../views/admin.view';
+import { getAllCatFromFirebase,insertCategoryToFirebase,getFlaggedQuestionService,getAllUserService,Category,createCategory,getAllCategories,getAllCategoriesWithTopics, getFlaggedAnswerService } from '../services/admin.service';
+import {layout,layoutUserTable,renderCategoryView, layoutAnswer} from '../views/admin.view';
 import $ from 'jquery';
+
 const flagged = document.getElementById('flagged');
 flagged.addEventListener('click', (event) => {
   event.preventDefault();
   layout();
   getFlaggedQuestionService();
+  layoutAnswer();
+  getFlaggedAnswerService();
 });
 layout();
 getFlaggedQuestionService();
+layoutAnswer();
+getFlaggedAnswerService();
+
+
+
 //Asish
 const retrieveUser = document.getElementById("retrieveUser");
 retrieveUser.addEventListener('click', (event) => {
