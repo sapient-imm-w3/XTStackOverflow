@@ -64,15 +64,21 @@ export function postAnswer() {
 alert("Write an answer!");
 
 }
+let check =false;
+
 export function getVerified(id){
   let flag=false;
-
+  
   let tick = database.ref('questions/0/answers/'+id);
   tick.once('value',function(data){
-    if(data.child('is_correct').val() === false)
+    if(data.child('is_correct').val() === false && check === false){
       flag=true;
-    else
-      flag=false;    
+      check=true;
+    }
+    else{
+      flag=false; 
+      check=false;
+    }   
   });
   
   database.ref('questions/0/answers/'+id+'/is_correct').set(flag);
@@ -131,5 +137,6 @@ export const getQuestionData = () => {
   let db = database.ref('questions');
   db.on('value', function (data) {
     getQuestionView(data);
+    return data
   });
 }
