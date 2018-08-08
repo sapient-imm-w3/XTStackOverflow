@@ -1,17 +1,8 @@
-import firebase from "firebase/app";
-import "firebase/auth";
-import "firebase/database";
-
-import "../../../node_modules/jquery/dist/jquery";
-import "../../../node_modules/popper.js/dist/popper";
-import "../../../node_modules/bootstrap/dist/js/bootstrap.min";
-import "../../../node_modules/bootstrap/scss/bootstrap.scss"; 
 
 import triggerTrending from './Trending/controller';
 import triggerMyQuestions from './MyQuestions/controller';
 import triggerRecommended from './Recommended/controller';
 
-import '../../css/index.css';
 
 let config = {
     apiKey: "AIzaSyB27dZKtJ8xCD38hyNjtwfp5DCn14axl8s",

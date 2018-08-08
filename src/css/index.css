@@ -1,5 +1,7 @@
-@import 'layout.css';
-@import 'module.css';
+html,
+body{
+  background: #D9F0FF;
+}
 
 .css {
   font-weight: bolder;
@@ -8,10 +10,6 @@
 }
 
 
-html,
-body{
-  background: #D9F0FF;
-}
 .flaggedquestion{
   padding: 16px;
     margin-bottom: 8px;

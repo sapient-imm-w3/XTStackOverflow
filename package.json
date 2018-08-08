@@ -5,17 +5,12 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "mocha --compilers js:babel-core/register src/js/**/*.test.js",
-<<<<<<< HEAD
     "serve:landing": "env MODULE=landing webpack-dev-server --mode development --hot --host 0.0.0.0 --watch-poll",
     "build": "webpack --mode production",
     "clean": "rm -rf dist/",
     "serve": "webpack-dev-server --mode development",
-    "serve:Admin": "env MODULE=Admin webpack-dev-server --mode development --hot --host 0.0.0.0"
-=======
-    "build": "webpack --mode production",
-    "clean": "rm -rf dist/",
+    "serve:Admin": "env MODULE=Admin webpack-dev-server --mode development --hot --host 0.0.0.0",
     "serve:AskAQuestion": "env MODULE=AskAQuestion webpack-dev-server --mode development --hot --host 0.0.0.0"
->>>>>>> Dev_Pratik
   },
   "keywords": [
     "HTML",
@@ -23,10 +18,7 @@
     "JavaScript",
     "Boilerplate"
   ],
-<<<<<<< HEAD
-=======
   "author": "Sagar Patke",
->>>>>>> Dev_Pratik
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.26.3",
@@ -35,10 +27,6 @@
     "chai": "^4.1.2",
     "css-loader": "^1.0.0",
     "deep-freeze": "0.0.1",
-<<<<<<< HEAD
-    "file-loader": "^1.1.11",
-=======
->>>>>>> Dev_Pratik
     "html-webpack-plugin": "^3.2.0",
     "mocha": "^5.2.0",
     "node-sass": "^4.9.2",
@@ -50,18 +38,8 @@
   },
   "dependencies": {
     "bootstrap": "^4.1.3",
-<<<<<<< HEAD
-    "datatables.net-dt": "^1.10.19",
     "easy-autocomplete": "^1.3.5",
-    "eslint": "^5.3.0",
-    "firebase": "^5.3.1",
-    "jquery": "^3.3.1",
-    "jquery-tags-input": "^1.3.5",
-    "json-server": "^0.14.0",
-    "popper.js": "^1.14.3",
-    "redux": "^4.0.0"
-=======
-    "easy-autocomplete": "^1.3.5",
+    "file-loader": "^1.1.11",
     "firebase": "^5.3.0",
     "jquery": "^3.3.1",
     "jquery-tags-input": "^1.3.5",
@@ -69,6 +47,5 @@
     "popper.js": "^1.14.3",
     "redux": "^4.0.0",
     "uuid": "^3.3.2"
->>>>>>> Dev_Pratik
   }
 }
