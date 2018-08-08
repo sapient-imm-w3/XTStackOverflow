@@ -1,5 +1,7 @@
 import { getAllCatFromFirebase, delteCategoryFromFirebaseById, revokeFlaggedQuestion, changeOfRole, getAllCategories, deleteCategoryById } from '../services/admin.service';
 import $ from 'jquery';
+import firebase from "firebase/app";
+
 export function createHTMLElement(html) {
     const template = document.createElement('template');
     template.innerHTML = html;

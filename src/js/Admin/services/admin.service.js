@@ -47,7 +47,7 @@ export function getFlaggedAnswerService() {
 };
 
 export function revokeFlaggedAnswer() {
-    database.ref(`questions/0`).update({
+    database.ref(`questions/0/answers/0`).update({
         is_flagged: "False"
     })
 }
@@ -116,91 +116,11 @@ function IDGenerator() {
 
 
 }
-export function getAllCategories() {
-    return new Promise(function (resolve, reject) {
-        const url = "http://localhost:3000/categories";
-        let methodData = {
-            method: 'GET'
-        }
-        fetch(url, methodData)
-            .then((res) => res.json())
-            .then(function (data) {
-                //console.log(data);
-
-                resolve(data);
-
-            });
-    })
-}
 export function renderWholeCategoryView() {
     getAllCategoriesWithTopics().then(data => {
         console.log(data);
         renderCategoryView(data);
     });
-}
-
-export function getAllCategoriesWithTopics() {
-    return new Promise(function (resolve, reject) {
-        const url = "http://localhost:3000/categories";
-        let methodData = {
-            method: 'GET'
-        }
-        fetch(url, methodData)
-            .then((res) => res.json())
-            .then(function (data) {
-
-                resolve(data);
-
-            });
-    })
-}
-
-export function getCategoryById(id) {
-    return new Promise(function (resolve, reject) {
-        const url = "http://localhost:3000/categories/" + id;
-        let methodData = {
-            method: 'GET'
-        }
-        fetch(url, methodData)
-            .then((res) => res.json())
-            .then(function (data) {
-                // console.log(data);
-                resolve(data);
-            });
-    })
-}
-
-export function deleteCategoryById(id) {
-    return new Promise(function (resolve, reject) {
-        const url = "http://localhost:3000/categories/" + id;
-        let methodData = {
-            method: 'DELETE'
-        }
-        fetch(url, methodData)
-            .then((res) => res.json())
-            .then(function (data) {
-                resolve(data);
-            });
-    })
-}
-export function createCategory(_categoryObj) {
-    return new Promise(function (resolve, reject) {
-        const url = "http://localhost:3000/categories";
-        console.log(JSON.stringify(_categoryObj));
-        let methodData = {
-            method: 'POST',
-            headers: {
-                "Content-Type": "application/json; charset=utf-8",
-            },
-            body: JSON.stringify(_categoryObj)
-        }
-        fetch(url, methodData)
-            .then((res) => res.json())
-            .then(function (data) {
-                console.log(data);
-                resolve(data);
-            });
-    })
 }
 
 export function Category(name) {
