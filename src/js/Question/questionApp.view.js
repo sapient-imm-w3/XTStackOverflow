@@ -14,10 +14,6 @@ function createHTMLElement(html) {
     return template.content;
 }
 
-let createNode = (element) => {
-    return document.createElement(element); // Create the type of element you pass in the parameters
-};
-
 let append = (parent, el) => {
     return parent.appendChild(el); // Append the second parameter(element) to the first one
 };
@@ -51,6 +47,7 @@ export const getQuestionView = (data) => {  //fetching data from firebase
             question += `<span class="badge badge-secondary">${qnadata.child('answer_count').val()} Answers</span><hr>`
         else
             question += `<span class="badge badge-secondary">Be The First To Post An Answer!</span><hr>`
+
         append(main, createHTMLElement(question));
 
         document.getElementById("question").addEventListener("click", function (e) {
@@ -89,9 +86,9 @@ export const getQuestionView = (data) => {  //fetching data from firebase
         <p>${element.child('text').val()}</p>
         </div>
         <hr>`
-
+            
             append(main, createHTMLElement(answer));
-
+            
             if (listenVerify) {
                 document.getElementById('V' + element.child('id').val()).addEventListener("click", function (e) {
                     if (e.target) {
@@ -118,12 +115,6 @@ export const getQuestionView = (data) => {  //fetching data from firebase
             });
         });
 
-        // question+=`<div class="input-group">
-        // <textarea id="post_answer" class="form-control" aria-label="With textarea" placeholder="Post Answer"></textarea>
-        // <div class="input-group-append">
-        // <button id="PB" class="btn btn-outline-secondary" type="button">Post</button>
-        // </div>
-        // </div>`
         getPostAnswer();
         document.getElementById("PB").addEventListener('click', postAnswer);
 

@@ -1,7 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/functions';
-import { getQuestionView } from "./questionApp.view";
+//import { getQuestionView } from "./questionApp.view";
 
 var config = {                                                            //configuring firebase
   apiKey: "AIzaSyAHQ-G50CPi-y2l7L5r41cvKRcs0hzSFiY",
@@ -56,8 +56,12 @@ export function postAnswer() {
     // updates['/questions/0/answer_count'] = dbwrite.once('value');
     
     // database.ref().update(updates);
-  // window.location.reload();
-  getQuestionData();
+  
+  getQuestionData().then(data=>{
+    getQuestionView(data);    
+});
+
+window.location.reload();
 
 }
   else
@@ -82,6 +86,7 @@ export function getVerified(id){
   });
   
   database.ref('questions/0/answers/'+id+'/is_correct').set(flag);
+  window.location.reload();
 }
 
 export function updateUVote(id){
@@ -91,6 +96,7 @@ export function updateUVote(id){
       upvote = data.child('up_vote').val();
   })
   database.ref('questions/0/answers/'+id+'/up_vote').set(upvote+1);
+  window.location.reload();
 }
 
 export function updateDVote(id){
@@ -100,6 +106,7 @@ export function updateDVote(id){
       downvote = data.child('down_vote').val();
   })
   database.ref('questions/0/answers/'+id+'/down_vote').set(downvote+1);
+  window.location.reload();
 }
 
 export function updateAFlag(id){
@@ -115,6 +122,7 @@ export function updateAFlag(id){
   });
 
   database.ref('questions/0/answers/'+id+'/is_flagged').set(flag);
+  window.location.reload();
 }
 
 export function updateQFlag(id){
@@ -130,13 +138,16 @@ export function updateQFlag(id){
   });
 
   database.ref('questions/0/is_flagged').set(flag);
+  window.location.reload();
 }
 
 export const getQuestionData = () => {
-
   let db = database.ref('questions');
-  db.on('value', function (data) {
-    getQuestionView(data);
-    return data
-  });
+
+  return new Promise(function(resolve,reject){
+       db.on('value', function (data) {
+      resolve(data);
+    });
+   })
+ 
 }
