@@ -141,3 +141,33 @@ export function delteCategoryFromFirebaseById(id) {
     });
 }
 
+export function isCategoryAlreadyExist(catName){
+    return new Promise(function(resolve,reject){
+        let isCategoryPresent = false;
+        getAllCatFromFirebase().then((data => {
+            console.log(data);
+            if(data!=null){
+            let arrOfKeys = Object.keys(data);
+            console.log(arrOfKeys);
+            console.log("Category name to be validated with:"+catName);
+           
+        for(let categoryCount = 0;categoryCount<arrOfKeys.length;categoryCount++){
+            let catKey = arrOfKeys[categoryCount];
+            let singleCatObj = data[catKey];
+            console.log("==========:"+singleCatObj);
+            //if(singleCatObj.name != null){
+            if(singleCatObj.name == catName){
+                isCategoryPresent = true;
+                break;
+            }
+        //}
+         }
+        
+        
+       }
+       console.log("Is category present:"+isCategoryPresent);
+       resolve(isCategoryPresent);
+    }));
+    })
+    
+    }
