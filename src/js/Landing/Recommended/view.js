@@ -1,6 +1,4 @@
 import createHTMLElement from '../view';
-import firebase from 'firebase/app';
-import 'firebase/auth';
 import { auth } from '../controller';
 
 export function getTitle(category) {
@@ -14,6 +12,10 @@ export function getTitle(category) {
       <a href="#" id="${key}"><p style="margin: 0.5rem">${question}</p></a>
       </div>
       `);
+      display.firstElementChild.addEventListener('click',(event) => {
+        event.preventDefault();
+        console.log(`Pratik's Code`);
+      });
     return display;
  }
  export function noRecQuestions(category){
@@ -23,10 +25,11 @@ export function getTitle(category) {
    color: red;
    font-style: italic;">No Questions under ${category}</p>
    </div>`;
-   document.getElementById('recommended').appendChild(createHTMLElement(html));
+   return createHTMLElement(html);
+   
  }
   export function viewLayout(){
-    let main = createHTMLElement(`<div class="col-md-3">
+    let main = `<div class="col-md-3">
     <aside style=" background-color: lightgrey; height: 100%;" >
       <div class="container" >
         <h2>Recommended For You</h2>
@@ -35,15 +38,22 @@ export function getTitle(category) {
       </div>
       <button type="button" id="signout" class="btn btn-danger">Sign Out</button>
     </aside>
-    </div>`);
-    document.getElementById(`content`).appendChild(main);
-    document.getElementById(`signout`).onclick = function() {
-        auth.signOut()
-        .then(()=>{
-          close();
-          close_window();
-        });
+    </div>`;
+
+    let mainElement = createHTMLElement(main);
+    console.log(mainElement);
+    mainElement.firstElementChild.firstElementChild.nextElementSibling.addEventListener('click', () => {
+      auth.signOut()
+      .then(()=>{
+        close();
+        close_window();
+      });
+    })
+
+    return mainElement;
+        
     }
+
     function close_window() {
       if (confirm("Close Window?")) {
         document.getElementById(`content`).innerHTML = "";
@@ -52,5 +62,4 @@ export function getTitle(category) {
 
       }
     }
-  }
   

@@ -3,6 +3,19 @@ import { database, auth } from './controller';
 import triggerTrending from './Trending/controller';
 import triggerMyQuestions from './MyQuestions/controller';
 import triggerRecommended from './Recommended/controller';
+import firebase from "firebase/app";
+
+export function setup() {
+    let provider = new firebase.auth.GoogleAuthProvider();
+
+    auth.signInWithPopup(provider).then(function (result) {
+        let currentUser = auth.currentUser;
+        getUser(currentUser);
+    }).catch(function (error) {
+        console.log(error.code + error.message + error.email + error.credential);
+    });
+
+}
 
 export function getFavCategories() {
     const db = database.ref(`categories`);
@@ -12,7 +25,7 @@ export function getFavCategories() {
 }
 
 export function updateCategories(favourite) {
-    let user = auth.currentUser;
+    let currentUser = auth.currentUser;
     database.ref(`users/` + user.uid).set({
         name: user.displayName,
         email: user.email,
@@ -20,33 +33,23 @@ export function updateCategories(favourite) {
         fav_categories: favourite
     });
     triggerTrending();
-    triggerMyQuestions(user);
-    triggerRecommended(user);
+    triggerMyQuestions(currentUser);
+    triggerRecommended(currentUser);
 }
-export function getUser(user) {
-    let flag = 0;
-    //const db = database.ref(`users/` + user.uid);
-    const db = database.ref(`users`);
-    db.once('value', (data) => {
-        data.forEach((userOne) => {
-            if (user.uid === userOne.key) {
-                flag = 1;
-                if(userOne.child(`role`).val()==="normal"){
+
+export function getUser(currentUser) {
+    const db = database.ref(`users/` + currentUser.uid);
+    db.once('value', (user) => {
+        if (user.val() == null) {
+            getFavCategories();
+        } else {
+            if (user.child(`role`).val() === "normal") {
                 triggerTrending();
-                triggerMyQuestions(user);
-                triggerRecommended(user);
-                }else if(userOne.child(`role`).val()==="admin"){
-                    console.log("Admin Page"); // Redirect to Srikar's Module
-                }
+                triggerMyQuestions(currentUser);
+                triggerRecommended(currentUser);
+            } else if (user.child(`role`).val() === "admin") {
+                console.log("Admin Page"); // Redirect to Srikar's Module
             }
-        })
-        flagger(flag);
-    });
-
-}
-
-function flagger(flag) {
-    if (flag === 0) {
-        getFavCategories();
-    }
+        }
+    })
 }
