@@ -12,6 +12,10 @@ export function viewLayout(){
     </section>
 `
 document.getElementById(`mainPart`).appendChild(createHTMLElement(content));
+document.getElementById(`askQuestionButton`).onclick = (event) => {
+    event.preventDefault();
+    console.log("Pratik's Module");
+}
 }
 
 export function viewQuestion(question){
@@ -32,4 +36,15 @@ export function viewQuestion(question){
     </div>
 </div>`;
 myQuestionDiv.appendChild(createHTMLElement(html));
+}
+
+export function noQuestions(){
+    let html = `<div class="myQuestion">
+                
+                <div>
+                    <h5 style="text-align: center;color: red;
+                    font-style: italic">No Questions Posted Yet !!!</h5>
+                </div>
+            </div>`;
+                document.getElementById(`myQuestionDiv`).appendChild(createHTMLElement(html));
 }

@@ -4,3 +4,8 @@
 #answer-count {
     font-size: 20px;
   }
+#signout {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+}
