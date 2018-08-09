@@ -79,8 +79,8 @@ export function createFlaggedAnswerDiv(answer) {
 }
 
 // Asish
-export function layoutUser(){
-    const table = createHTMLElement(`<table id="example" class="display" style="width:100%">
+export  function  layoutUser() {
+    const  table  =  createHTMLElement(`<table id="example" class="display" style="width:100%">
     <thead>
     <tr>
     <th>Name</th>
@@ -92,15 +92,15 @@ export function layoutUser(){
     </tbody>
     </table>`);
     //document.getElementById("userList").appendChild(table);
-    return table;
-    }
-    
-    export function userDiv(user) {
+    return  table;
+}
+
+export  function  userDiv(user) {
     //document.getElementById("tableBody").innerHTML ="";
-    let data =user;
+    let  data  = user;
     console.log(data.val());
-    const userTable = createHTMLElement(
-    `<tr>
+    const  userTable  =  createHTMLElement(
+        `<tr>
     <td>${data.child('name').val()}</td>
     <td>${data.child('role').val()}</td>
     <td>
@@ -108,145 +108,149 @@ export function layoutUser(){
     </td>
     </tr>
     `);
-    userTable.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.onclick = () => {
-    changeOfRole(`${data.key}`); 
+    userTable.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.onclick  =  ()  =>  {
+        changeOfRole(`${data.key}`);
     }
-    return userTable;
+    return  userTable;
+}
 //Tejeswar
 
-export function renderCategoryView(allCategoryObj) {
+// export function renderCategoryView(allCategoryObj) {
 
-    document.getElementById('usersDiv').innerHTML = "";
-    document.getElementById('flagged_questions').innerHTML = "";
-    document.getElementById('flagged_answers').innerHTML = "";
-    document.getElementById("BoardsContainer").innerHTML = "";
-    //if(allCategoryObj.length == 0){
-    if (allCategoryObj == null || allCategoryObj.length == 0) {
-        let addCatSectionDiv = document.createElement('div');
-        addCatSectionDiv.setAttribute('class', 'addListButton');
-        let addCatButton = document.createElement('button');
-        addCatButton.setAttribute('id', 'saveList');
-        addCatButton.setAttribute('class', 'btn btn-primary');
-        addCatButton.setAttribute('data-toggle', 'modal');
-        addCatButton.setAttribute('data-target', '#listModal');
-        addCatButton.setAttribute('data-placement', 'top');
-        addCatButton.innerText = '+Add Category';
-        addCatSectionDiv.appendChild(addCatButton);
-        document.getElementById("BoardsContainer").appendChild(document.createElement('br'));
-        document.getElementById("BoardsContainer").appendChild(addCatSectionDiv);
-        document.getElementById("BoardsContainer").appendChild(document.createElement('br'));
-        console.log("As Category is empty just returning");
-        return;
-    }
-    /*
-    let singleCatObj = allCategoryObj[0];
-    console.log(singleCatObj.name);
-    console.log(allCategoryObj.length);
-  */
-    let addCatSectionDiv = document.createElement('div');
-    addCatSectionDiv.setAttribute('class', 'addListButton');
-    let addCatButton = document.createElement('button');
-    addCatButton.setAttribute('id', 'saveList');
-    addCatButton.setAttribute('class', 'btn btn-primary');
-    addCatButton.setAttribute('data-toggle', 'modal');
-    addCatButton.setAttribute('data-target', '#listModal');
-    addCatButton.setAttribute('data-placement', 'top');
-    addCatButton.innerText = '+Add Category';
-    addCatSectionDiv.appendChild(addCatButton);
-    document.getElementById("BoardsContainer").appendChild(document.createElement('br'));
-    document.getElementById("BoardsContainer").appendChild(addCatSectionDiv);
-    document.getElementById("BoardsContainer").appendChild(document.createElement('br'));
+//     document.getElementById('usersDiv').innerHTML = "";
+//     document.getElementById('flagged_questions').innerHTML = "";
+//     document.getElementById('flagged_answers').innerHTML = "";
+//     document.getElementById("BoardsContainer").innerHTML = "";
+//     //if(allCategoryObj.length == 0){
+//     if (allCategoryObj == null || allCategoryObj.length == 0) {
+//         let addCatSectionDiv = document.createElement('div');
+//         addCatSectionDiv.setAttribute('class', 'addListButton');
+//         let addCatButton = document.createElement('button');
+//         addCatButton.setAttribute('id', 'saveList');
+//         addCatButton.setAttribute('class', 'btn btn-primary');
+//         addCatButton.setAttribute('data-toggle', 'modal');
+//         addCatButton.setAttribute('data-target', '#listModal');
+//         addCatButton.setAttribute('data-placement', 'top');
+//         addCatButton.innerText = '+Add Category';
+//         addCatSectionDiv.appendChild(addCatButton);
+//         document.getElementById("BoardsContainer").appendChild(document.createElement('br'));
+//         document.getElementById("BoardsContainer").appendChild(addCatSectionDiv);
+//         document.getElementById("BoardsContainer").appendChild(document.createElement('br'));
+//         console.log("As Category is empty just returning");
+//         return;
+//     }
+//     /*
+//     let singleCatObj = allCategoryObj[0];
+//     console.log(singleCatObj.name);
+//     console.log(allCategoryObj.length);
+//   */
+//     let addCatSectionDiv = document.createElement('div');
+//     addCatSectionDiv.setAttribute('class', 'addListButton');
+//     let addCatButton = document.createElement('button');
+//     addCatButton.setAttribute('id', 'saveList');
+//     addCatButton.setAttribute('class', 'btn btn-primary');
+//     addCatButton.setAttribute('data-toggle', 'modal');
+//     addCatButton.setAttribute('data-target', '#listModal');
+//     addCatButton.setAttribute('data-placement', 'top');
+//     addCatButton.innerText = '+Add Category';
+//     addCatSectionDiv.appendChild(addCatButton);
+//     document.getElementById("BoardsContainer").appendChild(document.createElement('br'));
+//     document.getElementById("BoardsContainer").appendChild(addCatSectionDiv);
+//     document.getElementById("BoardsContainer").appendChild(document.createElement('br'));
 
-    let catContainerSection = document.createElement('div');
-    catContainerSection.setAttribute('id', 'catContainer');
-    document.getElementById("BoardsContainer").appendChild(catContainerSection);
-    //For firebase db had to write the below code.
-    let arrOfKeys = Object.keys(allCategoryObj);
-    for (let categoryCount = 0; categoryCount < arrOfKeys.length; categoryCount++) {
-        let catKey = parseInt(arrOfKeys[categoryCount]);
-        let singleCatObj = allCategoryObj[catKey];
-        let singleCatDiv = document.createElement('div');
-        singleCatDiv.setAttribute('id', catKey);
-        singleCatDiv.setAttribute('class', 'task-list');
-        catContainerSection.appendChild(singleCatDiv);
-        let taskHeaderDiv = document.createElement('div');
-        taskHeaderDiv.setAttribute('class', 'task-header');
-        let singleSpan = document.createElement('span');
-        singleSpan.innerText = singleCatObj.name;
-        taskHeaderDiv.appendChild(singleSpan);
-        singleCatDiv.appendChild(taskHeaderDiv);
+//     let catContainerSection = document.createElement('div');
+//     catContainerSection.setAttribute('id', 'catContainer');
+//     document.getElementById("BoardsContainer").appendChild(catContainerSection);
+//     //For firebase db had to write the below code.
+//     let arrOfKeys = Object.keys(allCategoryObj);
+//     for (let categoryCount = 0; categoryCount < arrOfKeys.length; categoryCount++) {
+//         let catKey = parseInt(arrOfKeys[categoryCount]);
+//         let singleCatObj = allCategoryObj[catKey];
+//         let singleCatDiv = document.createElement('div');
+//         singleCatDiv.setAttribute('id', catKey);
+//         singleCatDiv.setAttribute('class', 'task-list');
+//         catContainerSection.appendChild(singleCatDiv);
+//         let taskHeaderDiv = document.createElement('div');
+//         taskHeaderDiv.setAttribute('class', 'task-header');
+//         let singleSpan = document.createElement('span');
+//         singleSpan.innerText = singleCatObj.name;
+//         taskHeaderDiv.appendChild(singleSpan);
+//         singleCatDiv.appendChild(taskHeaderDiv);
 
-        let addTopicButton = document.createElement('div');
-        addTopicButton.setAttribute('class', 'addCardButton');
-        let addTopic = document.createElement('button');
-        addTopic.setAttribute('id', 'save');
-        addTopic.setAttribute('class', 'btn btn-primary');
+//         let addTopicButton = document.createElement('div');
+//         addTopicButton.setAttribute('class', 'addCardButton');
+//         let addTopic = document.createElement('button');
+//         addTopic.setAttribute('id', 'save');
+//         addTopic.setAttribute('class', 'btn btn-primary');
 
-        addTopic.innerText = 'Delete';
-        addTopic.addEventListener('click', function (event) {
+//         addTopic.innerText = 'Delete';
+//         addTopic.addEventListener('click', function (event) {
 
-            let parentCatId = $(this).parent().parent().attr('id');
-            firebase.database().ref('/categories/' + parentCatId).once('value').then(function (snapshot) {
-                console.dir(snapshot.val());
-                return new Promise((resolve, reject) => {
-                    let name = snapshot.val().name;
-                    console.log("To be deleted category:" + name);
-                    resolve(name);
-                });
-            }).then(name => {
-                let isDeleteConfirmed = confirm("Are you sure to delete the category :" + name);
-                console.log("isDeleteConfirmed:" + isDeleteConfirmed);
-                if (isDeleteConfirmed) {
-                    console.log("Delete categoty :" + parentCatId);
-                    delteCategoryFromFirebaseById(parentCatId).then(data1 => {
-                        getAllCatFromFirebase().then((data => {
-                            console.log(data);
-                            renderCategoryView(data);
-                        }));
-                    });
-                }
-            })
+//             let parentCatId = $(this).parent().parent().attr('id');
+//             firebase.database().ref('/categories/' + parentCatId).once('value').then(function (snapshot) {
+//                 console.dir(snapshot.val());
+//                 return new Promise((resolve, reject) => {
+//                     let name = snapshot.val().name;
+//                     console.log("To be deleted category:" + name);
+//                     resolve(name);
+//                 });
+//             }).then(name => {
+//                 let isDeleteConfirmed = confirm("Are you sure to delete the category :" + name);
+//                 console.log("isDeleteConfirmed:" + isDeleteConfirmed);
+//                 if (isDeleteConfirmed) {
+//                     console.log("Delete categoty :" + parentCatId);
+//                     delteCategoryFromFirebaseById(parentCatId).then(data1 => {
+//                         getAllCatFromFirebase().then((data => {
+//                             console.log(data);
+//                             render().then(allCategoriesObjs => {
+//                                 let wholeCategoryDom = renderCategoryViewwithTick(allCategoriesObjs);
+//                                 document.getElementById("BoardsContainer").innerHTML = wholeCategoryDom;
+//                               });
+//                         }));
+//                     });
+//                 }
+//             })
 
-        }, true);
-        addTopicButton.appendChild(addTopic);
-        singleCatDiv.appendChild(addTopicButton);
+//         }, true);
+//         addTopicButton.appendChild(addTopic);
+//         singleCatDiv.appendChild(addTopicButton);
 
-        catContainerSection.appendChild(singleCatDiv);
+//         catContainerSection.appendChild(singleCatDiv);
 
-    }
-    document.getElementById("BoardsContainer").appendChild(catContainerSection);
+//     }
+//     document.getElementById("BoardsContainer").appendChild(catContainerSection);
 
-}
-    }
+// }
+//     }
 
-export function renderCategoryViewwithTick(allCategoryObj){
+export function renderCategoryViewwithTick(allCategoryObj) {
     document.getElementById("BoardsContainer").innerHTML = "";
     let addCatSec = `<div class="addListButton">
     <button id="saveList" type="button" class="btn btn-primary" data-toggle="modal" data-target="#listModal" data-placement="top">+Add Category</button>
 </div>
 <br>`;
 
-let catContainerSection = `<div id="catContainer">`;
-let catContainerSectionEnding = `</div>`;
+    let catContainerSection = `<div id="catContainer">`;
+    let catContainerSectionEnding = `</div>`;
 
-let singleCategoryBody = "";
-let arrOfKeys = Object.keys(allCategoryObj);
-for(let categoryCount = 0;categoryCount<arrOfKeys.length;categoryCount++){
-    let catKey = arrOfKeys[categoryCount];
-    let singleCatObj = allCategoryObj[catKey];
-     singleCategoryBody = `<div id=${catKey} class="task-list">
+    let singleCategoryBody = "";
+    let arrOfKeys = Object.keys(allCategoryObj);
+    for (let categoryCount = 0; categoryCount < arrOfKeys.length; categoryCount++) {
+        let catKey = arrOfKeys[categoryCount];
+        let singleCatObj = allCategoryObj[catKey];
+        singleCategoryBody = `<div id=${catKey} class="task-list">
     <div class="task-header">
         <span>${singleCatObj.name}</span>
     </div>`;
 
-    let addTopicButton = `<div class="addCardButton">
+        let addTopicButton = `<div class="addCardButton">
         <button  type="button" class="helloid" data-toggle="modal" data-target="#cardModal" data-placement="top">Delete</button>
     </div>
     </div>`;//this div is ending of each single category item
-    singleCategoryBody = singleCategoryBody+addTopicButton;
-    catContainerSection = catContainerSection+ singleCategoryBody;
+        singleCategoryBody = singleCategoryBody + addTopicButton;
+        catContainerSection = catContainerSection + singleCategoryBody;
 
-}
-let wholeCategoryView = addCatSec+catContainerSection+catContainerSectionEnding;
-return wholeCategoryView;
+    }
+    let wholeCategoryView = addCatSec + catContainerSection + catContainerSectionEnding;
+    return wholeCategoryView;
 }
