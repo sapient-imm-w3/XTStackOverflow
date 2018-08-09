@@ -1,6 +1,10 @@
 import './index.AskAQuestion.controller';
 import firebase from "firebase/app";
-import "firebase/auth"
+import "firebase/auth";
+
+import "../../../node_modules/jquery/dist/jquery";
+import "../../../node_modules/popper.js/dist/popper";
+import "../../../node_modules/bootstrap/dist/js/bootstrap";
 
 var config = {
     apiKey: "AIzaSyA5LE9PObCxc3tX0ZeFx2gdW2F102HeoOg",

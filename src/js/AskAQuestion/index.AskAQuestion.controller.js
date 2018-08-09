@@ -1,8 +1,13 @@
 
 import {renderView} from './index.AskAQuestion.view';
+import { getCategories } from './index.AskAQuestion.service';
 
 document.getElementById('askQuestion').onclick=() => {
-    const div = renderView();
-    document.getElementById('askQuestionForm').appendChild(div);
+
+    getCategories().then((categories) => {
+        document.getElementById(`askQuestionForm`).appendChild(renderView(categories));
+    })
 }
+
+
 
