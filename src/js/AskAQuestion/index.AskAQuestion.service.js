@@ -2,10 +2,11 @@ import firebase from 'firebase/app';
 import "firebase/database";
 
 
-export function render(){
+export function render(inputQuestion,inputCategory){
+  console.log("inside render");
     const d = new Date();
-    const inputQuestion = document.getElementById('inputQuestion');
-    const inputCategory = document.getElementById('inputCategory');
+    // const inputQuestion = document.getElementById('inputQuestion');
+    // const inputCategory = document.getElementById('inputCategory');
     const uuidv1 = require('uuid/v1');
     firebase.database().ref('/questions/'+ uuidv1()).set({
       text: inputQuestion.value,
@@ -22,6 +23,8 @@ export function render(){
       answer_count: 0
     });
 }
+
+
 
 
 

@@ -3,8 +3,6 @@ import { render } from './index.AskAQuestion.service';
 
 export function renderView() {
 
-
-
   const div = createHTMLElement(`<div  style="width:750px;margin:auto;"></div>`);
   const inputQuestion = createHTMLElement(`<form>
                 <div class="form-group">
@@ -20,11 +18,17 @@ export function renderView() {
   const button = document.createElement('button');
   button.innerHTML = "Submit";
   button.id = "submit";
-  button.onclick = () => { render(); }
+  button.addEventListener('click', function (){
+    const inputQuestion = document.getElementById('inputQuestion');
+    const inputCategory = document.getElementById('inputCategory');  
+  render(inputQuestion,inputCategory);
+  })
+  // button.onclick = () => { 
+  //    }
   div.appendChild(inputQuestion);
   div.appendChild(button);
-  document.getElementById('askQuestionForm').appendChild(div);
-
+  //document.getElementById('askQuestionForm').appendChild(div);
+  return div
 }
 
 export function createHTMLElement(html) {
@@ -32,5 +36,7 @@ export function createHTMLElement(html) {
   template.innerHTML = html;
   return template.content.firstElementChild;
 }
+
+
 
 
