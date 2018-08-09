@@ -1,37 +1,32 @@
-import {getRecommended} from './service';
-import {viewLayout} from './view';
+import { getRecommended, getRec } from './service';
+import { viewLayout, getRecQuestion, getTitle, noRecQuestions } from './view';
 
 export default (user) => {
-document.getElementById(`content`).appendChild(viewLayout());
-getRecommended(user).then(function(data) {
-    let elements = [];
-   
-    data.forEach((category) => {
-        let title = getTitle(category.val());
-        document.getElementById('recommended').appendChild(title);
+  document.getElementById(`content`).appendChild(viewLayout());
+  getRecommended(user).then(function (questions) {
+    getRec(user).then(function (data) {
+      data.forEach((category) => {
+        let elements = [];
+        document.getElementById('recommended').appendChild(getTitle(category.val()));
         let count = 0;
         questions.forEach((question) => {
           if (count < 5) {
             question.child(`categories`).val().forEach((cat) => {
               if (cat.name === category.val()) {
-                let display = getRecQuestion(question.child(`text`).val(),question.key+"Trending");
-                document.getElementById('recommended').appendChild(display);
-                document.getElementById(`${question.key}`+"Trending").onclick = (event) => {
-                  event.preventDefault();
-                 
-              }
+                let display = getRecQuestion(question.child(`text`).val(), question.key + "Trending");
+                elements.push(display);
                 count++;
               }
             })
           }
         })
-        if(count===0){
-          noRecQuestions(category.val());
+        if (count === 0) {
+          elements.push(noRecQuestions(category.val()));
         }
-      })
-    
-        elements.forEach(function(e) {
-            document.getElementById(`myQuestionDiv`).appendChild(e);
+        elements.forEach(function (e) {
+          document.getElementById(`recommended`).appendChild(e);
         });
-    });
+      })
+    })
+  })
 }

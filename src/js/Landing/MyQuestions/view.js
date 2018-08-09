@@ -38,6 +38,7 @@ export function viewQuestion(question) {
 </div>`;
     let htmlElement = createHTMLElement(html);
     htmlElement.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.addEventListener('click', (event) => {
+        event.preventDefault();
         console.log(`govind's code`);
     });
     return htmlElement;

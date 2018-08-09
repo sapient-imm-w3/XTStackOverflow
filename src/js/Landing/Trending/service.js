@@ -1,4 +1,3 @@
-import { displaytrending } from './views';
 import {database} from "../controller";
 
 export function getAnswerCountFromDB() {

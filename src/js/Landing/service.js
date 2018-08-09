@@ -34,7 +34,7 @@ export function updateCategories(favourite) {
     });
     triggerTrending();
     triggerMyQuestions(currentUser);
-    //triggerRecommended(user);
+    triggerRecommended(currentUser);
 }
 
 export function getUser(currentUser) {
@@ -46,7 +46,7 @@ export function getUser(currentUser) {
             if (user.child(`role`).val() === "normal") {
                 triggerTrending();
                 triggerMyQuestions(currentUser);
-                // triggerRecommended(user);
+                triggerRecommended(currentUser);
             } else if (user.child(`role`).val() === "admin") {
                 console.log("Admin Page"); // Redirect to Srikar's Module
             }

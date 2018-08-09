@@ -1,5 +1,4 @@
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import {auth } from '../controller';
 import createHTMLElement from '../view';
 import {displayCatQuestions} from './controller';
 
@@ -39,7 +38,7 @@ export function viewLayout(){
     let main = createHTMLElement(`
     <content class="row"  id="content">
     <div  class="col-md-9" id="mainPart">
-    <h3>Hello, ${firebase.auth().currentUser.displayName}</h3>
+    <h3>Hello, ${auth.currentUser.displayName}</h3>
     <section id="trendingSection">
     <h2 id="trendingHeading" >Recent Posts</h2>
     <div id="trendingDiv">

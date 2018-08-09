@@ -12,6 +12,10 @@ export function getTitle(category) {
       <a href="#" id="${key}"><p style="margin: 0.5rem">${question}</p></a>
       </div>
       `);
+      display.firstElementChild.addEventListener('click',(event) => {
+        event.preventDefault();
+        console.log(`Pratik's Code`);
+      });
     return display;
  }
  export function noRecQuestions(category){
@@ -21,7 +25,8 @@ export function getTitle(category) {
    color: red;
    font-style: italic;">No Questions under ${category}</p>
    </div>`;
-   document.getElementById('recommended').appendChild(createHTMLElement(html));
+   return createHTMLElement(html);
+   
  }
   export function viewLayout(){
     let main = `<div class="col-md-3">
