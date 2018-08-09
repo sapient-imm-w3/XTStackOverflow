@@ -62,7 +62,7 @@ export const getQuestionView = (data) => {  //fetching data from firebase
 
             // console.log(element.Key);
 
-            if (Qemail === "tannerottinger@gmail.com") {
+            if ("tannerottinger@gmail.com" === Qemail) {
                 answer += `<span class="tick-icon" id="V${element.child('id').val()}">&#9745</span>`
                 listenVerify = true;
             }
