@@ -1,6 +1,7 @@
-import { createFlaggedDiv, userDiv, renderCategoryView, createFlaggedAnswerDiv } from '../views/admin.view';
+import {userDiv, renderCategoryView, createFlaggedAnswerDiv } from '../views/admin.view';
 import firebase from "firebase/app";
 import 'firebase/database';
+import { CONSTANTS } from '../../../../node_modules/@firebase/util';
 
 var config = {
     apiKey: "AIzaSyDP2RBixhdkck-4UQqcJkqF8i689SWUauE",
@@ -15,43 +16,37 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 export function getFlaggedQuestionService() {
-    const db = database.ref(`questions`);
-    db.once('value', (data) => {
-        data.forEach((question) => {
-            console.log(question.child(`is_flagged`).val());
-            if (question.child(`is_flagged`).val() === 'True') {
-                createFlaggedDiv(question);
-            }
+    return new Promise(function(resolve,reject) {
+        const db = database.ref(`questions`);
+        db.on('value', (questions) => {
+            resolve(questions);
         });
-    });
+    })
 }
 
-export function revokeFlaggedQuestion() {
-    database.ref(`questions/0`).update({
+export function revokeFlaggedQuestion(id) {
+    console.log(id);
+    database.ref(`questions/${id}`).update({
         is_flagged: "False"
-    })
+    });
+    window.location.reload();
 }
 
 export function getFlaggedAnswerService() {
-    const db = database.ref(`questions`);
-    db.once('value', (data) => {
-        data.forEach((question) => {
-            database.ref(`questions/` + question.key + `/answers`).orderByChild("is_flagged").equalTo("True")
-                .once('value', (answers) => {
-                    answers.forEach((answer) => {
-                        createFlaggedAnswerDiv(answer);
-                    })
-                });
-        })
-    });
+    return new Promise(function(resolve,reject) {
+        const db = database.ref(`questions`);
+        db.on('value', (questions) => {
+            resolve(questions);
+        });
+    })
 };
 
-export function revokeFlaggedAnswer() {
+export function revokeFlaggedAnswer(id) {
     console.log('Pink');
-    firebase.database().ref(`questions/0/answers/0`).update({
-        
+    firebase.database().ref(`questions/0/answers/${id}`).update({
         is_flagged: "False"
-    })
+    });
+    window.location.reload();
 }
 
 // Asish

@@ -1,4 +1,4 @@
-import { getAllCatFromFirebase, delteCategoryFromFirebaseById, revokeFlaggedQuestion,revokeFlaggedAnswer, changeOfRole} from '../services/admin.service';
+import { getAllCatFromFirebase, delteCategoryFromFirebaseById, revokeFlaggedQuestion, revokeFlaggedAnswer, changeOfRole } from '../services/admin.service';
 import $ from 'jquery';
 import firebase from "firebase/app";
 
@@ -23,7 +23,7 @@ export function layout() {
     <tbody id="tableBody">
     </tbody>
 </table>`);
-    document.getElementById("flagged_questions").appendChild(table);
+    return table;
 }
 
 export function createFlaggedDiv(question) {
@@ -32,21 +32,20 @@ export function createFlaggedDiv(question) {
                 <td>${question.child(`text`).val()}</td>
                 <td>${question.child(`flag_count`).val()}</td>
                 <td>
-                <button type="button" class="btn purple-background" id ="${question.child(`id`).val()}">Revoke Flag</button>
+                <button type="button" class="btn purple-background" id ="${question.key}">Revoke Flag</button>
                 </td>
             </tr>
             `)
-    document.getElementById("tableBody").appendChild(flaggedDiv);
-    document.getElementById(`${question.child(`id`).val()}`).onclick = () => {
-        revokeFlaggedQuestion(`${question.child(`id`).val()}`);
-    }
-
+    flaggedDiv.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.addEventListener('click', (event) => {
+        revokeFlaggedQuestion(question.key);
+    });
+    return flaggedDiv;
 }
 
 export function layoutAnswer() {
     document.getElementById('usersDiv').innerHTML = "";
     document.getElementById('BoardsContainer').innerHTML = "";
-    const table = createHTMLElement(`
+    const tableAnswer = createHTMLElement(`
     
     <table id="examplelayoutAnswer" class="table table-striped table-hover table-bordered" style="width:100%">
     <thead>
@@ -59,25 +58,25 @@ export function layoutAnswer() {
     <tbody id="tableBodyAnswers">
     </tbody>
 </table>`);
-    document.getElementById("flagged_answers").appendChild(table);
+    return tableAnswer
 }
 
 export function createFlaggedAnswerDiv(answer) {
-    const flaggedDiv = createHTMLElement(
+    const flaggedDivAnswer = createHTMLElement(
         `<tr>
                 <td>${answer.child(`text`).val()}</td>
                 <td>${answer.child(`flag_count`).val()}</td>
                 <td>
-                <button type="button" class="btn purple-background" id ="${answer.child(`id`).val()}">Revoke AFlag</button>
+                <button type="button" class="btn purple-background" id ="${answer.key}">Revoke AFlag</button>
                 </td>
             </tr>
             `)
-    document.getElementById("tableBodyAnswers").appendChild(flaggedDiv);
-    document.getElementById(`${answer.child(`id`).val()}`).onclick = () => {
-        revokeFlaggedAnswer(`${answer.child(`id`).val()}`);
-    }
-
+    flaggedDivAnswer.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.addEventListener('click', (event) => {
+        revokeFlaggedAnswer(answer.key);
+    });
+    return flaggedDivAnswer;
 }
+
 // Asish
 export function layoutUserTable() {
     document.getElementById('flagged_questions').innerHTML = "";
@@ -201,7 +200,7 @@ export function renderCategoryView(allCategoryObj) {
                 let isDeleteConfirmed = confirm("Are you sure to delete the category :" + name);
                 console.log("isDeleteConfirmed:" + isDeleteConfirmed);
                 if (isDeleteConfirmed) {
-                  console.log("Delete categoty :" + parentCatId);
+                    console.log("Delete categoty :" + parentCatId);
                     delteCategoryFromFirebaseById(parentCatId).then(data1 => {
                         getAllCatFromFirebase().then((data => {
                             console.log(data);
