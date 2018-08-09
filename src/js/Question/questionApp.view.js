@@ -7,7 +7,6 @@ import { updateUVote } from "./question.service";
 import { updateDVote } from "./question.service";
 import { getVerified } from "./question.service";
 
-
 // firebase.auth().currentUser.email;
 function createHTMLElement(html) {
     const template = document.createElement('template');
@@ -46,15 +45,17 @@ export const getQuestionView = (data) => {  //fetching data from firebase
             question += `<li class="list-group-item hvr-hang" title="Flag" id="F${qnadata.child('id').val()}">&#9872</li>`
 
         question += `</ul>
-            <hr>
-        <span class="badge badge-secondary">${qnadata.child('answer_count').val()} Answers</span>`
+            <hr>`
 
+        if (qnadata.child('answer_count').val() > 0)
+            question += `<span class="badge badge-secondary">${qnadata.child('answer_count').val()} Answers</span><hr>`
+        else
+            question += `<span class="badge badge-secondary">Be The First To Post An Answer!</span><hr>`
         append(main, createHTMLElement(question));
 
         document.getElementById("question").addEventListener("click", function (e) {
             updateQFlag(qnadata.child('id').val());
         });
-
 
         let Qemail = qnadata.child('email').val();
         let listenVerify = false;
@@ -64,7 +65,7 @@ export const getQuestionView = (data) => {  //fetching data from firebase
 
             // console.log(element.Key);
 
-            if (Qemail === "tannerottinger@gmail.com"){
+            if (Qemail === "tannerottinger@gmail.com") {
                 answer += `<span class="tick-icon" id="V${element.child('id').val()}">&#9745</span>`
                 listenVerify = true;
             }
@@ -91,13 +92,15 @@ export const getQuestionView = (data) => {  //fetching data from firebase
 
             append(main, createHTMLElement(answer));
 
-            if(listenVerify){
-            document.getElementById('V' + element.child('id').val()).addEventListener("click", function (e) {
-                if (e.target){
-                    getVerified(element.child('id').val());                    
-                }
-            });
-        }
+            if (listenVerify) {
+                document.getElementById('V' + element.child('id').val()).addEventListener("click", function (e) {
+                    if (e.target) {
+                        let button = document.getElementById('V' + element.child('id').val());
+                        button.style.color = 'green';
+                        getVerified(element.child('id').val());
+                    }
+                });
+            }
 
 
             document.getElementById(element.child('id').val()).addEventListener("click", function (e) {
