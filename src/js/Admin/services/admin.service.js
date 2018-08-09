@@ -3,14 +3,14 @@ import firebase from "firebase/app";
 import 'firebase/database';
 import { CONSTANTS } from '../../../../node_modules/@firebase/util';
 
-var config = {
-    apiKey: "AIzaSyDP2RBixhdkck-4UQqcJkqF8i689SWUauE",
-    authDomain: "xtstackoverflow.firebaseapp.com",
-    databaseURL: "https://xtstackoverflow.firebaseio.com",
-    projectId: "xtstackoverflow",
-    storageBucket: "",
-    messagingSenderId: "873564884745"
-};
+let config = {
+    apiKey: "AIzaSyB27dZKtJ8xCD38hyNjtwfp5DCn14axl8s",
+    authDomain: "sweetymedhu-9e71e.firebaseapp.com",
+    databaseURL: "https://sweetymedhu-9e71e.firebaseio.com",
+    projectId: "sweetymedhu-9e71e",
+    storageBucket: "sweetymedhu-9e71e.appspot.com",
+    messagingSenderId: "682645099129"
+    }; 
 firebase.initializeApp(config);
 
 var database = firebase.database();
@@ -20,6 +20,7 @@ export function getFlaggedQuestionService() {
         const db = database.ref(`questions`);
         db.on('value', (questions) => {
             resolve(questions);
+            console.log("SrCh");
         });
     })
 }

@@ -11,6 +11,7 @@ export function createHTMLElement(html) {
 export function layout() {
     document.getElementById('usersDiv').innerHTML = "";
     document.getElementById('BoardsContainer').innerHTML = "";
+    document.getElementById('flagged_answers').innerHTML = "";
     const table = createHTMLElement(`
     <table id="examplelayout" class="table table-striped table-hover table-bordered" style="width:100%">
     <thead>
@@ -122,6 +123,7 @@ export function userDiv(user) {
 export function renderCategoryView(allCategoryObj) {
     document.getElementById('usersDiv').innerHTML = "";
     document.getElementById('flagged_questions').innerHTML = "";
+    document.getElementById('flagged_answers').innerHTML = "";
     document.getElementById("BoardsContainer").innerHTML = "";
     //if(allCategoryObj.length == 0){
     if (allCategoryObj == null || allCategoryObj.length == 0) {
