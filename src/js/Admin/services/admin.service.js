@@ -1,93 +1,69 @@
-import { createFlaggedDiv, userDiv, renderCategoryView, createFlaggedAnswerDiv } from '../views/admin.view';
+import {userDiv, renderCategoryView, createFlaggedAnswerDiv } from '../views/admin.view';
 import firebase from "firebase/app";
 import 'firebase/database';
+import { CONSTANTS } from '../../../../node_modules/@firebase/util';
 
-var config = {
-    apiKey: "AIzaSyDP2RBixhdkck-4UQqcJkqF8i689SWUauE",
-    authDomain: "xtstackoverflow.firebaseapp.com",
-    databaseURL: "https://xtstackoverflow.firebaseio.com",
-    projectId: "xtstackoverflow",
-    storageBucket: "",
-    messagingSenderId: "873564884745"
-};
+let config = {
+    apiKey: "AIzaSyB27dZKtJ8xCD38hyNjtwfp5DCn14axl8s",
+    authDomain: "sweetymedhu-9e71e.firebaseapp.com",
+    databaseURL: "https://sweetymedhu-9e71e.firebaseio.com",
+    projectId: "sweetymedhu-9e71e",
+    storageBucket: "sweetymedhu-9e71e.appspot.com",
+    messagingSenderId: "682645099129"
+    }; 
 firebase.initializeApp(config);
 
 var database = firebase.database();
 
 export function getFlaggedQuestionService() {
-    const db = database.ref(`questions`);
-    db.once('value', (data) => {
-        data.forEach((question) => {
-            console.log(question.child(`is_flagged`).val());
-            if (question.child(`is_flagged`).val() === 'True') {
-                createFlaggedDiv(question);
-            }
+    return new Promise(function(resolve,reject) {
+        const db = database.ref(`questions`);
+        db.on('value', (questions) => {
+            resolve(questions);
+            console.log("SrCh");
         });
-    });
+    })
 }
 
-export function revokeFlaggedQuestion() {
-    database.ref(`questions/0`).update({
+export function revokeFlaggedQuestion(id) {
+    console.log(id);
+    database.ref(`questions/${id}`).update({
         is_flagged: "False"
-    })
+    });
+    window.location.reload();
 }
 
 export function getFlaggedAnswerService() {
-    const db = database.ref(`questions`);
-    db.once('value', (data) => {
-        data.forEach((question) => {
-            database.ref(`questions/` + question.key + `/answers`).orderByChild("is_flagged").equalTo("True")
-                .once('value', (answers) => {
-                    answers.forEach((answer) => {
-                        createFlaggedAnswerDiv(answer);
-                    })
-                });
-        })
-    });
+    return new Promise(function(resolve,reject) {
+        const db = database.ref(`questions`);
+        db.on('value', (questions) => {
+            resolve(questions);
+        });
+    })
 };
 
-export function revokeFlaggedAnswer() {
-    database.ref(`questions/0/answers/0`).update({
+export function revokeFlaggedAnswer(id) {
+    console.log('Pink');
+    firebase.database().ref(`questions/0/answers/${id}`).update({
         is_flagged: "False"
-    })
+    });
+    window.location.reload();
 }
 
 // Asish
-export function getAllUserService() {
-    const url = "http://localhost:3000/users";
-    let methodData = {
-        method: 'GET'
-    }
-    fetch(url, methodData)
-        .then((res) => res.json())
-        .then(function (data) {
-            data.map(function (user) {
-                userDiv(user);
-            })
-        });
+
+export  function  getAllUserService() {
+    let  db  =  firebase.database().ref(`/users`);
+    db.on('value', (data)  =>  {
+        userDiv(data);
+    });
 }
 
-export function changeOfRole(id) {
-    const url = `http://localhost:3000/users/${id}`;
-    fetch(url)
-        .then((resp) => resp.json())
-        .then((obj) => {
-            let objeuser = Object.assign({}, obj, { role: 'Admin' });
-            const fetchData = {
-                method: 'PUT',
-                mode: "cors", // no-cors, cors, *same-origin
-                cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
-                credentials: "same-origin", // include, same-origin, *omit
-                headers: {
-                    "Content-Type": "application/json; charset=utf-8",
-                    // "Content-Type": "application/x-www-form-urlencoded",
-                },
-                redirect: "follow", // manual, *follow, error
-                referrer: "no-referrer", // no-referrer, *client
-                body: JSON.stringify(objeuser)
-            };
-            fetch(url, fetchData);
-        })
+export  function  changeOfRole(id) {
+    console.log(id);
+    firebase.database().ref(`/users/${id}`).update({
+        role:  "Admin"
+    });
 }
 
 //Tejeswar

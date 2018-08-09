@@ -1,3 +1,4 @@
 dist/
 node_modules/
-p/
+p.html
+package-lock
