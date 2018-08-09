@@ -190,19 +190,26 @@ export function renderCategoryView(allCategoryObj) {
         addTopic.addEventListener('click', function (event) {
 
             let parentCatId = $(this).parent().parent().attr('id');
-            let refToCategories = firebase.database().ref("categories/" + parentCatId);
-            console.dir(refToCategories);
-            let isDeleteConfirmed = confirm("Are you sure to delete the category." + Object.keys(refToCategories)[0]);
-            console.log("isDeleteConfirmed:" + isDeleteConfirmed);
-            if (isDeleteConfirmed) {
-                console.log("Delete categoty :" + parentCatId);
-                delteCategoryFromFirebaseById(parentCatId).then(data1 => {
-                    getAllCatFromFirebase().then((data => {
-                        console.log(data);
-                        renderCategoryView(data);
-                    }));
+            firebase.database().ref('/categories/' + parentCatId).once('value').then(function (snapshot) {
+                console.dir(snapshot.val());
+                return new Promise((resolve, reject) => {
+                    let name = snapshot.val().name;
+                    console.log("To be deleted category:" + name);
+                    resolve(name);
                 });
-            }
+            }).then(name => {
+                let isDeleteConfirmed = confirm("Are you sure to delete the category :" + name);
+                console.log("isDeleteConfirmed:" + isDeleteConfirmed);
+                if (isDeleteConfirmed) {
+                  console.log("Delete categoty :" + parentCatId);
+                    delteCategoryFromFirebaseById(parentCatId).then(data1 => {
+                        getAllCatFromFirebase().then((data => {
+                            console.log(data);
+                            renderCategoryView(data);
+                        }));
+                    });
+                }
+            })
 
         }, true);
         addTopicButton.appendChild(addTopic);
