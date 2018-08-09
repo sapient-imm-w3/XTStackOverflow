@@ -3,10 +3,9 @@ import { getQuestions } from './service';
 
 export default (user) => {
 
-    document.getElementById(`mainPart`).appendChild(viewLayout());
+    let myQuestionSection = viewLayout()
     getQuestions(user).then(function(questions) {
     let elements = [];
-    console.log(questions.numChildren());
     if(questions.numChildren()===0){
         elements.push(noQuestions());
     }else{
@@ -16,8 +15,8 @@ export default (user) => {
         })
     }
         elements.forEach(function(e) {
-            document.getElementById(`myQuestionDiv`).appendChild(e);
+            myQuestionSection.firstElementChild.nextElementSibling.appendChild(e);
         });
     });
-
+    return myQuestionSection;
 }

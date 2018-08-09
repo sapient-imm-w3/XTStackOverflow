@@ -1,8 +1,12 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
-import { setup } from "./service";
-
+import { createModal, displayFavCategories } from "./Authentication/view";
+import $ from 'jquery';
+import triggerTrending from './Trending/controller';
+import triggerMyQuestions from './MyQuestions/controller';
+import triggerRecommended from './Recommended/controller';
+import {setup,getUser,getCategories} from './Authentication/service';
 
 let config = {
     apiKey: "AIzaSyB27dZKtJ8xCD38hyNjtwfp5DCn14axl8s",
@@ -15,8 +19,33 @@ let config = {
 
 firebase.initializeApp(config);
 
-
 export const database = firebase.database();
 export const auth = firebase.auth();
 
-setup();
+setup().then((currentUser)=>{
+    getUser(currentUser).then(
+        (user) => {
+            if (user.val() == null) {
+                getCategories().then((categories) => {
+                    document.body.appendChild(createModal());
+                    categories.forEach(category => {
+                    document.getElementById(`modalBody`).appendChild(displayFavCategories(category));
+                });
+                $('#exampleModalLong').modal('show');
+                });
+        }else{
+            if(user.child(`role`).val()==="normal"){
+                let content = triggerTrending();
+                let myQuestionSection = triggerMyQuestions(currentUser); // Append in mainPart
+                let div = triggerRecommended(currentUser); // Append in content
+                content.firstElementChild.appendChild(myQuestionSection);
+                content.appendChild(div);
+                document.body.appendChild(content);
+            }
+        }
+});
+});
+
+
+//Appending element for a new user in updateCategories function..!!!
+//Maybe writing a different function which returns a single DOM element..!!!
