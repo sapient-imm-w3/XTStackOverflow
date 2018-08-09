@@ -220,3 +220,35 @@ export function renderCategoryView(allCategoryObj) {
     document.getElementById("BoardsContainer").appendChild(catContainerSection);
 
 }
+
+export function renderCategoryViewwithTick(allCategoryObj){
+    document.getElementById("BoardsContainer").innerHTML = "";
+    let addCatSec = `<div class="addListButton">
+    <button id="saveList" type="button" class="btn btn-primary" data-toggle="modal" data-target="#listModal" data-placement="top">+Add Category</button>
+</div>
+<br>`;
+
+let catContainerSection = `<div id="catContainer">`;
+let catContainerSectionEnding = `</div>`;
+
+let singleCategoryBody = "";
+let arrOfKeys = Object.keys(allCategoryObj);
+for(let categoryCount = 0;categoryCount<arrOfKeys.length;categoryCount++){
+    let catKey = arrOfKeys[categoryCount];
+    let singleCatObj = allCategoryObj[catKey];
+     singleCategoryBody = `<div id=${catKey} class="task-list">
+    <div class="task-header">
+        <span>${singleCatObj.name}</span>
+    </div>`;
+
+    let addTopicButton = `<div class="addCardButton">
+        <button  type="button" class="helloid" data-toggle="modal" data-target="#cardModal" data-placement="top">Delete</button>
+    </div>
+    </div>`;//this div is ending of each single category item
+    singleCategoryBody = singleCategoryBody+addTopicButton;
+    catContainerSection = catContainerSection+ singleCategoryBody;
+
+}
+let wholeCategoryView = addCatSec+catContainerSection+catContainerSectionEnding;
+return wholeCategoryView;
+}
