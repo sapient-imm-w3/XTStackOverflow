@@ -1,7 +1,6 @@
 import {userDiv, renderCategoryView, createFlaggedAnswerDiv } from '../views/admin.view';
 import firebase from "firebase/app";
 import 'firebase/database';
-import { CONSTANTS } from '../../../../node_modules/@firebase/util';
 
 let config = {
     apiKey: "AIzaSyB27dZKtJ8xCD38hyNjtwfp5DCn14axl8s",
@@ -51,20 +50,22 @@ export function revokeFlaggedAnswer(id) {
 }
 
 // Asish
-
-export  function  getAllUserService() {
-    let  db  =  firebase.database().ref(`/users`);
-    db.on('value', (data)  =>  {
-        userDiv(data);
-    });
-}
-
-export  function  changeOfRole(id) {
-    console.log(id);
-    firebase.database().ref(`/users/${id}`).update({
-        role:  "Admin"
-    });
-}
+ 
+export function getAllUserService() {
+let db = firebase.database().ref(`/users`);
+return new Promise(function (resolve,reject){
+db.on('value',(data) => {
+resolve(data);
+//userDiv(data); 
+});
+});
+} 
+export function changeOfRole(id){
+console.log(id);
+firebase.database().ref(`/users/${id}`).update({
+role: "Admin"
+});
+} 
 
 //Tejeswar
 

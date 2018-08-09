@@ -79,48 +79,43 @@ export function createFlaggedAnswerDiv(answer) {
 }
 
 // Asish
-export function layoutUserTable() {
-    document.getElementById('flagged_questions').innerHTML = "";
-    document.getElementById('BoardsContainer').innerHTML = "";
-    const table = createHTMLElement(`
-    <table id="examplelayoutAnswer" class="table table-striped table-hover table-bordered" style="width:100%">
+export function layoutUser(){
+    const table = createHTMLElement(`<table id="example" class="display" style="width:100%">
     <thead>
-        <tr>
-            <th>Name</th>
-            <th>Role</th>
-            <th>Change Role</th>
-        </tr>
+    <tr>
+    <th>Name</th>
+    <th>Role</th>
+    <th>Change Role</th>
+    </tr>
     </thead>
-    <tbody id="tableBodyUser">
+    <tbody id="tableBody">
     </tbody>
-</table>`);
-    document.getElementById("usersDiv").appendChild(table);
-}
-export function userDiv(user) {
-    document.getElementById("tableBody").innerHTML = "";
-    let data = user;
+    </table>`);
+    //document.getElementById("userList").appendChild(table);
+    return table;
+    }
+    
+    export function userDiv(user) {
+    //document.getElementById("tableBody").innerHTML ="";
+    let data =user;
     console.log(data.val());
-    console.log(Object.keys(data.val()))
-    data.forEach((data) => {
-        const userTable = createHTMLElement(
-            `<tr>
+    const userTable = createHTMLElement(
+    `<tr>
     <td>${data.child('name').val()}</td>
     <td>${data.child('role').val()}</td>
     <td>
-    <input type="checkbox" class="custom-control-input" id="${data.key}">
+    <input type="checkbox"  id="${data.key}">
     </td>
     </tr>
-    `)
-        document.getElementById("tableBody").appendChild(userTable);
-        document.getElementById(`${data.key}`).onclick = () => {
-            changeOfRole(`${data.key}`);
-        }
-    });
-}
-
+    `);
+    userTable.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.onclick = () => {
+    changeOfRole(`${data.key}`); 
+    }
+    return userTable;
 //Tejeswar
 
 export function renderCategoryView(allCategoryObj) {
+
     document.getElementById('usersDiv').innerHTML = "";
     document.getElementById('flagged_questions').innerHTML = "";
     document.getElementById('flagged_answers').innerHTML = "";
@@ -222,3 +217,4 @@ export function renderCategoryView(allCategoryObj) {
     document.getElementById("BoardsContainer").appendChild(catContainerSection);
 
 }
+    }
