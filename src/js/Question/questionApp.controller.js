@@ -10,41 +10,39 @@ import { getVerified } from "./question.service";
 
 
 const body = document.getElementsByTagName("body")[0];
-
 const main = document.createElement("div");
 main.className = "container";
 append(body, main);
-
 main.innerHTML = "";
 
-getQuestionData().then(data=>{ //pass question key to map data of certain question
+getQuestionData().then(data => { //pass question key to map data of certain question
 
     //QUESTION VIEW
 
     let qnadata = data;
     let Qemail = qnadata.child('email').val();
     let listenVerify = false;
-        
-    let questionElement = getQuestionView(data);    
+
+    let questionElement = getQuestionView(data);
     questionElement.firstElementChild.nextElementSibling.nextElementSibling.nextElementSibling.addEventListener("click", function (e) {
         updateQFlag(qnadata.child('id').val());
     });
-    append(main,questionElement);
+    append(main, questionElement);
 
     //ANSWERS VIEW
 
     if ("tannerottinger@gmail.com" === Qemail)     //check if it is same user who posted question
         listenVerify = true;
-    
+
     qnadata.child('answers').forEach(element => {
         let answerElement = getAnswerView(element);
-                
+
         if (listenVerify) {
             let span = document.createElement('span');
             span.className = "tick-icon";
-            span.id = 'V'+element.child('id').val();
+            span.id = 'V' + element.child('id').val();
             span.innerHTML = '&#9745';
-            append(answerElement.firstElementChild,span);
+            append(answerElement.firstElementChild, span);
 
             answerElement.firstElementChild.lastElementChild.addEventListener("click", function (e) {
                 if (e.target) {
@@ -54,13 +52,13 @@ getQuestionData().then(data=>{ //pass question key to map data of certain questi
                 }
             });
         }
-        
+
         let ul;
-        if(element.child("is_correct").val() === true)
-            ul=answerElement.firstElementChild.firstElementChild.nextElementSibling;
+        if (element.child("is_correct").val() === true)
+            ul = answerElement.firstElementChild.firstElementChild.nextElementSibling;
         else
-            ul=answerElement.firstElementChild.firstElementChild;
-                
+            ul = answerElement.firstElementChild.firstElementChild;
+
         ul.addEventListener("click", function (e) {
             if (e.target && e.target.matches("li img")) {
                 if (e.target.name === 'upvote') // checking for individual button
@@ -74,14 +72,14 @@ getQuestionData().then(data=>{ //pass question key to map data of certain questi
                     updateAFlag(element.child('id').val());
             }
         });
-        append(main,answerElement);
+        append(main, answerElement);
     });
-      
+
     //POST ANSWER
-    
+
     let postAnswerView = getPostAnswer();
     postAnswerView.firstElementChild.nextElementSibling.firstElementChild.addEventListener('click', postAnswer);
-    append(main, postAnswerView);  
+    append(main, postAnswerView);
 });
 
 
