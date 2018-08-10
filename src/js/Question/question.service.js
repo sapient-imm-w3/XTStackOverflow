@@ -1,7 +1,8 @@
 import firebase from 'firebase/app';
 import 'firebase/database';
 import 'firebase/functions';
-//import { getQuestionView } from "./questionApp.view";
+import { getAnswerView } from './questionApp.view';
+import { getQuestionView } from "./questionApp.view";
 
 var config = {                                                            //configuring firebase
   apiKey: "AIzaSyAHQ-G50CPi-y2l7L5r41cvKRcs0hzSFiY",
@@ -58,7 +59,8 @@ export function postAnswer() {
     // database.ref().update(updates);
   
   getQuestionData().then(data=>{
-    getQuestionView(data);    
+    getQuestionView(data);
+    getAnswerView(data);    
 });
 
 window.location.reload();
@@ -141,8 +143,8 @@ export function updateQFlag(id){
   window.location.reload();
 }
 
-export const getQuestionData = () => {
-  let db = database.ref('questions');
+export const getQuestionData = (id) => {
+  let db = database.ref('questions/0');
 
   return new Promise(function(resolve,reject){
        db.on('value', function (data) {

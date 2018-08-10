@@ -65,4 +65,5 @@ span img {
 .tick-icon{
   position: absolute;
     right: 1px;
+    top:1px;
 }
