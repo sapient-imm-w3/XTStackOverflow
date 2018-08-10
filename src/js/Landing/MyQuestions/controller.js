@@ -15,7 +15,7 @@ export default (user) => {
         })
     }
         elements.forEach(function(e) {
-            myQuestionSection.firstElementChild.nextElementSibling.nextElementSibling.appendChild(e);
+            myQuestionSection.lastElementChild.appendChild(e);
         });
     });
     return myQuestionSection;
