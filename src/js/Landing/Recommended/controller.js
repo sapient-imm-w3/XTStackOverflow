@@ -2,12 +2,12 @@ import { getRecommended, getRec } from './service';
 import { viewLayout, getRecQuestion, getTitle, noRecQuestions } from './view';
 
 export default (user) => {
-  document.getElementById(`content`).appendChild(viewLayout());
+  let div = viewLayout();
   getRecommended(user).then(function (questions) {
     getRec(user).then(function (data) {
       data.forEach((category) => {
         let elements = [];
-        document.getElementById('recommended').appendChild(getTitle(category.val()));
+        div.firstElementChild.firstElementChild.firstElementChild.nextElementSibling.appendChild(getTitle(category.val()));
         let count = 0;
         questions.forEach((question) => {
           if (count < 5) {
@@ -24,9 +24,10 @@ export default (user) => {
           elements.push(noRecQuestions(category.val()));
         }
         elements.forEach(function (e) {
-          document.getElementById(`recommended`).appendChild(e);
+          div.firstElementChild.firstElementChild.firstElementChild.nextElementSibling.appendChild(e);
         });
       })
     })
   })
+  return div;
 }

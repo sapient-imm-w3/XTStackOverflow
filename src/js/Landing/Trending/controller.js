@@ -4,7 +4,7 @@ import { getAnswerCountFromDB, getCatQuestions } from './service';
 export default () => {
     document.body.innerHTML = "";
     document.body.className = "";
-    document.body.appendChild(viewLayout());
+    let content = viewLayout();
      getAnswerCountFromDB().then((questions) => {
         let elements = [];
         questions.forEach((question) => {
@@ -12,10 +12,12 @@ export default () => {
             let html = displaytrending(question.child(`answer_count`).val(),question.child(`text`).val(),question.child(`date`).val(),question.child(`categories`).val(),question.key);
             elements.push(html);
         });
+        //return elements;
         elements.forEach(function(e) {
-            document.getElementById("trendingDiv").appendChild(e);
+            content.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.appendChild(e);
             });
-     });
+      });
+      return content;
     }
 
 export function displayCatQuestions(name){
