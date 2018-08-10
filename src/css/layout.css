@@ -9,3 +9,21 @@
     bottom: 5px;
     right: 5px;
 }
+#profile{
+    margin: 1rem;
+    padding: 1rem;
+    background-color: aliceblue;
+    border-radius: 4rem;
+}
+img{
+    width: 72%;
+    border-radius: 8rem;
+}
+#profileInfo{
+    color: black;
+    font-size: 2rem;
+    line-height: 3.25rem;
+    font-family: cursive;
+    text-shadow: 0px 1px 4px black;
+    padding: 3rem;
+}

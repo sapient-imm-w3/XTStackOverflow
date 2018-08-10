@@ -38,7 +38,15 @@ export function viewLayout(){
     let main = createHTMLElement(`
     <content class="row"  id="content">
     <div  class="col-md-9" id="mainPart">
-    <h3>Hello, ${auth.currentUser.displayName}</h3>
+    <div id = "profile" class="row">
+    <div class = "col-md-4">
+        <img src="${auth.currentUser.photoURL}" alt="displayImage">
+    </div>
+    <div class = "col-md-8" id="profileInfo">
+        ${auth.currentUser.displayName} <br>
+        ${auth.currentUser.email} <br>
+    </div>
+    </div>
     <section id="trendingSection">
     <h2 id="trendingHeading" >Recent Posts</h2>
     <div id="trendingDiv">
