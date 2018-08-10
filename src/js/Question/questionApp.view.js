@@ -17,7 +17,7 @@ export const getQuestionView = (data) => {  //fetching data from firebase
     let qnadata = data;
 
     let question = `<span><img src="../../../src/img/question.png" alt="question" title="question" class="hvr-forward"></span>
-        <span class="question badge badge-light"> <span class="badge badge-pill badge-info">Posted By:</span> ${qnadata.child('email').val()} <span class="badge badge-pill badge-info">On</span> ${qnadata.child('date').val()}</span>
+        <span class="question badge badge-light"><img src="../../../src/img/img.png" alt="username" title="username" class="username hvr-grow"> ${qnadata.child('email').val()} <img src="../../../src/img/time.png" alt="timestamp" title="timestamp" class="timestamp hvr-buzz"> ${qnadata.child('date').val()}</span>
         <h6>${qnadata.child('text').val()}</h6>
         <ul class="list-group question" id="question">`
 
