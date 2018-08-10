@@ -38,7 +38,6 @@ setup().then((currentUser)=>{
                 });
         }else{
             if(user.child(`role`).val()==="normal"){
-                console.log(displayPage(currentUser));
                 document.body.appendChild(displayPage(currentUser));
                 //return displayPage(currentUser);
             }

@@ -3,12 +3,10 @@ import { getAnswerCountFromDB, getCatQuestions } from './service';
 
 export default () => {
     document.body.innerHTML = "";
-    document.body.className = "";
     let content = viewLayout();
      getAnswerCountFromDB().then((questions) => {
         let elements = [];
         questions.forEach((question) => {
-            console.log(question.child(`answer_count`).val());
             let html = displaytrending(question.child(`answer_count`).val(),question.child(`text`).val(),question.child(`date`).val(),question.child(`categories`).val(),question.key);
             elements.push(html);
         });

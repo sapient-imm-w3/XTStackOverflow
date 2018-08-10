@@ -29,7 +29,7 @@ let dates = `<small id="date" class = "text-muted" style="float: right">${date}<
     div.firstElementChild.firstElementChild.nextElementSibling.appendChild(createHTMLElement(dates));
     div.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.addEventListener('click', (event) => {
         event.preventDefault();
-        console.log("Pratik's Module");
+        console.log("Govind's Module");
     });
 return div;
 }

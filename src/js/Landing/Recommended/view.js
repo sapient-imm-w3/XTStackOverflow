@@ -14,7 +14,7 @@ export function getTitle(category) {
       `);
       display.firstElementChild.addEventListener('click',(event) => {
         event.preventDefault();
-        console.log(`Pratik's Code`);
+        console.log(`Govind's Module`);
       });
     return display;
  }
@@ -41,7 +41,6 @@ export function getTitle(category) {
     </div>`;
 
     let mainElement = createHTMLElement(main);
-    console.log(mainElement);
     mainElement.firstElementChild.firstElementChild.nextElementSibling.addEventListener('click', () => {
       auth.signOut()
       .then(()=>{
