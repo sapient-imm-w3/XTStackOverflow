@@ -1,4 +1,4 @@
-import {userDiv, renderCategoryView, createFlaggedAnswerDiv } from '../views/admin.view';
+import {renderCategoryView } from '../views/admin.view';
 import firebase from "firebase/app";
 import 'firebase/database';
 
@@ -15,7 +15,7 @@ firebase.initializeApp(config);
 var database = firebase.database();
 
 export function getFlaggedQuestionService() {
-    return new Promise(function(resolve,reject) {
+    return new Promise(function(resolve) {
         const db = database.ref(`questions`);
         db.on('value', (questions) => {
             resolve(questions);
@@ -33,7 +33,7 @@ export function revokeFlaggedQuestion(id) {
 }
 
 export function getFlaggedAnswerService() {
-    return new Promise(function(resolve,reject) {
+    return new Promise(function(resolve) {
         const db = database.ref(`questions`);
         db.on('value', (questions) => {
             resolve(questions);
@@ -53,7 +53,7 @@ export function revokeFlaggedAnswer(id) {
  
 export function getAllUserService() {
 let db = firebase.database().ref(`/users`);
-return new Promise(function (resolve,reject){
+return new Promise(function (resolve){
 db.on('value',(data) => {
 resolve(data);
 //userDiv(data); 
@@ -106,7 +106,7 @@ export function Category(name) {
 
 }
 export function getAllCatFromFirebase() {
-    return new Promise(function (resolve, reject) {
+    return new Promise(function (resolve) {
         let refToCategories = firebase.database().ref().child("categories");
         refToCategories.on("value", function (snap) {
             console.log("Inside listener");
@@ -118,31 +118,19 @@ export function getAllCatFromFirebase() {
     })
 }
 export function insertCategoryToFirebase(_categoryObj) {
-    return new Promise(function (resolve, reject) {
-        let ret = firebase.database().ref('categories/' + _categoryObj.id).set({
-            name: _categoryObj.name
-        }, function (error) {
-            if (error) {
-                console.log(error);
-            }
-            else {
-
-                console.log("data inserted successfully");
-                resolve("success");
-            }
-        });
+    return new Promise(function (resolve) {
         //resolve(ret);
     })
 }
 export function delteCategoryFromFirebaseById(id) {
-    return new Promise(function (resolve, reject) {
+    return new Promise(function (resolve) {
         firebase.database().ref().child("categories").child(id).remove();
         resolve("success");
     });
 }
 
 export function isCategoryAlreadyExist(catName){
-    return new Promise(function(resolve,reject){
+    return new Promise(function(resolve){
         let isCategoryPresent = false;
         getAllCatFromFirebase().then((data => {
             console.log(data);

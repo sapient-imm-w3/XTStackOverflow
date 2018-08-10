@@ -70,16 +70,19 @@ retrieveUser.addEventListener('click', (event) => {
     data.forEach(element => {
       elements.push(userDiv(element));
 
-      const retrieveUser = document.getElementById("retrieveUser");
-      retrieveUser.addEventListener('click', (event) => {
-        event.preventDefault();
-        layoutUser();
-        getAllUserService();
-      });
-    }
-    )
+      console.log(elements);
+      document.getElementById("tableBody").innerHTML ="";
+      elements.forEach(element=>{
+      document.getElementById(`tableBody`).appendChild(element);
+})
   });
 });
+});
+
+let layoutDom = layout();
+document.getElementById("userList").appendChild(layoutDom);
+
+
 // Tejeswar
 
 const retrieveCategories = document.getElementById('retrieveCategories');

@@ -1,4 +1,4 @@
 dist/
 node_modules/
 p.html
-package-lock
+package-lock.json
