@@ -32,20 +32,28 @@ setup().then((currentUser)=>{
                     document.getElementById(`modalBody`).appendChild(displayFavCategories(category));
                 });
                 $('#exampleModalLong').modal('show');
+                document.getElementById(`saveCategories`).onclick = () => {
+                   document.body.appendChild(displayPage(currentUser));
+                }
                 });
         }else{
             if(user.child(`role`).val()==="normal"){
-                let content = triggerTrending();
-                let myQuestionSection = triggerMyQuestions(currentUser); // Append in mainPart
-                let div = triggerRecommended(currentUser); // Append in content
-                content.firstElementChild.appendChild(myQuestionSection);
-                content.appendChild(div);
-                document.body.appendChild(content);
+                console.log(displayPage(currentUser));
+                document.body.appendChild(displayPage(currentUser));
+                //return displayPage(currentUser);
             }
         }
 });
 });
 
+function displayPage(currentUser){
+    let content = triggerTrending();
+    let myQuestionSection = triggerMyQuestions(currentUser); // Append in mainPart
+    let div = triggerRecommended(currentUser); // Append in content
+    content.firstElementChild.appendChild(myQuestionSection);
+    content.appendChild(div);
+    return content;
+}
 
 //Appending element for a new user in updateCategories function..!!!
 //Maybe writing a different function which returns a single DOM element..!!!

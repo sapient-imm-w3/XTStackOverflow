@@ -19,13 +19,12 @@ export function createModal(){
      </div>
    </div>
   </div>`);
-
-  modal.firstElementChild.firstElementChild.firstElementChild
-  .nextElementSibling.nextElementSibling.firstElementChild.nextElementSibling.addEventListener('click',() => {
+  modal.firstElementChild.firstElementChild.lastElementChild.lastElementChild.addEventListener('click',() => {
     let favorite = [];
       $("input[name='category']:checked").each(function () {
         favorite.push($(this).val());
       });
+      //submitCategories(favorite);
       updateCategories(favorite);
   })
   return modal;
