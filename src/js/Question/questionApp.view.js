@@ -43,7 +43,7 @@ export const getAnswerView = (element) => {
     let answer = `<div class="answer">`
 
     if (element.child('is_correct').val() === true)
-        answer += `<span><img src="../../../src/img/verified.png" alt="verified" title="Verified" class="hvr-buzz"></span>`
+        answer += `<span><img src="../../../src/img/verified.png" alt="verified" title="Verified" class="hvr-pop"></span>`
 
     answer += `<ul class="list-group" id="${element.child('id').val()}">
         <li class="list-group-item"><img src="../../../src/img/up_vote.png" alt="Like" title="Like" name="upvote" class="hvr-bounce-in" id="U${element.child('id').val()}"> +${element.child('up_vote').val()}</li>
@@ -56,7 +56,7 @@ export const getAnswerView = (element) => {
 
     answer += `</ul>
         <br>
-        <span class="badge badge-light"> <span class="badge badge-pill badge-info">Posted By:</span> ${element.child('email').val()} <span class="badge badge-pill badge-info">On</span> ${element.child('date').val()}</span>
+        <span class="badge badge-light"><img src="../../../src/img/img.png" alt="username" title="username" class="username hvr-grow"> ${element.child('email').val()} <img src="../../../src/img/time.png" alt="timestamp" title="timestamp" class="timestamp hvr-buzz"> ${element.child('date').val()}</span>
         <br>
         <p>${element.child('text').val()}</p>
         </div>
