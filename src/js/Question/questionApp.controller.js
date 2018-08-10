@@ -17,7 +17,9 @@ append(body, main);
 
 main.innerHTML = "";
 
-getQuestionData().then(data=>{
+getQuestionData().then(data=>{ //pass question key to map data of certain question
+
+    //QUESTION VIEW
 
     let qnadata = data;
     let Qemail = qnadata.child('email').val();
@@ -29,7 +31,9 @@ getQuestionData().then(data=>{
     });
     append(main,questionElement);
 
-    if ("tannerottinger@gmail.com" === Qemail) 
+    //ANSWERS VIEW
+
+    if ("tannerottinger@gmail.com" === Qemail)     //check if it is same user who posted question
         listenVerify = true;
     
     qnadata.child('answers').forEach(element => {
@@ -73,6 +77,8 @@ getQuestionData().then(data=>{
         append(main,answerElement);
     });
       
+    //POST ANSWER
+    
     let postAnswerView = getPostAnswer();
     postAnswerView.firstElementChild.nextElementSibling.firstElementChild.addEventListener('click', postAnswer);
     append(main, postAnswerView);  
