@@ -23,8 +23,8 @@ export function renderView() {
   button.onclick = () => { render(); }
   div.appendChild(inputQuestion);
   div.appendChild(button);
-  document.getElementById('askQuestionForm').appendChild(div);
-
+  // document.getElementById('askQuestionForm').appendChild(div);
+  return div;
 }
 
 export function createHTMLElement(html) {

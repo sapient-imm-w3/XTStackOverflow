@@ -2,8 +2,6 @@ import {viewLayout,displaytrending} from './views';
 import { getAnswerCountFromDB, getCatQuestions } from './service';
 
 export default () => {
-    document.body.innerHTML = "";
-    document.body.className = "";
     let content = viewLayout();
      getAnswerCountFromDB().then((questions) => {
         let elements = [];

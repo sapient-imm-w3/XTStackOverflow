@@ -22,29 +22,29 @@ firebase.initializeApp(config);
 export const database = firebase.database();
 export const auth = firebase.auth();
 
-setup().then((currentUser)=>{
-    getUser(currentUser).then(
-        (user) => {
-            if (user.val() == null) {
-                getCategories().then((categories) => {
-                    document.body.appendChild(createModal());
-                    categories.forEach(category => {
-                    document.getElementById(`modalBody`).appendChild(displayFavCategories(category));
-                });
-                $('#exampleModalLong').modal('show');
-                document.getElementById(`saveCategories`).onclick = () => {
-                   document.body.appendChild(displayPage(currentUser));
-                }
-                });
-        }else{
-            if(user.child(`role`).val()==="normal"){
-                console.log(displayPage(currentUser));
-                document.body.appendChild(displayPage(currentUser));
-                //return displayPage(currentUser);
-            }
-        }
-});
-});
+// setup().then((currentUser)=>{
+//     getUser(currentUser).then(
+//         (user) => {
+//             if (user.val() == null) {
+//                 getCategories().then((categories) => {
+//                     document.body.appendChild(createModal());
+//                     categories.forEach(category => {
+//                     document.getElementById(`modalBody`).appendChild(displayFavCategories(category));
+//                 });
+//                 $('#exampleModalLong').modal('show');
+//                 document.getElementById(`saveCategories`).onclick = () => {
+//                    document.body.appendChild(displayPage(currentUser));
+//                 }
+//                 });
+//         }else{
+//             if(user.child(`role`).val()==="normal"){
+//                 console.log(displayPage(currentUser));
+//                 document.body.appendChild(displayPage(currentUser));
+//                 //return displayPage(currentUser);
+//             }
+//         }
+// });
+// });
 
 function displayPage(currentUser){
     let content = triggerTrending();
