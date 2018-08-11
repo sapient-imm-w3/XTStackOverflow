@@ -39,7 +39,7 @@ export function viewQuestion(question) {
     let htmlElement = createHTMLElement(html);
     htmlElement.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.addEventListener('click', (event) => {
         event.preventDefault();
-        console.log(`govind's code`);
+        console.log(`Govind's Module`);
     });
     return htmlElement;
 }

@@ -6,13 +6,11 @@ export default () => {
      getAnswerCountFromDB().then((questions) => {
         let elements = [];
         questions.forEach((question) => {
-            console.log(question.child(`answer_count`).val());
             let html = displaytrending(question.child(`answer_count`).val(),question.child(`text`).val(),question.child(`date`).val(),question.child(`categories`).val(),question.key);
             elements.push(html);
         });
-        //return elements;
         elements.forEach(function(e) {
-            content.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.nextElementSibling.appendChild(e);
+            content.firstElementChild.firstElementChild.nextElementSibling.lastElementChild.appendChild(e);
             });
       });
       return content;
