@@ -10,7 +10,8 @@
     "clean": "rm -rf dist/",
     "serve": "webpack-dev-server --mode development",
     "serve:Admin": "env MODULE=Admin webpack-dev-server --mode development --hot --host 0.0.0.0",
-    "serve:AskAQuestion": "env MODULE=AskAQuestion webpack-dev-server --mode development --hot --host 0.0.0.0"
+    "serve:AskAQuestion": "env MODULE=AskAQuestion webpack-dev-server --mode development --hot --host 0.0.0.0",
+    "serve:questions": "npx env MODULE=questions webpack-dev-server --mode development --hot --host 0.0.0.0 --watch-poll"
   },
   "keywords": [
     "HTML",
