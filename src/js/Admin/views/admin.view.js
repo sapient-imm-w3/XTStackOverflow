@@ -1,16 +1,18 @@
-import { revokeFlaggedQuestion,changeOfRole,getAllCategories,deleteCategoryById } from '../services/admin.service';
-import $ from 'jquery';
+import { revokeFlaggedQuestion, revokeFlaggedAnswer, changeOfRole } from '../services/admin.service';
+
+
 export function createHTMLElement(html) {
     const template = document.createElement('template');
     template.innerHTML = html;
     return template.content.firstElementChild;
 }
 
-export function layout(){
-    document.getElementById('usersDiv').innerHTML="";
-    document.getElementById('BoardsContainer').innerHTML="";
+export function layout() {
+    document.getElementById('usersDiv').innerHTML = "";
+    document.getElementById('BoardsContainer').innerHTML = "";
+    document.getElementById('flagged_answers').innerHTML = "";
     const table = createHTMLElement(`
-    <table id="example" class="display" style="width:100%">
+    <table id="examplelayout" class="table table-striped table-hover table-bordered" style="width:100%">
     <thead>
         <tr>
             <th>Question</th>
@@ -21,147 +23,125 @@ export function layout(){
     <tbody id="tableBody">
     </tbody>
 </table>`);
-document.getElementById("flagged_questions").appendChild(table);
+    return table;
 }
 
 export function createFlaggedDiv(question) {
     const flaggedDiv = createHTMLElement(
-            `<tr>
-                <td>${question.text}</td>
-                <td>${question.flag_count}</td>
+        `<tr>
+                <td>${question.child(`text`).val()}</td>
+                <td>${question.child(`flag_count`).val()}</td>
                 <td>
-                <button type="button" class="btn btn-warning" id ="${question.id}">Revoke Flag</button>
+                <button type="button" class="btn purple-background" id ="${question.key}">Revoke Flag</button>
                 </td>
             </tr>
             `)
-    document.getElementById("tableBody").appendChild(flaggedDiv);
-    document.getElementById(`${question.id}`).onclick = () => {
-        revokeFlaggedQuestion(`${question.id}`);
-    }
-
+    flaggedDiv.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.addEventListener('click', (event) => {
+        revokeFlaggedQuestion(question.key);
+    });
+    return flaggedDiv;
 }
-// Asish
-export function layoutUserTable(){
-    document.getElementById('flagged_questions').innerHTML="";
-    document.getElementById('BoardsContainer').innerHTML="";
-    const table = createHTMLElement(`<table id="example" class="display" style="width:100%">
+
+export function layoutAnswer() {
+    document.getElementById('usersDiv').innerHTML = "";
+    document.getElementById('BoardsContainer').innerHTML = "";
+    const tableAnswer = createHTMLElement(`
+    
+    <table id="examplelayoutAnswer" class="table table-striped table-hover table-bordered" style="width:100%">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Role</th>
-            <th>Change Role</th>
+            <th>Answers</th>
+            <th>FlagCount</th>
+            <th>Revoke</th>
         </tr>
     </thead>
-    <tbody id="tableBodyUser">
+    <tbody id="tableBodyAnswers">
     </tbody>
 </table>`);
-document.getElementById("usersDiv").appendChild(table);
+    return tableAnswer
 }
-export function userDiv(user) {
 
-    const userTable = createHTMLElement(
+export function createFlaggedAnswerDiv(answer) {
+    const flaggedDivAnswer = createHTMLElement(
         `<tr>
-            <td>${user.name}</td>
-            <td>${user.role}</td>
-            <td>
-            <form>
-                <div class="form-check">
-                    <input type="checkbox" class="form-check-input" id="${user.id}">
-                    <label class="form-check-label" for="exampleCheck1">Check me Out!!!</label>
-                </div>
-            </form>
-            </td>
-        </tr>
-        `
-    )
-    document.getElementById("tableBodyUser").appendChild(userTable);
-    document.getElementById(`${user.id}`).onclick = () => {
-        changeOfRole(`${user.id}`);
-    }
+                <td>${answer.child(`text`).val()}</td>
+                <td>${answer.child(`flag_count`).val()}</td>
+                <td>
+                <button type="button" class="btn purple-background" id ="${answer.key}">Revoke AFlag</button>
+                </td>
+            </tr>
+            `)
+    flaggedDivAnswer.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.addEventListener('click', (event) => {
+        revokeFlaggedAnswer(answer.key);
+    });
+    return flaggedDivAnswer;
 }
 
+// Asish
+export  function  layoutUser() {
+    const  table  =  createHTMLElement(`<table id="example" class="display" style="width:100%">
+    <thead>
+    <tr>
+    <th>Name</th>
+    <th>Role</th>
+    <th>Change Role</th>
+    </tr>
+    </thead>
+    <tbody id="tableBody">
+    </tbody>
+    </table>`);
+    //document.getElementById("userList").appendChild(table);
+    return  table;
+}
+
+export  function  userDiv(user) {
+    //document.getElementById("tableBody").innerHTML ="";
+    let  data  = user;
+    console.log(data.val());
+    const  userTable  =  createHTMLElement(
+        `<tr>
+    <td>${data.child('name').val()}</td>
+    <td>${data.child('role').val()}</td>
+    <td>
+    <input type="checkbox"  id="${data.key}">
+    </td>
+    </tr>
+    `);
+    userTable.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.onclick  =  ()  =>  {
+        changeOfRole(`${data.key}`);
+    }
+    return  userTable;
+}
 //Tejeswar
 
-export function renderCategoryView(allCategoryObj){
-    document.getElementById('usersDiv').innerHTML="";
-    document.getElementById('flagged_questions').innerHTML="";
+export function renderCategoryViewwithTick(allCategoryObj) {
     document.getElementById("BoardsContainer").innerHTML = "";
-    if(allCategoryObj.length == 0){
-        let addCatSectionDiv = document.createElement('div');
-        addCatSectionDiv.setAttribute('class', 'addListButton');
-        let addCatButton = document.createElement('button');
-        addCatButton.setAttribute('id','saveList');
-        addCatButton.setAttribute('class','btn btn-primary');
-        addCatButton.setAttribute('data-toggle','modal');
-        addCatButton.setAttribute('data-target','#listModal');
-        addCatButton.setAttribute('data-placement','top');
-        addCatButton.innerText = '+Add Category';
-        addCatSectionDiv.appendChild(addCatButton);
-        document.getElementById("BoardsContainer").appendChild(document.createElement('br'));
-        document.getElementById("BoardsContainer").appendChild(addCatSectionDiv);
-        document.getElementById("BoardsContainer").appendChild(document.createElement('br'));
-        console.log("As Category is empty just returning");
-        return;
+    let addCatSec = `<div class="addListButton">
+    <button id="saveList" type="button" class="btn btn-primary" data-toggle="modal" data-target="#listModal" data-placement="top">+Add Category</button>
+</div>
+<br>`;
+
+    let catContainerSection = `<div id="catContainer">`;
+    let catContainerSectionEnding = `</div>`;
+
+    let singleCategoryBody = "";
+    let arrOfKeys = Object.keys(allCategoryObj);
+    for (let categoryCount = 0; categoryCount < arrOfKeys.length; categoryCount++) {
+        let catKey = arrOfKeys[categoryCount];
+        let singleCatObj = allCategoryObj[catKey];
+        singleCategoryBody = `<div id=${catKey} class="task-list">
+    <div class="task-header">
+        <span>${singleCatObj.name}</span>
+    </div>`;
+
+        let addTopicButton = `<div class="addCardButton">
+        <button  type="button" class="helloid" data-toggle="modal" data-target="#cardModal" data-placement="top">Delete</button>
+    </div>
+    </div>`;//this div is ending of each single category item
+        singleCategoryBody = singleCategoryBody + addTopicButton;
+        catContainerSection = catContainerSection + singleCategoryBody;
+
     }
-    let singleCatObj = allCategoryObj[0];
-    console.log(singleCatObj.name);
-    console.log(allCategoryObj.length);
-  
-let addCatSectionDiv = document.createElement('div');
-addCatSectionDiv.setAttribute('class', 'addListButton');
-let addCatButton = document.createElement('button');
-addCatButton.setAttribute('id','saveList');
-addCatButton.setAttribute('class','btn btn-primary');
-addCatButton.setAttribute('data-toggle','modal');
-addCatButton.setAttribute('data-target','#listModal');
-addCatButton.setAttribute('data-placement','top');
-addCatButton.innerText = '+Add Category';
-addCatSectionDiv.appendChild(addCatButton);
-document.getElementById("BoardsContainer").appendChild(document.createElement('br'));
-document.getElementById("BoardsContainer").appendChild(addCatSectionDiv);
-document.getElementById("BoardsContainer").appendChild(document.createElement('br'));
-
-let catContainerSection = document.createElement('div');
-catContainerSection.setAttribute('id','catContainer');
-document.getElementById("BoardsContainer").appendChild(catContainerSection);
-for(let categoryCount = 0;categoryCount<allCategoryObj.length;categoryCount++){
-    let singleCatObj = allCategoryObj[categoryCount];
-    let singleCatDiv = document.createElement('div');
-    singleCatDiv.setAttribute('id',singleCatObj.id);
-    singleCatDiv.setAttribute('class','task-list');
-    catContainerSection.appendChild(singleCatDiv);
-    let taskHeaderDiv = document.createElement('div');
-    taskHeaderDiv.setAttribute('class','task-header');
-    let singleSpan = document.createElement('span');
-    singleSpan.innerText=singleCatObj.name;
-    taskHeaderDiv.appendChild(singleSpan);
-    singleCatDiv.appendChild(taskHeaderDiv);
-
-let addTopicButton = document.createElement('div');
-    addTopicButton.setAttribute('class','addCardButton');
-    let addTopic = document.createElement('button');
-    addTopic.setAttribute('id','save');
-    addTopic.setAttribute('class','btn btn-primary');
-    
-    addTopic.innerText = 'Delete';
-    addTopic.addEventListener('click', function(event) {
-    
-     let parentCatId = $(this).parent().parent().attr('id');
-     console.log("Delete categoty :"+parentCatId);
-     deleteCategoryById(parentCatId).then(data1 =>{ 
-        getAllCategories().then(data => {
-        console.log(data);
-        renderCategoryView(data);
-    })
-});;
-
-    }, true);
-    addTopicButton.appendChild(addTopic);
-    singleCatDiv.appendChild(addTopicButton);
-
-    catContainerSection.appendChild(singleCatDiv);
-
-}
-document.getElementById("BoardsContainer").appendChild(catContainerSection);
-
+    let wholeCategoryView = addCatSec + catContainerSection + catContainerSectionEnding;
+    return wholeCategoryView;
 }
