@@ -17,6 +17,8 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: npm test
   deploy:
+    docker:
+      - image: circleci/node:10
     machine:
         enabled: true
     working_directory: ~/XTStackOverflow  
