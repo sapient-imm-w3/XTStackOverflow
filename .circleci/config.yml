@@ -32,14 +32,17 @@ jobs:
        - run:
           name: check image 
           command: docker image ls    
-       - run:
-          name: docker build image
-          command: docker build -t srikarsharma/xt:latest .
+      #  - run:
+      #     name: docker build image
+      #     command: docker build -t srikarsharma/xt:latest .
        - run:
           name: Push to docker hub
           command: |
              docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
              docker push srikarsharma/xt:latest
+       - run: 
+          name: login check
+          command:  docker login -u $HEROKU_USERNAME -p $HEROKU_API_KEY registry.heroku.com     
        - run:
           name: deploy to heroku
           command: |
