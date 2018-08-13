@@ -34,7 +34,7 @@ jobs:
           command: docker image ls    
        - run:
           name: docker build image
-          command: docker build -t srikarsharma/xt:latest .
+          command: docker build -t xt .
        - run:
           name: Push to docker hub
           command: |
@@ -48,8 +48,10 @@ jobs:
             #  heroku container:push web --app $HEROKU_APP_NAME
             # #  heroku container:release web
              docker login --username=SrikarMadipalli --password=$HEROKU_API_KEY registry.heroku.com
-             docker tag srikarsharma/xt:latest registry.heroku.com/srikarsharma/web
-             docker push registry.heroku.com/srikarsharma/web
+             docker image ls
+             docker ps -a
+             docker tag xt:latest registry.heroku.com/xt/web
+             docker push registry.heroku.com/xt/web
       
 workflows:
     version: 2
