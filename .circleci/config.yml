@@ -32,9 +32,9 @@ jobs:
        - run:
           name: check image 
           command: docker image ls    
-      #  - run:
-      #     name: docker build image
-      #     command: docker build -t srikarsharma/xt:latest .
+       - run:
+          name: docker build image
+          command: docker build -t srikarsharma/xt:latest .
        - run:
           name: Push to docker hub
           command: |
