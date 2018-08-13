@@ -1,5 +1,6 @@
 import firebase from 'firebase/app';
 import "firebase/database";
+import 'firebase/auth';
 
 export function render(inputQuestion,categories){
     const d = new Date();
@@ -11,7 +12,8 @@ export function render(inputQuestion,categories){
       flag_count: 0,
       email: firebase.auth().currentUser.email,
       answers: "",
-      answer_count: 0
+      answer_count: 0,
+      photoUrl: firebase.auth().currentUser.photoURL
     });
 }
 

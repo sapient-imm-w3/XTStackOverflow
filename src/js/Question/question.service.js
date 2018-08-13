@@ -38,7 +38,8 @@ export function postAnswer(id) {
         up_vote: 0,
         down_vote: 0,
         is_correct: false,
-        flag_count : 0      
+        flag_count : 0,
+        photoUrl : firebase.auth().currentUser.photoURL      
     });
     var update_answer_count;
 
@@ -113,16 +114,24 @@ export function updateDVote(qsnId,id){
 
 export function updateAFlag(qsnId,id){
   let flag=false;
+  let flagCount;
+
   let dbwrite = database.ref(`questions/${qsnId}/answers/`+id); 
   dbwrite.once('value',function (data){
+  flagCount = data.child('flag_count').val();
     
-    if(data.child('is_flagged').val() === false)
+    if(data.child('is_flagged').val() === false){
         flag=true;
-    else
+        flagCount += 1;}
+    else{
         flag=false;    
+        flagCount -= 1;}
   });
 
-  database.ref(`questions/${qsnId}/answers/`+id+'/is_flagged').set(flag);
+  database.ref(`questions/${qsnId}/answers/`+id).update({
+    "is_flagged": flag,
+    "flag_count": flagCount
+  });
   document.getElementById(`questionAnswer`).innerHTML = "";
   setDom(qsnId);
 }
