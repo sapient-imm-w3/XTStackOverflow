@@ -43,7 +43,7 @@ jobs:
        - run:
           name: deploy to heroku
           command: |
-             docker login --username $HEROKU_USERNAME --password $HEROKU_API_KEY registry.heroku.com
+             docker login -u $HEROKU_USERNAME -p $HEROKU_API_KEY registry.heroku.com
              docker tag srikarsharma/xt:latest registry.heroku.com/$HEROKU_APP_NAME/web
              docker push registry.heroku.com/$HEROKU_APP_NAME/web
       
