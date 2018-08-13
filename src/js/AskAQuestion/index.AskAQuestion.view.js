@@ -1,6 +1,11 @@
 
 import { render } from './index.AskAQuestion.service';
 
+export function askQuestionLayout(){
+  return createHTMLElement(` 
+  <div id="askQuestionForm"></div>`)
+}
+
 export function renderView(categories) {
   let dropdown = ``;
   categories.forEach(category => {

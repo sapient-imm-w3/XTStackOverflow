@@ -1,10 +1,11 @@
 
 import { getAllCatFromFirebase, getFlaggedQuestionService, getAllUserService, getFlaggedAnswerService,delteCategoryFromFirebaseById,isCategoryAlreadyExist,Category,insertCategoryToFirebase   } from '../services/admin.service';
-import { layout, layoutUser, layoutAnswer, createFlaggedDiv, createFlaggedAnswerDiv, renderCategoryViewwithTick, userDiv } from '../views/admin.view';
+import { layout, layoutUser, createLayout, layoutAnswer, createFlaggedDiv, createFlaggedAnswerDiv, renderCategoryViewwithTick, userDiv, createHTMLElement } from '../views/admin.view';
 import $ from 'jquery';
 
 export function bootstrapadmin () {
-
+document.getElementById(`navbar`).innerHTML = "";
+document.getElementById(`admin`).appendChild(createLayout());
 const flagged = document.getElementById('flagged');
 flagged.addEventListener('click', (event) => {
   event.preventDefault();
@@ -27,7 +28,7 @@ flagged.addEventListener('click', (event) => {
     questions.forEach((question) => {
       question.child('answers').forEach((answer) => {
         if (answer.child('is_flagged').val() === 'True') {
-          let flaggedAnswerDiv = createFlaggedAnswerDiv(answer);
+          let flaggedAnswerDiv = createFlaggedAnswerDiv(answer,question.key);
           document.getElementById("tableBodyAnswers").appendChild(flaggedAnswerDiv);
         }
       })
@@ -63,10 +64,13 @@ getFlaggedAnswerService().then(function (questions) {
 });
 
 //Asish
+
+let layoutDom = layout();
+document.getElementById("usersDiv").appendChild(layoutDom);
+
 const retrieveUser = document.getElementById("retrieveUser");
 retrieveUser.addEventListener('click', (event) => {
   event.preventDefault();
-  console.log("hello");
   getAllUserService().then(function (data) {
     let elements = [];
     data.forEach(element => {
@@ -81,14 +85,17 @@ retrieveUser.addEventListener('click', (event) => {
 });
 });
 
-let layoutDom = layout();
-document.getElementById("userList").appendChild(layoutDom);
+
 
 
 // Tejeswar
 
 const retrieveCategories = document.getElementById('retrieveCategories');
 retrieveCategories.addEventListener('click',(event)=>{
+  document.getElementById('usersDiv').innerHTML = "";
+  document.getElementById('BoardsContainer').innerHTML = "";
+  document.getElementById('flagged_answers').innerHTML = "";
+  document.getElementById(`flagged_questions`).innerHTML = "";
   event.preventDefault();
   render().then(allCategoriesObjs => {
     let wholeCategoryDom = renderCategoryViewwithTick(allCategoriesObjs);

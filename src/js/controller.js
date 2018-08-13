@@ -3,9 +3,7 @@ import '../css/layout.css'
 import '../css/module.css'
 import '../css/index.css';
 
-import firebase from "firebase/app";
-import "firebase/auth";
-import "firebase/database";
+
 
 // Landing Page Imports
 import {setup,getUser,getCategories} from './Landing/Authentication/service';
@@ -21,6 +19,8 @@ import  bootstrapadmin  from  "./Admin/index.Admin"
 // Ask Question Imports 
 
 // import 
+
+import './firebase.database';
 
 export function bootstrap () {
 
@@ -40,11 +40,12 @@ export function bootstrap () {
                     }
                     });
             }else{
+                console.log(user.child(`role`).val());
                 if(user.child(`role`).val()==="normal"){
                     document.getElementById('landing').appendChild(displayPage(currentUser));
-                }else if(user.child('role').val === "Admin") {
+                }else if(user.child('role').val() === "Admin") {
 
-                    document.body.appendChild(bootstrapadmin())
+                    document.getElementById(`admin`).appendChild(bootstrapadmin())
                 }
             }
       });

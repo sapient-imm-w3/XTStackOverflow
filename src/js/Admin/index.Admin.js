@@ -1,9 +1,9 @@
-import "firebase/auth";
+import "firebase/auth/dist/index.cjs";
 import 'bootstrap/scss/bootstrap.scss';
-import '../../../node_modules/bootstrap/dist/js/bootstrap.min.js';
+import 'bootstrap/dist/js/bootstrap.min';
 import '../../css/index.css';
-import '../Admin/views/admin.view';
-import { bootstrapadmin } from  '../Admin/controllers/admin.controller';
+import './views/admin.view.js';
+import { bootstrapadmin } from  './controllers/admin.controller.js';
 
 export default bootstrapadmin;
 

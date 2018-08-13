@@ -1,4 +1,6 @@
 import createHTMLElement from '../view';
+import { setDom } from '../../Question/questionApp.controller';
+import {askNew} from '../../AskAQuestion/index.AskAQuestion.controller';
 
 export function viewLayout() {
     let contentHTML = `
@@ -14,7 +16,8 @@ export function viewLayout() {
     let contentElement = createHTMLElement(contentHTML);
     contentElement.firstElementChild.nextElementSibling.firstElementChild.addEventListener('click', (event) => {
         event.preventDefault();
-        console.log("Pratik's Module");
+        document.getElementById(`landing`).innerHTML = "";
+        askNew();
     })
     return contentElement;
 
@@ -39,7 +42,8 @@ export function viewQuestion(question) {
     let htmlElement = createHTMLElement(html);
     htmlElement.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.addEventListener('click', (event) => {
         event.preventDefault();
-        console.log(`Govind's Module`);
+        document.getElementById(`landing`).innerHTML = "";
+        setDom(`${question.key}`);
     });
     return htmlElement;
 }

@@ -1,6 +1,6 @@
 // import {renderCategoryView } from '../views/admin.view';
 // import firebase from "firebase/app";
-import 'firebase/database';
+import 'firebase/database/dist/index.cjs';
 
 var database = firebase.database();
 
@@ -15,7 +15,6 @@ export function getFlaggedQuestionService() {
 }
 
 export function revokeFlaggedQuestion(id) {
-    console.log(id);
     database.ref(`questions/${id}`).update({
         is_flagged: "False"
     });
@@ -31,9 +30,8 @@ export function getFlaggedAnswerService() {
     })
 };
 
-export function revokeFlaggedAnswer(id) {
-    console.log('Pink');
-    firebase.database().ref(`questions/0/answers/${id}`).update({
+export function revokeFlaggedAnswer(id,qsnId) {
+    firebase.database().ref(`questions/${qsnId}/answers/${id}`).update({
         is_flagged: "False"
     });
     window.location.reload();

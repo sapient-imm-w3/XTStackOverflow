@@ -1,5 +1,5 @@
-import {database,auth} from '../controller';
-import firebase from 'firebase/app';
+import {database,auth} from '../../firebase.database';
+import firebase from 'firebase';
 
 export function setup() {
     let provider = new firebase.auth.GoogleAuthProvider();

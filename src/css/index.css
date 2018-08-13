@@ -143,9 +143,9 @@ ul.list-group.question {
 li {
   display: inline;
 }
-img {
-  height: 20px;
-}
+.hvr-bounce-in, .hvr-bounce-out{
+  height: 20px;
+  } 
 /* .container .input-group {
   width: 100%;
   position: absolute;

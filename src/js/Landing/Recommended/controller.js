@@ -13,7 +13,7 @@ export default (user) => {
           if (count < 5) {
             question.child(`categories`).val().forEach((cat) => {
               if (cat.name === category.val()) {
-                let display = getRecQuestion(question.child(`text`).val(), question.key + "Trending");
+                let display = getRecQuestion(question.child(`text`).val(), question.key);
                 elements.push(display);
                 count++;
               }

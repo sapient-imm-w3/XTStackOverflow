@@ -1,5 +1,6 @@
 import createHTMLElement from '../view';
-import { auth } from '../controller';
+import { auth } from '../../firebase.database';
+import { setDom } from '../../Question/questionApp.controller';
 
 export function getTitle(category) {
     let title = createHTMLElement(`<div class="card text-white bg-dark border-light" style="max-width: 100%;"><div class="card-header">${category}</div></div>`);
@@ -14,7 +15,8 @@ export function getTitle(category) {
       `);
       display.firstElementChild.addEventListener('click',(event) => {
         event.preventDefault();
-        console.log(`Govind's Module`);
+        document.getElementById(`landing`).innerHTML = "";
+        setDom(`${key}`);
       });
     return display;
  }

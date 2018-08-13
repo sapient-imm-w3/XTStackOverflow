@@ -1,6 +1,7 @@
-import {auth } from '../controller';
+import {auth } from '../../firebase.database';
 import createHTMLElement from '../view';
 import {displayCatQuestions} from './controller';
+import { setDom } from '../../Question/questionApp.controller';
 
 export function displaytrending(answerCount,text,date,categories,key) {
     let html = `<div class="myQuestion">
@@ -29,7 +30,8 @@ let dates = `<small id="date" class = "text-muted" style="float: right">${date}<
     div.firstElementChild.firstElementChild.nextElementSibling.appendChild(createHTMLElement(dates));
     div.firstElementChild.firstElementChild.nextElementSibling.firstElementChild.addEventListener('click', (event) => {
         event.preventDefault();
-        console.log("Govind's Module");
+        document.getElementById(`landing`).innerHTML = "";
+        setDom(`${key}`);
     });
 return div;
 }
@@ -40,7 +42,7 @@ export function viewLayout(){
     <div  class="col-md-9" id="mainPart">
     <div id = "profile" class="row">
     <div class = "col-md-4">
-        <img src="${auth.currentUser.photoURL}" alt="displayImage">
+        <img src="${auth.currentUser.photoURL}" id="profileImage" alt="displayImage">
     </div>
     <div class = "col-md-8" id="profileInfo">
         ${auth.currentUser.displayName} <br>

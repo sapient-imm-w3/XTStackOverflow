@@ -1,4 +1,4 @@
-import { database } from "../controller";
+import { database } from "../../firebase.database";
 
 export function getRecommended(user) {
   return new Promise(function(resolve, reject){

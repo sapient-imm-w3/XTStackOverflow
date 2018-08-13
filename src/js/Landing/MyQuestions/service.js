@@ -1,4 +1,4 @@
-import {database} from "../controller";
+import {database} from "../../firebase.database";
 
 export function getQuestions(user){
     return new Promise(function(resolve, reject){
