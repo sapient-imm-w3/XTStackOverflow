@@ -4,12 +4,8 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-<<<<<<< HEAD
     "test": "mocha --compilers js:babel-core/register src/js/**/*.test.js",
     "serve:landing": "env MODULE=landing webpack-dev-server --mode development --hot --host 0.0.0.0 --watch-poll",
-=======
-    "test": "mocha --compilers js:babel-core/register test/spec.js",
->>>>>>> Dev_Pratik
     "build": "webpack --mode production",
     "clean": "rm -rf dist/",
     "serve": "webpack-dev-server --mode development",

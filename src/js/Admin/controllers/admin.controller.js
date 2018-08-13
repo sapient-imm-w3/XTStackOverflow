@@ -3,6 +3,8 @@ import { getAllCatFromFirebase, getFlaggedQuestionService, getAllUserService, ge
 import { layout, layoutUser, layoutAnswer, createFlaggedDiv, createFlaggedAnswerDiv, renderCategoryViewwithTick, userDiv } from '../views/admin.view';
 import $ from 'jquery';
 
+export function bootstrapadmin () {
+
 const flagged = document.getElementById('flagged');
 flagged.addEventListener('click', (event) => {
   event.preventDefault();
@@ -94,7 +96,7 @@ retrieveCategories.addEventListener('click',(event)=>{
   });
 })
 
-export function render() {
+function render() {
   return new Promise(function (resolve) {
     getAllCatFromFirebase().then((allCategoryObj => {
       console.log(allCategoryObj);
@@ -163,3 +165,4 @@ else{
  //$('#listClose').click();
 
 });//end of onlick event
+}

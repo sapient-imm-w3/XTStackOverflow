@@ -15,7 +15,7 @@ import triggerMyQuestions from './Landing/MyQuestions/controller';
 import triggerRecommended from './Landing/Recommended/controller';
 
 // Admin Page Imports
-
+import  bootstrapadmin  from  "./Admin/index.Admin"
 // Question Answer
 
 // Ask Question Imports 
@@ -43,7 +43,8 @@ export function bootstrap () {
                 if(user.child(`role`).val()==="normal"){
                     document.getElementById('landing').appendChild(displayPage(currentUser));
                 }else if(user.child('role').val === "Admin") {
-                    document.body.appendChild()
+
+                    document.body.appendChild(bootstrapadmin())
                 }
             }
       });

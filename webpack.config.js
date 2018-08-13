@@ -1,7 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
 const m = process.env.MODULE;
-const webpack = require('webpack');
 
 module.exports = {
   entry: `./src/js/index.js`,

@@ -1,16 +1,6 @@
-import {renderCategoryView } from '../views/admin.view';
-import firebase from "firebase/app";
+// import {renderCategoryView } from '../views/admin.view';
+// import firebase from "firebase/app";
 import 'firebase/database';
-
-let config = {
-    apiKey: "AIzaSyB27dZKtJ8xCD38hyNjtwfp5DCn14axl8s",
-    authDomain: "sweetymedhu-9e71e.firebaseapp.com",
-    databaseURL: "https://sweetymedhu-9e71e.firebaseio.com",
-    projectId: "sweetymedhu-9e71e",
-    storageBucket: "sweetymedhu-9e71e.appspot.com",
-    messagingSenderId: "682645099129"
-    }; 
-firebase.initializeApp(config);
 
 var database = firebase.database();
 
