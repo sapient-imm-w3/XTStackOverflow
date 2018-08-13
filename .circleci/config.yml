@@ -43,7 +43,7 @@ jobs:
        - run: 
           name: heroku container deploy
           command: |
-             heroku container:login -u $HEROKU_USERNAME -p $HEROKU_API_KEY
+             heroku container:login -u $HEROKU_USER_NAME -p $HEROKU_API_KEY
              heroku container:push web --app $HEROKU_APP_NAME
              heroku container:release web
 
