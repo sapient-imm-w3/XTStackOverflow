@@ -11,7 +11,7 @@ export default (user) => {
     }else{
         questions.forEach((question) => {
             let element = viewQuestion(question);
-            elements.push(element);
+            if(question.child(`is_flagged`).val()===false) elements.push(element);
         })
     }
         elements.forEach(function(e) {

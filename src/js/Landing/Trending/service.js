@@ -2,7 +2,7 @@ import {database} from "../../firebase.database";
 
 export function getAnswerCountFromDB() {
   return new Promise(function(resolve, reject){
-        const db = database.ref(`questions`).limitToLast(5);
+        const db = database.ref(`questions`).orderByChild(`is_flagged`).equalTo(false).limitToLast(5);
         db.on('value', (data) => {
           resolve(data);  
         });
