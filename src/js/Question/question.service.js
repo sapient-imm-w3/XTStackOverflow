@@ -129,17 +129,24 @@ export function updateAFlag(qsnId,id){
 
 export function updateQFlag(id){
   let flag=false;
+  let flagCount;
 
   let dbwrite = database.ref(`questions/${id}`); 
   dbwrite.once('value',function (data){
-    
-    if(data.child('is_flagged').val() === false)
+  flagCount = data.child('flag_count').val();
+
+    if(data.child('is_flagged').val() === false){
         flag=true;
-    else
-        flag=false;    
+        flagCount += 1;}
+    else{
+        flag=false; 
+        flagCount -=1;}   
   });
 
-  database.ref(`questions/${id}/is_flagged`).set(flag);
+  database.ref(`questions/${id}`).update({
+    "is_flagged": flag,
+    "flag_count": flagCount
+  });
   document.getElementById(`questionAnswer`).innerHTML = "";
   setDom(id);
 }

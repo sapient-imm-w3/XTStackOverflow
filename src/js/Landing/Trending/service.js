@@ -17,5 +17,5 @@ export function getCatQuestions() {
         return resolve(questions);
     });
     })
-    
+     
 }
