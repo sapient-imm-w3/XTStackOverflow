@@ -43,9 +43,10 @@ jobs:
        - run: 
           name: heroku container deploy
           command: |
+             heroku plugins:install heroku-container-registry
              heroku container:login
              heroku container:push web --app $HEROKU_APP_NAME
-             heroku container:release web
+            #  heroku container:release web
 
       
 workflows:
