@@ -39,7 +39,7 @@ jobs:
           name: Push to docker hub
           command: |
              docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
-             docker push srikarsharma/xt:latest
+             docker push xt:latest
        - run: 
           name: heroku container deploy
           command: |
