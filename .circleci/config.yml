@@ -52,6 +52,7 @@ jobs:
              docker ps -a
              docker tag xt:latest registry.heroku.com/$HEROKU_APP_NAME/web
              docker push registry.heroku.com/$HEROKU_APP_NAME/web
+             heroku container:push release
       
 workflows:
     version: 2
