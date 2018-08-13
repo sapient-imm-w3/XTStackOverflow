@@ -2,7 +2,7 @@ import '../../node_modules/bootstrap/dist/css/bootstrap.css';
 import '../css/layout.css'
 import '../css/module.css'
 import '../css/index.css';
-
+import '../css/hover-min.css';
 
 
 // Landing Page Imports
@@ -40,25 +40,28 @@ export function bootstrap () {
                     }
                     });
             }else{
-                console.log(user.child(`role`).val());
                 if(user.child(`role`).val()==="normal"){
                     document.getElementById('landing').appendChild(displayPage(currentUser));
                 }else if(user.child('role').val() === "Admin") {
-
-                    document.getElementById(`admin`).appendChild(bootstrapadmin())
+                    bootstrapadmin();
                 }
             }
       });
       });
-      
-      function displayPage(currentUser){
-        let content = triggerTrending();
-        console.log(document.getElementById('landing'))
-        let myQuestionSection = triggerMyQuestions(currentUser); // Append in mainPart
-        let div = triggerRecommended(currentUser); // Append in content
-        content.firstElementChild.appendChild(myQuestionSection);
-        content.appendChild(div);
-        return content;
-      }
 }
+export function displayPage(currentUser){
+    let content = triggerTrending();
+    let myQuestionSection = triggerMyQuestions(currentUser); // Append in mainPart
+    let div = triggerRecommended(currentUser); // Append in content
+    content.firstElementChild.appendChild(myQuestionSection);
+    content.appendChild(div);
+    return content;
+  }
 
+document.getElementById('home').onclick = (event) => {
+    event.preventDefault();
+    document.getElementById(`askQuestion`).innerHTML = "";
+    document.getElementById(`questionAnswer`).innerHTML = "";
+    document.getElementById(`landing`).innerHTML = "";
+    document.getElementById('landing').appendChild(displayPage(firebase.auth().currentUser));
+}

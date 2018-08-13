@@ -1,3 +1,6 @@
+import firebase from 'firebase/app'
+import 'firebase/auth';
+ 
 import { revokeFlaggedQuestion, revokeFlaggedAnswer, changeOfRole } from '../services/admin.service';
 
 
@@ -212,3 +215,31 @@ export function renderCategoryViewwithTick(allCategoryObj) {
     let wholeCategoryView = addCatSec + catContainerSection + catContainerSectionEnding;
     return wholeCategoryView;
 }
+export function viewLayout(){
+    let main = `<div class="col-md-3">
+    
+      <button type="button" id="signout" class="btn btn-danger">Sign Out</button>
+    
+    </div>`;
+
+    let mainElement = createHTMLElement(main);
+    mainElement.firstElementChild.addEventListener('click', () => {
+      firebase.auth().signOut()
+      .then(()=>{
+        close();
+        close_window();
+      });
+    })
+
+    return mainElement;
+        
+    }
+
+    function close_window() {
+      if (confirm("Close Window?")) {
+        document.body.innerHTML = "";
+        let html = `<marquee scrollamount="12" style="font-size: 50px; margin-top: 20%; color: green">Successfully Logged Out..!!!</marquee>`;
+        document.body.appendChild(createHTMLElement(html));
+
+      }
+    }

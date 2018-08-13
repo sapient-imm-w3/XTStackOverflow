@@ -1,6 +1,6 @@
 
 import { getAllCatFromFirebase, getFlaggedQuestionService, getAllUserService, getFlaggedAnswerService,delteCategoryFromFirebaseById,isCategoryAlreadyExist,Category,insertCategoryToFirebase   } from '../services/admin.service';
-import { layout, layoutUser, createLayout, layoutAnswer, createFlaggedDiv, createFlaggedAnswerDiv, renderCategoryViewwithTick, userDiv, createHTMLElement } from '../views/admin.view';
+import { layout, layoutUser, createLayout, layoutAnswer, createFlaggedDiv, createFlaggedAnswerDiv, renderCategoryViewwithTick, userDiv, createHTMLElement, viewLayout } from '../views/admin.view';
 import $ from 'jquery';
 
 export function bootstrapadmin () {
@@ -15,7 +15,7 @@ flagged.addEventListener('click', (event) => {
     questions.forEach((question) => {
       console.log("hello " + question);
       console.log(question.child(`is_flagged`).val());
-      if (question.child(`is_flagged`).val() === 'True') {
+      if (question.child(`is_flagged`).val() === true) {
         console.log(question.child('text').val());
         let html = createFlaggedDiv(question);
         document.getElementById("tableBody").appendChild(html);
@@ -27,7 +27,7 @@ flagged.addEventListener('click', (event) => {
   getFlaggedAnswerService().then(function (questions) {
     questions.forEach((question) => {
       question.child('answers').forEach((answer) => {
-        if (answer.child('is_flagged').val() === 'True') {
+        if (answer.child('is_flagged').val() === true) {
           let flaggedAnswerDiv = createFlaggedAnswerDiv(answer,question.key);
           document.getElementById("tableBodyAnswers").appendChild(flaggedAnswerDiv);
         }
@@ -35,7 +35,7 @@ flagged.addEventListener('click', (event) => {
     })
   });
 });
-
+document.getElementById(`admin`).appendChild(viewLayout());
 // layout(); OnLoad
 let display = layout();
 document.getElementById("flagged_questions").appendChild(display);
@@ -43,7 +43,7 @@ getFlaggedQuestionService().then(function (questions) {
   questions.forEach((question) => {
     console.log("hello " + question);
     console.log(question.child(`is_flagged`).val());
-    if (question.child(`is_flagged`).val() === 'True') {
+    if (question.child(`is_flagged`).val() === true) {
       console.log(question.child('text').val());
       let html = createFlaggedDiv(question);
       document.getElementById("tableBody").appendChild(html);
@@ -55,8 +55,8 @@ document.getElementById("flagged_answers").appendChild(tableAnswer);
 getFlaggedAnswerService().then(function (questions) {
   questions.forEach((question) => {
     question.child('answers').forEach((answer) => {
-      if (answer.child('is_flagged').val() === 'True') {
-        let flaggedAnswerDiv = createFlaggedAnswerDiv(answer);
+      if (answer.child('is_flagged').val() === true) {
+        let flaggedAnswerDiv = createFlaggedAnswerDiv(answer,question.key);
         document.getElementById("tableBodyAnswers").appendChild(flaggedAnswerDiv);
       }
     })
@@ -65,25 +65,12 @@ getFlaggedAnswerService().then(function (questions) {
 
 //Asish
 
-let layoutDom = layout();
-document.getElementById("usersDiv").appendChild(layoutDom);
-
 const retrieveUser = document.getElementById("retrieveUser");
 retrieveUser.addEventListener('click', (event) => {
   event.preventDefault();
-  getAllUserService().then(function (data) {
-    let elements = [];
-    data.forEach(element => {
-      elements.push(userDiv(element));
+  displayUsers();
+});
 
-      console.log(elements);
-      document.getElementById("tableBody").innerHTML ="";
-      elements.forEach(element=>{
-      document.getElementById(`tableBody`).appendChild(element);
-})
-  });
-});
-});
 
 
 
@@ -106,15 +93,12 @@ retrieveCategories.addEventListener('click',(event)=>{
 function render() {
   return new Promise(function (resolve) {
     getAllCatFromFirebase().then((allCategoryObj => {
-      console.log(allCategoryObj);
       resolve(allCategoryObj);
     }))
   })
 }
 
 $(document).on('click', '.helloid', function (event) {
-  console.log("delete button got clicked");
-  console.dir(this);
   let parentCatId = this.parentElement.parentElement.id;
   firebase.database().ref('/categories/' + parentCatId).once('value').then(function (snapshot) {
     console.dir(snapshot.val());
@@ -172,4 +156,20 @@ else{
  //$('#listClose').click();
 
 });//end of onlick event
+}
+
+export function displayUsers(){
+  let display = layout();
+  document.getElementById("usersDiv").appendChild(display);
+  getAllUserService().then(function (data) {
+    let elements = [];
+    data.forEach(element => {
+      elements.push(userDiv(element));
+
+      document.getElementById("tableBody").innerHTML ="";
+      elements.forEach(element=>{
+      document.getElementById(`tableBody`).appendChild(element);
+})
+  });
+});
 }

@@ -130,9 +130,12 @@ h3 {
   position: relative;
 }
 
-ul {
+.answer-ul{
   position: absolute;
-  right: -120px;
+    right: -120px;
+}
+.answer-li{
+  display: inline;
 }
 ul.list-group.question {
   position: absolute;
@@ -140,12 +143,11 @@ ul.list-group.question {
     top: 4px;
 }
 
-li {
-  display: inline;
-}
-.hvr-bounce-in, .hvr-bounce-out{
-  height: 20px;
+
+.image{
+  height:20px;
   } 
+
 /* .container .input-group {
   width: 100%;
   position: absolute;
