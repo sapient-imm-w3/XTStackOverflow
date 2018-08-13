@@ -41,14 +41,12 @@ jobs:
              docker login -u $DOCKER_HUB_USERNAME -p $DOCKER_HUB_PASSWORD
              docker push srikarsharma/xt:latest
        - run: 
-          name: login check
-          command:  docker login -u $HEROKU_USERNAME -p $HEROKU_API_KEY registry.heroku.com     
-       - run:
-          name: deploy to heroku
+          name: heroku container deploy
           command: |
-             docker login -u $HEROKU_USERNAME -p $HEROKU_API_KEY registry.heroku.com
-             docker tag srikarsharma/xt:latest registry.heroku.com/$HEROKU_APP_NAME/web
-             docker push registry.heroku.com/$HEROKU_APP_NAME/web
+             heroku container:login -u $HEROKU_USERNAME -p $HEROKU_API_KEY
+             heroku container:push web --app $HEROKU_APP_NAME
+             heroku container:release web
+
       
 workflows:
     version: 2
