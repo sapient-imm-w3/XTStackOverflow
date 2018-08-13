@@ -21,6 +21,10 @@ jobs:
         enabled: true
     working_directory: ~/XTStackOverflow  
     steps:
+       - checkout
+       - run: 
+          name: test current dir
+          command: ls -la
        - run: 
           name: test docker
           command: docker ps -a
