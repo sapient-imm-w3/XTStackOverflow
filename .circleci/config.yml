@@ -21,12 +21,18 @@ jobs:
         enabled: true
     working_directory: ~/XTStackOverflow  
     steps:
+       - run: 
+          name: test docker
+          command: docker ps -a
+       - run:
+          name: check image 
+          command: docker image ls    
        - run:
           name: Heroku container login
           command: heroku container:login
        - run:
           name: Heroku docker build
-          command: heroku container:push web --app arcane-badlands-34091
+          command: heroku container:release web --app arcane-badlands-34091
        - run:
           name: Heroku docker push
           command: heroku container:release web
