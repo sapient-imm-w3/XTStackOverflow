@@ -48,8 +48,8 @@ jobs:
             #  heroku container:push web --app $HEROKU_APP_NAME
             # #  heroku container:release web
              docker login --username=SrikarMadipalli --password=$HEROKU_API_KEY registry.heroku.com
-             docker tag my_dashboard:latest registry.heroku.com/my_dashboard/web
-             docker push registry.heroku.com/my_dashboard/web
+             #docker tag my_dashboard:latest registry.heroku.com/my_dashboard/web
+             docker push registry.heroku.com/SrikarMadipalli/xt/web
       
 workflows:
     version: 2
