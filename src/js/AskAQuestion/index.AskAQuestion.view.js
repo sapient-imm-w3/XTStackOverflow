@@ -1,6 +1,7 @@
-
+import firebase from 'firebase/app';
+import 'firebase/app';
 import { render } from './index.AskAQuestion.service';
-
+import {displayPage} from '../controller';
 export function askQuestionLayout(){
   return createHTMLElement(` 
   <div id="askQuestionForm"></div>`)
@@ -44,7 +45,9 @@ export function renderView(categories) {
     });
     const inputQuestion = document.getElementById('inputQuestion');
   render(inputQuestion,categories);
-  })
+  document.getElementById('askQuestion').innerHTML = "";
+  document.getElementById(`landing`).appendChild(displayPage(firebase.auth().currentUser));
+  });
   
 
   div.appendChild(inputQuestion);

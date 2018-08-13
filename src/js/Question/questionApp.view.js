@@ -45,9 +45,9 @@ export const getAnswerView = (element) => {
     if (element.child('is_correct').val() === true)
         answer += `<span><img src="../../../src/img/verified.png" alt="verified" title="Verified" class="hvr-pop"></span>`
 
-    answer += `<ul class="list-group" id="${element.child('id').val()}">
-        <li class="list-group-item"><img src="../../../src/img/up_vote.png" alt="Like" title="Like" name="upvote" class="hvr-bounce-in" id="U${element.child('id').val()}"> +${element.child('up_vote').val()}</li>
-        <li class="list-group-item"><img src="../../../src/img/down_vote.png" alt="Dislike" title="Dislike" name="downvote" class="hvr-bounce-out" id="D${element.child('id').val()}"> -${element.child('down_vote').val()}</li>`
+    answer += `<ul class="list-group answer-ul" id="${element.child('id').val()}">
+        <li class="list-group-item answer-li"><img src="../../../src/img/up_vote.png" alt="Like" title="Like" name="upvote" class="hvr-bounce-in image" id="U${element.child('id').val()}"> +${element.child('up_vote').val()}</li>
+        <li class="list-group-item answer-li"><img src="../../../src/img/down_vote.png" alt="Dislike" title="Dislike" name="downvote" class="hvr-bounce-out image" id="D${element.child('id').val()}"> -${element.child('down_vote').val()}</li>`
 
     if (element.child('is_flagged').val() === true)
         answer += `<li class="list-group-item hvr-hang" title="Flag" name="flag" id="F${element.child('id').val()}">&#9873</li>`

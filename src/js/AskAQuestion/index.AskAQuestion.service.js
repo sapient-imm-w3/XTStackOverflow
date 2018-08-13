@@ -3,12 +3,11 @@ import "firebase/database";
 
 export function render(inputQuestion,categories){
     const d = new Date();
-    const uuidv1 = require('uuid/v1');
     firebase.database().ref('questions/').push({
       text: inputQuestion.value,
       date: d.toDateString().substr(4),
       categories:categories,
-      is_flagged: "False",
+      is_flagged: false,
       flag_count: 0,
       email: firebase.auth().currentUser.email,
       answers: "",

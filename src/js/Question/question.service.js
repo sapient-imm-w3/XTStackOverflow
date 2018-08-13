@@ -5,6 +5,7 @@ import 'firebase/database/dist/index.cjs';
 import 'firebase/functions/dist/index.cjs';
 import { getAnswerView } from './questionApp.view';
 import { getQuestionView } from "./questionApp.view";
+import { setDom } from './questionApp.controller';
 
 // var config = {                                                            //configuring firebase
 //   apiKey: "AIzaSyAHQ-G50CPi-y2l7L5r41cvKRcs0hzSFiY",
@@ -36,7 +37,8 @@ export function postAnswer(id) {
         email: firebase.auth().currentUser.email,
         up_vote: 0,
         down_vote: 0,
-        is_correct: false      
+        is_correct: false,
+        flag_count : 0      
     });
     var update_answer_count;
 
@@ -56,8 +58,8 @@ export function postAnswer(id) {
     getAnswerView(data);    
 });
 
-window.location.reload();
-
+document.getElementById(`questionAnswer`).innerHTML = "";
+setDom(id);
 }
   else
 alert("Write an answer!");
@@ -80,8 +82,9 @@ export function getVerified(qsnId,id){
     }   
   });
   
-  database.ref('questions/0/answers/'+id+'/is_correct').set(flag);
-  window.location.reload();
+  database.ref(`questions/${qsnId}/answers/`+id+'/is_correct').set(flag);
+  document.getElementById(`questionAnswer`).innerHTML = "";
+  setDom(qsnId);
 }
 
 export function updateUVote(qsnId,id){
@@ -90,8 +93,11 @@ export function updateUVote(qsnId,id){
   vote.once('value',function(data){
       upvote = data.child('up_vote').val();
   })
-  database.ref(`questions/${qsnId}/answers/`+id+'/up_vote').set(upvote+1);
-  window.location.reload();
+  database.ref(`questions/${qsnId}/answers/`+id).update({
+    "up_vote" : upvote+1
+  });
+  document.getElementById(`questionAnswer`).innerHTML = "";
+  setDom(qsnId);
 }
 
 export function updateDVote(qsnId,id){
@@ -101,7 +107,8 @@ export function updateDVote(qsnId,id){
       downvote = data.child('down_vote').val();
   })
   database.ref(`questions/${qsnId}/answers/`+id+'/down_vote').set(downvote+1);
-  window.location.reload();
+  document.getElementById(`questionAnswer`).innerHTML = "";
+  setDom(qsnId);
 }
 
 export function updateAFlag(qsnId,id){
@@ -116,7 +123,8 @@ export function updateAFlag(qsnId,id){
   });
 
   database.ref(`questions/${qsnId}/answers/`+id+'/is_flagged').set(flag);
-  window.location.reload();
+  document.getElementById(`questionAnswer`).innerHTML = "";
+  setDom(qsnId);
 }
 
 export function updateQFlag(id){
@@ -132,7 +140,8 @@ export function updateQFlag(id){
   });
 
   database.ref(`questions/${id}/is_flagged`).set(flag);
-  window.location.reload();
+  document.getElementById(`questionAnswer`).innerHTML = "";
+  setDom(id);
 }
 
 export const getQuestionData = (id) => {

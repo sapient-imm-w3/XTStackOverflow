@@ -12,12 +12,12 @@ import { updateDVote } from "./question.service";
 import { getVerified } from "./question.service";
 
 
-const main = document.createElement("div");
+
+export function setDom(id){
+    const main = document.createElement("div");
 main.className = "container";
 append(document.getElementById(`questionAnswer`), main);
 main.innerHTML = "";
-
-export function setDom(id){
     getQuestionData(id).then(data => { //pass question key to map data of certain question
 
         //QUESTION VIEW
@@ -51,7 +51,7 @@ export function setDom(id){
                     if (e.target) {
                         let button = document.getElementById('V' + element.child('id').val());
                         button.style.color = 'green';
-                        getVerified(id,element.child('id').val());
+                        getVerified(id,element.key);
                     }
                 });
             }
@@ -65,14 +65,14 @@ export function setDom(id){
             ul.addEventListener("click", function (e) {
                 if (e.target && e.target.matches("li img")) {
                     if (e.target.name === 'upvote') // checking for individual button
-                        updateUVote(id,element.child('id').val());
+                        updateUVote(id,element.key);
                     if (e.target.name === 'downvote') // checking for individual button
-                        updateDVote(id,element.child('id').val());
+                        updateDVote(id,element.key);
                 }
     
                 if (e.target && e.target.matches("li.list-group-item")) {
                     if (e.target.className === 'list-group-item hvr-hang') // checking for individual button
-                        updateAFlag(id,element.child('id').val());
+                        updateAFlag(id,element.key);
                 }
             });
             append(main, answerElement);

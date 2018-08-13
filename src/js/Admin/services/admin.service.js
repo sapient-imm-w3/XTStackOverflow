@@ -1,6 +1,10 @@
 // import {renderCategoryView } from '../views/admin.view';
 // import firebase from "firebase/app";
+import firebase from 'firebase/app';
+import 'firebase/database';
+
 import 'firebase/database/dist/index.cjs';
+import { bootstrapadmin, displayUsers } from '../controllers/admin.controller';
 
 var database = firebase.database();
 
@@ -16,9 +20,11 @@ export function getFlaggedQuestionService() {
 
 export function revokeFlaggedQuestion(id) {
     database.ref(`questions/${id}`).update({
-        is_flagged: "False"
+        is_flagged: false
     });
-    window.location.reload();
+    //window.location.reload();
+    document.getElementById('admin').innerHTML = "";
+    bootstrapadmin();
 }
 
 export function getFlaggedAnswerService() {
@@ -32,9 +38,11 @@ export function getFlaggedAnswerService() {
 
 export function revokeFlaggedAnswer(id,qsnId) {
     firebase.database().ref(`questions/${qsnId}/answers/${id}`).update({
-        is_flagged: "False"
+        is_flagged: false
     });
-    window.location.reload();
+    //window.location.reload();
+    document.getElementById('admin').innerHTML = "";
+    bootstrapadmin();
 }
 
 // Asish
@@ -49,10 +57,19 @@ resolve(data);
 });
 } 
 export function changeOfRole(id){
-console.log(id);
-firebase.database().ref(`/users/${id}`).update({
-role: "Admin"
-});
+firebase.database().ref(`/users/${id}/role`).once('value',(data) => {
+    if(data.val()==="Admin"){
+        firebase.database().ref(`/users/${id}`).update({
+            role: "normal"
+            });
+    }else{
+        firebase.database().ref(`/users/${id}`).update({
+            role: "Admin"
+            });
+    }
+})
+
+displayUsers();
 } 
 
 //Tejeswar
@@ -106,9 +123,21 @@ export function getAllCatFromFirebase() {
     })
 }
 export function insertCategoryToFirebase(_categoryObj) {
-    return new Promise(function (resolve) {
-        //resolve(ret);
-    })
+    return new Promise(function(resolve,reject) {
+        let ret =  firebase.database().ref('categories/'+_categoryObj.id).set({
+             name:_categoryObj.name
+     },function(error){
+       if(error){
+  console.log(error);
+       }
+       else{
+  
+           console.log("data inserted successfully");
+           resolve("success");
+       }
+     });
+     //resolve(ret);
+  })
 }
 export function delteCategoryFromFirebaseById(id) {
     return new Promise(function (resolve) {
