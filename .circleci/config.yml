@@ -43,11 +43,13 @@ jobs:
        - run: 
           name: heroku container deploy
           command: |
-             heroku plugins:install heroku-container-registry
-             heroku container:login
-             heroku container:push web --app $HEROKU_APP_NAME
-            #  heroku container:release web
-
+            #  heroku plugins:install heroku-container-registry
+            #  heroku container:login
+            #  heroku container:push web --app $HEROKU_APP_NAME
+            # #  heroku container:release web
+             docker login --email=smadipalli@sapient.com --username=SrikarMadipalli --password=$HEROKU_API_KEY registry.heroku.com
+             docker tag my_dashboard:latest registry.heroku.com/my_dashboard/web
+             docker push registry.heroku.com/my_dashboard/web
       
 workflows:
     version: 2
