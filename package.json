@@ -4,7 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "test": "mocha --compilers js:babel-core/register ./test/*.js",
+    "test": "mocha --compilers js:babel-core/register test/spec.js",
     "serve:landing": "env MODULE=landing webpack-dev-server --mode development --hot --host 0.0.0.0 --watch-poll",
     "build": "webpack --mode production",
     "clean": "rm -rf dist/",
@@ -12,7 +12,7 @@
     "serve:Admin": "env MODULE=Admin webpack-dev-server --mode development --hot --host 0.0.0.0",
     "serve:AskAQuestion": "env MODULE=AskAQuestion webpack-dev-server --mode development --hot --host 0.0.0.0",
     "serve:questions": "npx env MODULE=questions webpack-dev-server --mode development --hot --host 0.0.0.0 --watch-poll",
-    "start":"webpack-dev-server --mode development"
+    "start": "webpack-dev-server --mode development"
   },
   "keywords": [
     "HTML",
