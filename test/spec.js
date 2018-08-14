@@ -1,15 +1,15 @@
-import firebase from 'firebase/app';
-import 'firebase/database';
+// import firebase from 'firebase/app';
+// import 'firebase/database';
 
-var config = {
-    apiKey: "AIzaSyA5LE9PObCxc3tX0ZeFx2gdW2F102HeoOg",
-    authDomain: "stackoverflowxt.firebaseapp.com",
-    databaseURL: "https://stackoverflowxt.firebaseio.com",
-    projectId: "stackoverflowxt",
-    storageBucket: "",
-    messagingSenderId: "1082794399425"
-  };
-  firebase.initializeApp(config);
+// var config = {
+//     apiKey: "AIzaSyA5LE9PObCxc3tX0ZeFx2gdW2F102HeoOg",
+//     authDomain: "stackoverflowxt.firebaseapp.com",
+//     databaseURL: "https://stackoverflowxt.firebaseio.com",
+//     projectId: "stackoverflowxt",
+//     storageBucket: "",
+//     messagingSenderId: "1082794399425"
+//   };
+//   firebase.initializeApp(config);
 
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
@@ -61,11 +61,7 @@ describe('AskAQuestion', function() {
             (div.querySelector('#inputQuestion')).innerHTML = "what is firebase";
            
             div.querySelector('button').click();
-            // firebase.database().ref('questions/').on('value', (data) => {
-                
-            //   });
-            // expect(renderFunct.render()).to.have.been.called;
-            // expect(renderFunct.render().called).to.equal(true);
+           
 
           })
 });
