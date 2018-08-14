@@ -113,8 +113,6 @@ export function createFlaggedDiv(question) {
 }
 
 export function layoutAnswer() {
-    document.getElementById('usersDiv').innerHTML = "";
-    document.getElementById('BoardsContainer').innerHTML = "";
     const tableAnswer = createHTMLElement(`
     
     <table id="examplelayoutAnswer" class="table table-striped table-hover table-bordered" style="width:100%">
@@ -148,6 +146,10 @@ export function createFlaggedAnswerDiv(answer,qsnId) {
 }
 
 export  function  layoutUser() {
+    document.getElementById('flagged_answers').innerHTML = "";
+    document.getElementById(`flagged_questions`).innerHTML = "";
+    document.getElementById('usersDiv').innerHTML = "";
+    document.getElementById('BoardsContainer').innerHTML = "";
     const  table  =  createHTMLElement(`<table id="example" class="display" style="width:100%">
     <thead>
     <tr>
