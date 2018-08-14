@@ -23,7 +23,7 @@ jobs:
         - checkout
         - run:
             name: Install Mocha
-            command: npm install mocha -g
+            command: sudo npm install mocha -g
         - run:
             name: Install Dependencies
             command: npm install
