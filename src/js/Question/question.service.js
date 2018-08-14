@@ -7,16 +7,6 @@ import { getAnswerView } from './questionApp.view';
 import { getQuestionView } from "./questionApp.view";
 import { setDom } from './questionApp.controller';
 
-// var config = {                                                            //configuring firebase
-//   apiKey: "AIzaSyAHQ-G50CPi-y2l7L5r41cvKRcs0hzSFiY",
-//   authDomain: "stackoverflow-529e4.firebaseapp.com",
-//   databaseURL: "https://stackoverflow-529e4.firebaseio.com",
-//   projectId: "stackoverflow-529e4",
-//   storageBucket: "stackoverflow-529e4.appspot.com",
-//   messagingSenderId: "861994235915"
-// };
-
-// firebase.initializeApp(config);
 
 var database = firebase.database();
 
@@ -29,7 +19,6 @@ export function postAnswer(id) {
     var post_date = new Date();
     const datestring = post_date.toDateString();
 
-    // A post entry.
     database.ref(`questions/${id}/answers/`).push({ 
         text: answerContent,
         date: datestring,
@@ -49,10 +38,7 @@ export function postAnswer(id) {
     });
 
     database.ref(`questions/${id}/answer_count`).set(update_answer_count);
-    // var updates = {};
-    // updates['/questions/0/answer_count'] = dbwrite.once('value');
     
-    // database.ref().update(updates);
   
   getQuestionData().then(data=>{
     getQuestionView(data);

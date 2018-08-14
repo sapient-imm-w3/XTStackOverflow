@@ -20,7 +20,6 @@ append(document.getElementById(`questionAnswer`), main);
 main.innerHTML = "";
     getQuestionData(id).then(data => { //pass question key to map data of certain question
 
-        //QUESTION VIEW
     
         let qnadata = data;
         let Qemail = qnadata.child('email').val();
@@ -32,7 +31,6 @@ main.innerHTML = "";
         });
         append(main, questionElement);
     
-        //ANSWERS VIEW
     
         if (firebase.auth().currentUser.email === Qemail)     //check if it is same user who posted question
             listenVerify = true;

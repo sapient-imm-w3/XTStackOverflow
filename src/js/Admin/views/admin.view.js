@@ -147,7 +147,6 @@ export function createFlaggedAnswerDiv(answer,qsnId) {
     return flaggedDivAnswer;
 }
 
-// Asish
 export  function  layoutUser() {
     const  table  =  createHTMLElement(`<table id="example" class="display" style="width:100%">
     <thead>
@@ -160,14 +159,11 @@ export  function  layoutUser() {
     <tbody id="tableBody">
     </tbody>
     </table>`);
-    //document.getElementById("userList").appendChild(table);
     return  table;
 }
 
 export  function  userDiv(user) {
-    //document.getElementById("tableBody").innerHTML ="";
     let  data  = user;
-    console.log(data.val());
     const  userTable  =  createHTMLElement(
         `<tr>
     <td>${data.child('name').val()}</td>
@@ -182,7 +178,6 @@ export  function  userDiv(user) {
     }
     return  userTable;
 }
-//Tejeswar
 
 export function renderCategoryViewwithTick(allCategoryObj) {
     document.getElementById("BoardsContainer").innerHTML = "";
@@ -207,7 +202,7 @@ export function renderCategoryViewwithTick(allCategoryObj) {
         let addTopicButton = `<div class="addCardButton">
         <button  type="button" class="helloid" data-toggle="modal" data-target="#cardModal" data-placement="top">Delete</button>
     </div>
-    </div>`;//this div is ending of each single category item
+    </div>`;
         singleCategoryBody = singleCategoryBody + addTopicButton;
         catContainerSection = catContainerSection + singleCategoryBody;
 
@@ -238,7 +233,7 @@ export function viewLayout(){
     function close_window() {
       if (confirm("Close Window?")) {
         document.body.innerHTML = "";
-        let html = `<marquee scrollamount="12" style="font-size: 50px; margin-top: 20%; color: green">Successfully Logged Out..!!!</marquee>`;
+        let html = `<div style="font-size: 50px; margin-top: 20%; margin-left: 35%; color: green">Successfully Logged Out..!!!</div>`;
         document.body.appendChild(createHTMLElement(html));
 
       }

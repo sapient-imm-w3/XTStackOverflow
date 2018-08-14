@@ -39,7 +39,6 @@ body{
     height: 100px;
     overflow: auto;
 }
-/* Tejeswar */
 #specificBoardName{
   text-align: center;
   font-size: 30px;
@@ -123,7 +122,6 @@ h3 {
   line-height: 75px;
   text-align: center;
 }
-/* Asish */
 .container {
   margin-top: 10px;
   height: auto;
@@ -148,11 +146,7 @@ ul.list-group.question {
   height:20px;
   } 
 
-/* .container .input-group {
-  width: 100%;
-  position: absolute;
-  bottom: -70px;
-} */
+
 span img {
   position: absolute;
   left: -70px;

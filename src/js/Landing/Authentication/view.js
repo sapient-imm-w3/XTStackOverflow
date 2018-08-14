@@ -24,7 +24,6 @@ export function createModal(){
       $("input[name='category']:checked").each(function () {
         favorite.push($(this).val());
       });
-      //submitCategories(favorite);
       updateCategories(favorite);
   })
   return modal;

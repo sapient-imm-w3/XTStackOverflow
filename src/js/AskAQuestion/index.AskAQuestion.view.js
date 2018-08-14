@@ -52,7 +52,6 @@ export function renderView(categories) {
 
   div.appendChild(inputQuestion);
   div.appendChild(button);
-  // document.getElementById('askQuestionForm').appendChild(div);
   return div;
 }
 

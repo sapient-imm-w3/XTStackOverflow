@@ -17,7 +17,6 @@ let createElement = (element) => {
 }
 
 export const getQuestionView = (data) => {  //fetching data from firebase
-    // console.log(data.val());
     let qnadata = data;
 
     let question = `<span><img src="./src/img/question.png" alt="question" title="question" class="hvr-forward"></span>

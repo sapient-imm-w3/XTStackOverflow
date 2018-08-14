@@ -22,7 +22,6 @@ export function displaytrending(answerCount,text,date,categories,key) {
         let buttonElement = createHTMLElement(button);
         div.firstElementChild.firstElementChild.nextElementSibling.appendChild(buttonElement);
         buttonElement.addEventListener('click',() => {
-            console.log(`${element.name}`);
             displayCatQuestions(`${element.name}`);
         });
 });

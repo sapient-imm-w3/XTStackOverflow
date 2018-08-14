@@ -58,7 +58,7 @@ export function getTitle(category) {
     function close_window() {
       if (confirm("Close Window?")) {
         document.getElementById(`content`).innerHTML = "";
-        let html = `<marquee scrollamount="12" style="font-size: 50px; margin-top: 20%; color: green">Successfully Logged Out..!!!</marquee>`;
+        let html = `<div style="font-size: 50px; margin-top: 20%; margin-left: 35%; color: green">Successfully Logged Out..!!!</div>`;
         document.getElementById(`content`).appendChild(createHTMLElement(html));
 
       }
