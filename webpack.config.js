@@ -14,8 +14,7 @@ module.exports = {
         test: /\.(png|jpg|gif|svg|jpeg)$/,
         loader: 'file-loader',
         options: {
-          name: '[name].[ext]',
-          useRelativePath: true,
+          name: '[path][name].[ext]'
         },
       },
       { test: /\.css$/,

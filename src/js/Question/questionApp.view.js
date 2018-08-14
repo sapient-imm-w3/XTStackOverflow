@@ -1,6 +1,10 @@
-// import firebase from 'firebase/app';
-// import 'firebase/auth';
-// firebase.auth().currentUser.email;
+import Admin from '../../img/Admin.png';
+import down_vote from '../../img/down_vote.png';
+import flag from '../../img/flag.png';
+import question from '../../img/question.png';
+import time from '../../img/time.png';
+import up_vote from '../../img/up_vote.png';
+import verified from '../../img/verified.png';
 
 export let append = (parent, el) => {
     return parent.appendChild(el); // Append the second parameter(element) to the first one
@@ -16,8 +20,8 @@ export const getQuestionView = (data) => {  //fetching data from firebase
     // console.log(data.val());
     let qnadata = data;
 
-    let question = `<span><img src="../../../src/img/question.png" alt="question" title="question" class="hvr-forward"></span>
-        <span class="question badge badge-light"><img src="${qnadata.child('photoUrl').val()}" alt="username" title="username" class="username hvr-grow"> ${qnadata.child('email').val()} <img src="../../../src/img/time.png" alt="timestamp" title="timestamp" class="timestamp hvr-buzz"> ${qnadata.child('date').val()}</span>
+    let question = `<span><img src="./src/img/question.png" alt="question" title="question" class="hvr-forward"></span>
+        <span class="question badge badge-light"><img src="${qnadata.child('photoUrl').val()}" alt="username" title="username" class="username hvr-grow"> ${qnadata.child('email').val()} <img src="./src/img/time.png" alt="timestamp" title="timestamp" class="timestamp hvr-buzz"> ${qnadata.child('date').val()}</span>
         <h6>${qnadata.child('text').val()}</h6>
         <ul class="list-group question" id="question">`
 
@@ -43,11 +47,11 @@ export const getAnswerView = (element) => {
     let answer = `<div class="answer">`
 
     if (element.child('is_correct').val() === true)
-        answer += `<span><img src="../../../src/img/verified.png" alt="verified" title="Verified" class="hvr-pop"></span>`
+        answer += `<span><img src="./src/img/verified.png" alt="verified" title="Verified" class="hvr-pop"></span>`
 
     answer += `<ul class="list-group answer-ul" id="${element.child('id').val()}">
-        <li class="list-group-item answer-li"><img src="../../../src/img/up_vote.png" alt="Like" title="Like" name="upvote" class="hvr-bounce-in image" id="U${element.child('id').val()}"> +${element.child('up_vote').val()}</li>
-        <li class="list-group-item answer-li"><img src="../../../src/img/down_vote.png" alt="Dislike" title="Dislike" name="downvote" class="hvr-bounce-out image" id="D${element.child('id').val()}"> -${element.child('down_vote').val()}</li>`
+        <li class="list-group-item answer-li"><img src="./src/img/up_vote.png" alt="Like" title="Like" name="upvote" class="hvr-bounce-in image" id="U${element.child('id').val()}"> +${element.child('up_vote').val()}</li>
+        <li class="list-group-item answer-li"><img src="./src/img/down_vote.png" alt="Dislike" title="Dislike" name="downvote" class="hvr-bounce-out image" id="D${element.child('id').val()}"> -${element.child('down_vote').val()}</li>`
 
     if (element.child('is_flagged').val() === true)
         answer += `<li class="list-group-item hvr-hang" title="Flag" name="flag" id="F${element.child('id').val()}">&#9873</li>`
@@ -56,7 +60,7 @@ export const getAnswerView = (element) => {
 
     answer += `</ul>
         <br>
-        <span class="badge badge-light"><img src="${element.child('photoUrl').val()}" alt="username" title="username" class="username hvr-grow"> ${element.child('email').val()} <img src="../../../src/img/time.png" alt="timestamp" title="timestamp" class="timestamp hvr-buzz"> ${element.child('date').val()}</span>
+        <span class="badge badge-light"><img src="${element.child('photoUrl').val()}" alt="username" title="username" class="username hvr-grow"> ${element.child('email').val()} <img src="./src/img/time.png" alt="timestamp" title="timestamp" class="timestamp hvr-buzz"> ${element.child('date').val()}</span>
         <br>
         <p>${element.child('text').val()}</p>
         </div>
