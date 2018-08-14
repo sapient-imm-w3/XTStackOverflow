@@ -15,14 +15,7 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
-  test:
-    docker:
-      - image: circleci/node:8
-    steps:
-      - checkout
-      - run:
-          name: Test
-          command: npm test
+  
   deploy:
     machine:
         enabled: true
@@ -72,12 +65,7 @@ workflows:
             filters:
               branches:
                 only: Integration
-        - test:
-            requires:
-              - build
         - deploy:
-            requires:
-              - build
             filters:
               branches:
                 only: master
