@@ -15,14 +15,22 @@ jobs:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
+  
   test:
     docker:
       - image: circleci/node:8
     steps:
       - checkout
       - run:
+        name: Install Mocha
+        command: npm install mocha -g
+      - run:
+        name: Install Dependencies
+        command: npm install
+      - run:
           name: Test
           command: npm test
+  
   deploy:
     machine:
         enabled: true
