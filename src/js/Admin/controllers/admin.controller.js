@@ -133,7 +133,7 @@ else{
 }
 
 export function displayUsers(){
-  let display = layout();
+  let display = layoutUser();
   document.getElementById("usersDiv").appendChild(display);
   getAllUserService().then(function (data) {
     let elements = [];
