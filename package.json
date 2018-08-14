@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha --compilers js:babel-core/register test/spec.js",
     "serve:landing": "env MODULE=landing webpack-dev-server --mode development --hot --host 0.0.0.0 --watch-poll",
-    "build": "webpack --mode production",
+    "build": "webpack --mode development",
     "clean": "rm -rf dist/",
     "serve": "webpack-dev-server --mode development",
     "serve:Admin": "env MODULE=Admin webpack-dev-server --mode development --hot --host 0.0.0.0",
