@@ -4,11 +4,7 @@
 #answer-count {
     font-size: 20px;
   }
-#signout {
-    position: fixed;
-    bottom: 5px;
-    right: 5px;
-}
+
 #profile{
     margin: 1rem;
     padding: 1rem;

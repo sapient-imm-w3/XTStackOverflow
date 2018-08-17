@@ -1,10 +1,9 @@
 
 import { getAllCatFromFirebase, getFlaggedQuestionService, getAllUserService, getFlaggedAnswerService,delteCategoryFromFirebaseById,isCategoryAlreadyExist,Category,insertCategoryToFirebase   } from '../services/admin.service';
-import { layout, layoutUser, createLayout, layoutAnswer, createFlaggedDiv, createFlaggedAnswerDiv, renderCategoryViewwithTick, userDiv, createHTMLElement, viewLayout } from '../views/admin.view';
+import { layout, layoutUser, createLayout, layoutAnswer, createFlaggedDiv, createFlaggedAnswerDiv, renderCategoryViewwithTick, userDiv, createHTMLElement } from '../views/admin.view';
 import $ from 'jquery';
 
 export function bootstrapadmin () {
-document.getElementById(`navbar`).innerHTML = "";
 document.getElementById(`admin`).appendChild(createLayout());
 const flagged = document.getElementById('flagged');
 flagged.addEventListener('click', (event) => {
@@ -32,7 +31,7 @@ flagged.addEventListener('click', (event) => {
     })
   });
 });
-document.getElementById(`admin`).appendChild(viewLayout());
+
 let display = layout();
 document.getElementById("flagged_questions").appendChild(display);
 getFlaggedQuestionService().then(function (questions) {

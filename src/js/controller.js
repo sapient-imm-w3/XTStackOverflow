@@ -20,7 +20,7 @@ import  bootstrapadmin  from  "./Admin/index.Admin"
 
 // import 
 
-import './firebase.database';
+import { displayNav, displayNavAdmin, displaySignOut } from './view';
 
 export function bootstrap () {
 
@@ -36,15 +36,20 @@ export function bootstrap () {
                     });
                     $('#exampleModalLong').modal('show');
                     document.getElementById(`saveCategories`).onclick = () => {
+                        document.getElementById(`navbarText`).appendChild(displayNav());
+                        document.getElementById(`navList`).appendChild(displaySignOut());
                         document.getElementById('landing').appendChild(displayPage(currentUser));
                     }
                     });
             }else{
                 if(user.child(`role`).val()==="normal"){
+                    document.getElementById(`navbarText`).appendChild(displayNav());
                     document.getElementById('landing').appendChild(displayPage(currentUser));
-                }else if(user.child('role').val() === "Admin") {
+                }else if(user.child('role').val() === "Admin" || user.child('role').val() === "Developer" ) {
+                    document.getElementById(`navbarText`).appendChild(displayNavAdmin());
                     bootstrapadmin();
                 }
+                document.getElementById(`navList`).appendChild(displaySignOut());
             }
       });
       });
@@ -57,11 +62,3 @@ export function displayPage(currentUser){
     content.appendChild(div);
     return content;
   }
-
-document.getElementById('home').onclick = (event) => {
-    event.preventDefault();
-    document.getElementById(`askQuestion`).innerHTML = "";
-    document.getElementById(`questionAnswer`).innerHTML = "";
-    document.getElementById(`landing`).innerHTML = "";
-    document.getElementById('landing').appendChild(displayPage(firebase.auth().currentUser));
-}

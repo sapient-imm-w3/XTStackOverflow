@@ -22,18 +22,21 @@ export function createModal(){
   modal.firstElementChild.firstElementChild.lastElementChild.lastElementChild.addEventListener('click',() => {
     let favorite = [];
       $("input[name='category']:checked").each(function () {
-        favorite.push($(this).val());
+        favorite.push({
+          "id":this.id,
+          "name" : $(this).val()
       });
       updateCategories(favorite);
-  })
+  });
+});
   return modal;
 }
 
 export function displayFavCategories(category) {
     let cat = `
             <label class="btn btn-warning labelCategories">
-            <input style="display:none" name="category" id="${category.child(`name`).val()}" type="checkbox" value="${category.child(`name`).val()}">
-            <label for="${category.child(`name`).val()}">
+            <input style="display:none" name="category" id="${category.key}" type="checkbox" value="${category.child(`name`).val()}">
+            <label for="${category.key}">
                 ${category.child(`name`).val()}
             </label>
             </label> 

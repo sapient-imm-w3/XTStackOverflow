@@ -6,7 +6,7 @@ export default () => {
      getAnswerCountFromDB().then((questions) => {
         let elements = [];
         questions.forEach((question) => {
-            let html = displaytrending(question.child(`answer_count`).val(),question.child(`text`).val(),question.child(`date`).val(),question.child(`categories`).val(),question.key);
+            let html = displaytrending(question.child(`answer_count`).val(),question.child(`text`).val(),question.child(`date`).val(),question.child(`categories`),question.key);
             elements.push(html);
         });
         elements.forEach(function(e) {
@@ -23,9 +23,9 @@ export function displayCatQuestions(name){
         let count = 0;
           questions.forEach((question) => {
             if (count < 5) {
-              question.child(`categories`).val().forEach((cat) => {
-                if (cat.name === name) {
-                    let html = displaytrending(question.child(`answer_count`).val(),question.child(`text`).val(),question.child(`date`).val(),question.child(`categories`).val(),question.key);
+              question.child(`categories`).forEach((cat) => {
+                if (cat.child(`name`).val() === name) {
+                    let html = displaytrending(question.child(`answer_count`).val(),question.child(`text`).val(),question.child(`date`).val(),question.child(`categories`),question.key);
                     elements.push(html);
                   count++;
                 }

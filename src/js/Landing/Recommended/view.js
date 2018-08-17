@@ -38,29 +38,14 @@ export function getTitle(category) {
         <div id="recommended">
         </div>
       </div>
-      <button type="button" id="signout" class="btn btn-danger">Sign Out</button>
     </aside>
     </div>`;
 
     let mainElement = createHTMLElement(main);
-    mainElement.firstElementChild.firstElementChild.nextElementSibling.addEventListener('click', () => {
-      auth.signOut()
-      .then(()=>{
-        close();
-        close_window();
-      });
-    })
 
     return mainElement;
         
     }
 
-    function close_window() {
-      if (confirm("Close Window?")) {
-        document.getElementById(`content`).innerHTML = "";
-        let html = `<div style="font-size: 50px; margin-top: 20%; margin-left: 35%; color: green">Successfully Logged Out..!!!</div>`;
-        document.getElementById(`content`).appendChild(createHTMLElement(html));
-
-      }
-    }
+    
   

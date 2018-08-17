@@ -29,7 +29,14 @@ export function updateCategories(favourite) {
         name: currentUser.displayName,
         email: currentUser.email,
         role: "normal",
-        fav_categories: favourite
+        fav_categories: []
+    });
+    favourite.forEach(element => {
+        let x = element.id;
+        let name = element.name;
+        database.ref(`users/` + currentUser.uid + `/fav_categories/${x}`).set({
+            name : name
+        })
     });
 }
 

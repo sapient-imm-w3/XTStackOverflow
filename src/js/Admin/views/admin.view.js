@@ -1,7 +1,7 @@
 import firebase from 'firebase/app'
 import 'firebase/auth';
  
-import { revokeFlaggedQuestion, revokeFlaggedAnswer, changeOfRole } from '../services/admin.service';
+import { revokeFlaggedQuestion, revokeFlaggedAnswer, changeOfRole, deleteUser } from '../services/admin.service';
 
 
 export function createHTMLElement(html) {
@@ -12,31 +12,6 @@ export function createHTMLElement(html) {
 
 export function createLayout(){
     return createHTMLElement(`<main id="wrapper">
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ED7B84;">
-        <a class="navbar-brand" href="#">StackOverflow</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" id="flagged" href="#">Flagged
-                        <span class="sr-only">(current)</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="retrieveUser" href="#">Users</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="retrieveCategories" href="#">Categories</a>
-                </li>
-            </ul>
-            <span class="navbar-text">
-                You are an Admin!!!
-            </span>
-        </div>
-    </nav>
     <div id="flagged_questions">
     
     </div>
@@ -150,7 +125,7 @@ export  function  layoutUser() {
     document.getElementById(`flagged_questions`).innerHTML = "";
     document.getElementById('usersDiv').innerHTML = "";
     document.getElementById('BoardsContainer').innerHTML = "";
-    const  table  =  createHTMLElement(`<table id="example" class="display" style="width:100%">
+    const  table  =  createHTMLElement(`<table id="example" class="table display table-striped table-hover table-bordered" style="width:100%">
     <thead>
     <tr>
     <th>Name</th>
@@ -171,13 +146,23 @@ export  function  userDiv(user) {
     <td>${data.child('name').val()}</td>
     <td>${data.child('role').val()}</td>
     <td>
-    <input type="checkbox"  id="${data.key}">
+    <button type="button" class="btn btn-warning">Change</button>
+    </td>
+    <td>
+    <button type="button" class="btn btn-danger">Delete</button>
     </td>
     </tr>
     `);
+    if(data.child(`role`).val()==="Developer" || data.child(`email`).val()===firebase.auth().currentUser.email) {
+        userTable.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.disabled = true;
+        userTable.lastElementChild.firstElementChild.disabled = true;
+    }
     userTable.firstElementChild.nextElementSibling.nextElementSibling.firstElementChild.onclick  =  ()  =>  {
         changeOfRole(`${data.key}`);
     }
+    userTable.lastElementChild.firstElementChild.addEventListener(`click`,() => {
+        deleteUser(`${data.key}`);
+    })
     return  userTable;
 }
 
@@ -212,31 +197,3 @@ export function renderCategoryViewwithTick(allCategoryObj) {
     let wholeCategoryView = addCatSec + catContainerSection + catContainerSectionEnding;
     return wholeCategoryView;
 }
-export function viewLayout(){
-    let main = `<div class="col-md-3">
-    
-      <button type="button" id="signout" class="btn btn-danger">Sign Out</button>
-    
-    </div>`;
-
-    let mainElement = createHTMLElement(main);
-    mainElement.firstElementChild.addEventListener('click', () => {
-      firebase.auth().signOut()
-      .then(()=>{
-        close();
-        close_window();
-      });
-    })
-
-    return mainElement;
-        
-    }
-
-    function close_window() {
-      if (confirm("Close Window?")) {
-        document.body.innerHTML = "";
-        let html = `<div style="font-size: 50px; margin-top: 20%; margin-left: 35%; color: green">Successfully Logged Out..!!!</div>`;
-        document.body.appendChild(createHTMLElement(html));
-
-      }
-    }

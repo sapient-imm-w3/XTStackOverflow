@@ -18,11 +18,11 @@ export function displaytrending(answerCount,text,date,categories,key) {
                     `;
     let div = createHTMLElement(html);
     categories.forEach(element => {
-        let button = `<button type="button" class="badge badge-secondary badges">${element.name}</button> &nbsp;`;
+        let button = `<button type="button" class="badge badge-secondary badges">${element.child(`name`).val()}</button> &nbsp;`;
         let buttonElement = createHTMLElement(button);
         div.firstElementChild.firstElementChild.nextElementSibling.appendChild(buttonElement);
         buttonElement.addEventListener('click',() => {
-            displayCatQuestions(`${element.name}`);
+            displayCatQuestions(`${element.child(`name`).val()}`);
         });
 });
 let dates = `<small id="date" class = "text-muted" style="float: right">${date}</small>`;

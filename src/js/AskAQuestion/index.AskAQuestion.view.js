@@ -12,8 +12,8 @@ export function renderView(categories) {
   categories.forEach(category => {
     dropdown +=  `
     
-              <input  name="category" id="${category.child(`name`).val()}" type="checkbox" value="${category.child(`name`).val()}">
-              <label for="${category.child(`name`).val()}">
+              <input  name="category" id="${category.key}" type="checkbox" value="${category.child(`name`).val()}">
+              <label for="${category.key}">
               ${category.child(`name`).val()}
               </label>
               
@@ -40,6 +40,7 @@ export function renderView(categories) {
     var categories = [];
     $("input[name='category']:checked").each(function () {
       categories.push({
+        "id" : this.id,
         "name" : $(this).val()
       });
     });

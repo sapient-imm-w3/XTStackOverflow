@@ -126,7 +126,18 @@ export function insertCategoryToFirebase(_categoryObj) {
   })
 }
 export function delteCategoryFromFirebaseById(id) {
+    console.log(id);
     return new Promise(function (resolve) {
+        firebase.database().ref('questions').once('value',(questions) =>{
+            questions.forEach(question => {
+                    firebase.database().ref(`questions/${question.key}/categories`).child(id).remove();
+            })
+        })
+        firebase.database().ref(`users`).once('value',(users) => {
+            users.forEach(user => {
+                firebase.database().ref(`users/${user.key}/fav_categories`).child(id).remove();
+            })
+        })
         firebase.database().ref().child("categories").child(id).remove();
         resolve("success");
     });
@@ -154,4 +165,9 @@ export function isCategoryAlreadyExist(catName){
     }));
     })
     
+    }
+
+    export function deleteUser(id){
+        firebase.database().ref(`users`).child(id).remove();
+        displayUsers();
     }
