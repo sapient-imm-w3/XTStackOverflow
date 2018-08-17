@@ -3,19 +3,13 @@ html,body {
   width: 100%;
   }
 
-.css {
-  font-weight: bolder;
-  font-style: italic;
-  color: green;
-}
-
 .container {
   margin-top: 10px;
   height: auto;
   position: relative;
 }
 
-ul {
+ul.list-group.answer-ul {
   position: absolute;
   right: -120px;
 }
@@ -25,10 +19,10 @@ ul.list-group.question {
     top: 4px;
 }
 
-li {
+li.list-group-item.answer-li {
   display: inline;
 }
-img {
+.hvr-bounce-in, .hvr-bounce-out{
   height: 20px;
 }
 /* .container .input-group {
